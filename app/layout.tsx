@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
 import RegisterModal from '@/components/modals/RegisterModal'
 import LoginModal from '@/components/modals/LoginModal'
+import ToasterProvider from '@/providers/ToasterProvider'
 
 const poppins = Montserrat({ 
   weight: '400',
@@ -23,6 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={poppins.className}>
+        <ToasterProvider />
         <LoginModal/>
         <RegisterModal />
         <Navbar />
