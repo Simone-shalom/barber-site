@@ -1,9 +1,11 @@
 import Navbar from '@/components/Navbar'
 import './globals.css'
 import type { Metadata } from 'next'
-import { Poppins } from 'next/font/google'
+import { Montserrat } from 'next/font/google'
+import RegisterModal from '@/components/modals/RegisterModal'
+import LoginModal from '@/components/modals/LoginModal'
 
-const poppins = Poppins({ 
+const poppins = Montserrat({ 
   weight: '400',
   subsets: ['latin']
  })
@@ -21,6 +23,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={poppins.className}>
+        <LoginModal/>
+        <RegisterModal />
         <Navbar />
         {children}
       </body>

@@ -15,7 +15,7 @@ const UserMenu = () => {
       <DropdownMenu>
         <DropdownMenuTrigger className="flex items-center justify-center space-x-3
              focus:outline-none px-3 py-2 hover:shadow-lg rounded-xl 
-             border-[1px] transition">
+             border-[1px] transition font-semibold">
             <MenuIcon size={20}/>
             <div>avatar</div> 
         </DropdownMenuTrigger>
