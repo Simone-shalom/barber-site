@@ -15,6 +15,7 @@ import { FormControl,Form,  FormField,
    FormItem, FormLabel, FormMessage } from "../ui/form"
 import { toast } from "react-hot-toast"
 import { useRouter } from "next/navigation"
+import axios from "axios"
 
 
 const formSchema = z.object({
@@ -70,16 +71,15 @@ const RegisterModal = () => {
     const onSubmit = async(values: z.infer<typeof formSchema>) => {
       //console.log(values)
       try{
-        console.log(values)
-     //  await axios.post(`/api/register`, values)
+       await axios.post(`/api/register`, values)
 
       }catch(error: any){
-        console.log(error)
         toast.error('Something went wrong')
 
       } finally{
         toast.success('Registered successfully')
         router.refresh()
+        registerModal.onClose()
       }
    }
 

@@ -16,6 +16,7 @@ import { FormControl,Form,  FormField, FormItem,
 import axios from 'axios'
 import { useRouter } from "next/navigation"
 import { toast } from "react-hot-toast"
+import {signIn} from 'next-auth/react'
 
 
 const formSchema = z.object({
@@ -68,18 +69,20 @@ const LoginModal = () => {
   
    const onSubmit = async(values: z.infer<typeof formSchema>) => {
       //console.log(values)
-      try{
-        console.log(values)
-     //  await axios.post(`/api/login`, values)
+      signIn('credentials', {
+        ...values,
+        redirect: false
+      }).then((callback) => {
+        if(callback?.ok) {
+            toast.success('Logged in successfully')
+            router.refresh()
+            loginModal.onClose()
+        }
+        if(callback?.error){
+            toast.error('Callback Error')
+        }
+      })
 
-      }catch(error: any){
-        console.log(error)
-        toast.error('Something went wrong')
-
-      } finally{
-        toast.success('Logged in successfully')
-        router.refresh()
-      }
    }
 
  
@@ -133,7 +136,7 @@ const LoginModal = () => {
             <div className='text-neutral-500 text-center mt-4 font-light'>
               <div className='flex items-center gap-2 justify-center'>
                 <div>
-                Don't have an account yet?
+                Don&apos;t have an account yet?
                 </div>
                 <div onClick={onToggle}
                     className='font-semibold cursor-pointer'>Register</div>
