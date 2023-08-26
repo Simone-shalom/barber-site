@@ -72,18 +72,16 @@ const RegisterModal = () => {
       //console.log(values)
       try{
        await axios.post(`/api/register`, values)
+       registerModal.onClose()
+       loginModal.onOpen()
 
+       toast.success('Registered successfully')
       }catch(error: any){
         toast.error('Something went wrong')
 
-      } finally{
-        toast.success('Registered successfully')
-        router.refresh()
-        registerModal.onClose()
-      }
    }
 
- 
+  }
 
     const bodyContent = (
         <div className='flex flex-col gap-2 w-full'>
@@ -96,7 +94,7 @@ const RegisterModal = () => {
                     <FormItem>
                       <FormLabel>Name</FormLabel>
                       <FormControl>
-                        <Input placeholder="Simon" {...field} />
+                        <Input placeholder="Simon" {...field} type="text"/>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -110,7 +108,7 @@ const RegisterModal = () => {
                     <FormItem>
                       <FormLabel>Email</FormLabel>
                       <FormControl>
-                        <Input placeholder="simon@gmail.com" {...field} />
+                        <Input placeholder="simon@gmail.com" {...field} type="email"/>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -162,7 +160,7 @@ const RegisterModal = () => {
   return (
     <Modal disabled={isLoading} isOpen={registerModal.isOpen} title='Register'
     onClose={registerModal.onClose} 
-    onSubmit={()=> {}} body={bodyContent} footer={footerContent} />
+    onSubmit={()=>{}} body={bodyContent} footer={footerContent} />
 
   )
 }

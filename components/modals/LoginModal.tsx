@@ -68,10 +68,11 @@ const LoginModal = () => {
  
   
    const onSubmit = async(values: z.infer<typeof formSchema>) => {
-      //console.log(values)
+      console.log(values)
       signIn('credentials', {
         ...values,
-        redirect: false
+        redirect: false,
+        callbackUrl: '/'
       }).then((callback) => {
         if(callback?.ok) {
             toast.success('Logged in successfully')
@@ -119,7 +120,9 @@ const LoginModal = () => {
                   )}
                 />
                 <div className="flex items-center justify-center w-full pt-5">
-                  <Button type="submit" className="w-[320px]">Login</Button>
+                  <Button type="submit">
+                    Login
+                  </Button>
                 </div>
               </form>
             </Form>

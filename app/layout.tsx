@@ -5,6 +5,7 @@ import { Montserrat } from 'next/font/google'
 import RegisterModal from '@/components/modals/RegisterModal'
 import LoginModal from '@/components/modals/LoginModal'
 import ToasterProvider from '@/providers/ToasterProvider'
+import getCurrentUser from '@/actions/get-current-user'
 
 const poppins = Montserrat({ 
   weight: '400',
@@ -16,18 +17,21 @@ export const metadata: Metadata = {
   description: 'Make reservations in your favourite barber',
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+
+  const currentUser = await getCurrentUser()
+
   return (
     <html lang="en">
       <body className={poppins.className}>
         <ToasterProvider />
         <LoginModal/>
         <RegisterModal />
-        <Navbar />
+        <Navbar currentUser={currentUser}/>
         {children}
       </body>
     </html>

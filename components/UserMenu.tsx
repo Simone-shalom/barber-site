@@ -5,8 +5,14 @@ import MenuItem from "./MenuItem"
 import { DropdownMenu, DropdownMenuContent,
      DropdownMenuTrigger } from "./ui/dropdown-menu"
 import {MenuIcon} from 'lucide-react'
+import { User } from "@prisma/client"
+import { signOut } from "next-auth/react"
 
-const UserMenu = () => {
+interface UserMenuProps{
+  currentUser?: User | null
+} 
+
+const UserMenu = ({currentUser}: UserMenuProps) => {
 
     const router = useRouter()
 
@@ -17,7 +23,7 @@ const UserMenu = () => {
              focus:outline-none px-3 py-2 hover:shadow-lg rounded-xl 
              border-[1px] transition font-semibold">
             <MenuIcon size={20}/>
-            <div>avatar</div> 
+            <div></div> 
         </DropdownMenuTrigger>
 
         <DropdownMenuContent className="cursor-pointer mt-4 md:mt-0">
@@ -27,7 +33,7 @@ const UserMenu = () => {
             <MenuItem label='My Reservations' onClick={() => router.push('/reservations')} />
             <MenuItem label='My properties' onClick={() => router.push('/properties')} />
             <MenuItem label='My Home' onClick={()=>{}} />
-            <MenuItem label='Logout' onClick={()=>{}} />
+            <MenuItem label='Logout' onClick={()=>signOut()} />
         </>
         </DropdownMenuContent> 
       </DropdownMenu>
