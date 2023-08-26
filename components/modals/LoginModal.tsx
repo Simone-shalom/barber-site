@@ -120,7 +120,7 @@ const LoginModal = () => {
                   )}
                 />
                 <div className="flex items-center justify-center w-full pt-5">
-                  <Button type="submit">
+                  <Button type="submit" className="w-[320px]">
                     Login
                   </Button>
                 </div>
