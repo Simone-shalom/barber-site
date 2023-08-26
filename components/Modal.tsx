@@ -2,10 +2,7 @@
 
 import { cn } from "@/lib/utils"
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "./ui/dialog"
-import { Card } from "./ui/card"
-import {Check, Zap} from 'lucide-react'
-import { Button } from "./ui/button"
-import {useState} from 'react'
+
 import { useLoginModal } from "@/hooks/use-login-modal"
 import { useRegisterModal } from "@/hooks/use-register-modal"
 

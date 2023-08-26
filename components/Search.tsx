@@ -18,7 +18,7 @@ const Search = () => {
     py-2 rounded-full shadow-sm hover:shadow-md 
     transition cursor-pointer'>
     
-    <div className='flex items-center w-full justify-between' onClick={loginModal.onOpen}>
+    <div className='flex items-center w-full justify-between'>
         <div className='hidden sm:block text-sm font-semibold px-3 lg:px-5 
              border-x-[1px] text-center'>
             duration label

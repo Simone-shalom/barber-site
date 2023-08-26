@@ -68,7 +68,6 @@ const LoginModal = () => {
  
   
    const onSubmit = async(values: z.infer<typeof formSchema>) => {
-      console.log(values)
       signIn('credentials', {
         ...values,
         redirect: false,
@@ -80,7 +79,7 @@ const LoginModal = () => {
             loginModal.onClose()
         }
         if(callback?.error){
-            toast.error('Callback Error')
+            toast.error('Unaothorized')
         }
       })
 
@@ -132,7 +131,8 @@ const LoginModal = () => {
     const footerContent = (
         <div className='flex flex-col gap-4 mt-3'>
           <hr />
-           <Button variant='outline'>Login with Google 
+           <Button 
+            onClick={()=> signIn('google')}variant='outline'>Login with Google 
             <span className="ml-2"> 
               <Image src='/images/google.png' alt="Google" height={30} width={20}/></span>
             </Button>

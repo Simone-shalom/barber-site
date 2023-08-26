@@ -16,6 +16,7 @@ import { FormControl,Form,  FormField,
 import { toast } from "react-hot-toast"
 import { useRouter } from "next/navigation"
 import axios from "axios"
+import { signIn } from "next-auth/react"
 
 
 const formSchema = z.object({
@@ -69,7 +70,6 @@ const RegisterModal = () => {
 
    
     const onSubmit = async(values: z.infer<typeof formSchema>) => {
-      //console.log(values)
       try{
        await axios.post(`/api/register`, values)
        registerModal.onClose()
@@ -140,7 +140,9 @@ const RegisterModal = () => {
     const footerContent = (
         <div className='flex flex-col gap-4 mt-3 '>
           <hr />
-           <Button variant='outline'>Register with Google 
+           <Button 
+            onClick={()=> signIn('google')}
+            variant='outline'>Register with Google 
             <span className="ml-2"> 
               <Image src='/images/google.png' alt="Google" height={30} width={20}/></span>
             </Button>

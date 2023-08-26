@@ -3,6 +3,7 @@ import Container from "./Container"
 import Logo from "./Logo"
 import Search from "./Search"
 import UserMenu from "./UserMenu"
+import Categories from "./Categories"
 
 interface NavbarProps {
   currentUser?:User | null
@@ -12,7 +13,6 @@ interface NavbarProps {
 const Navbar = ({currentUser}:
   NavbarProps) => {
 
-console.log(currentUser)
 
   return (
     <div className="fixed bg-white w-full z-10 shadow-md rounded-b-md">
@@ -25,6 +25,7 @@ console.log(currentUser)
           </div>
         </Container>
       </div>
+      <Categories />
     </div>
   )
 }
