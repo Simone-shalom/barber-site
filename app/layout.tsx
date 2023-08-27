@@ -6,6 +6,7 @@ import RegisterModal from '@/components/modals/RegisterModal'
 import LoginModal from '@/components/modals/LoginModal'
 import ToasterProvider from '@/providers/ToasterProvider'
 import getCurrentUser from '@/actions/get-current-user'
+import ListingModal from '@/components/modals/ListingModal'
 
 const poppins = Montserrat({ 
   weight: '400',

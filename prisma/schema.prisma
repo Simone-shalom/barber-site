@@ -50,6 +50,7 @@ model Listing {
   description String
   imageSrc String
   createdAt DateTime @default(now())
+  category String
   price Int
   userId String @db.ObjectId
 

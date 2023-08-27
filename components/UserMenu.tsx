@@ -38,16 +38,22 @@ const UserMenu = ({currentUser}: UserMenuProps) => {
 
         <DropdownMenuContent className="cursor-pointer mt-4 md:mt-0">
         <>
+        {/*If there is logged in user*/}
           {currentUser ? (
             <>
-              <MenuItem label='My Visits' onClick={() => router.push('/trips')} />
-              <MenuItem label='My Favourites' onClick={() => router.push('/favourites')} />
-              <MenuItem label='My Reservations' onClick={() => router.push('/reservations')} />
-              {/*Admin only listings*/}
+            {/*If user is not admin access to*/}
+              {currentUser.id !== ADMIN_ID && (
+                <>
+                 <MenuItem label='My Visits' onClick={() => router.push('/trips')} />
+                  <MenuItem label='My Favourites' onClick={() => router.push('/favourites')} />
+                </>
+              )}
+              {/* if user is Admin- can create and manage listings/ reservations*/}
               {currentUser?.id  === ADMIN_ID && (
                 <div>
                  <MenuItem label='My Listings' onClick={() => router.push('/listings')} />
-                 <MenuItem label='Create listing' onClick={listingModal.onOpen} />
+                 <MenuItem label='My Reservations' onClick={() => router.push('/reservations')} />
+                 <MenuItem label='Create listing' onClick={()=> router.push('create')} />
                 </div>
               )}
             

@@ -5,11 +5,12 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 
 import { useLoginModal } from "@/hooks/use-login-modal"
 import { useRegisterModal } from "@/hooks/use-register-modal"
+import { Button } from "./ui/button"
 
 interface ModalProps {
     isOpen?: boolean
     onClose: () => void
-    onSubmit: () => void
+    onSubmit?: () => void
     title?: string
     body?: React.ReactElement
     footer?: React.ReactElement
@@ -27,7 +28,7 @@ const Modal = ({
 
   return (
  <Dialog open={isOpen} onOpenChange={onClose}>
-    <DialogContent className="flex items-center justify-center flex-col">
+    <DialogContent className="flex items-center justify-center flex-col z-50">
         {/*Title*/}
          <DialogHeader>
              <DialogTitle className='flex justify-center items-center flex-col
