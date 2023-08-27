@@ -39,9 +39,6 @@ const CreateListingForm = () => {
     const router = useRouter()
     const [isLoading, setIsLoading]= useState(false)
 
-  //  const onSubmit:SubmitHandler<FieldValues> =async(data) => {
-  //      console.log(data)
-
     const form = useForm<z.infer<typeof formSchema>>({
       resolver: zodResolver(formSchema),
       defaultValues: {
@@ -53,7 +50,6 @@ const CreateListingForm = () => {
       }
   })
   const onSubmit = async(data: z.infer<typeof formSchema>) =>{
-    console.log(data)
 
     try {
         setIsLoading(true)
@@ -62,7 +58,6 @@ const CreateListingForm = () => {
         router.push('/')
 
     }catch(error: any){
-        console.log(error)
         toast.error('Something went wrong')
         
     }finally {
