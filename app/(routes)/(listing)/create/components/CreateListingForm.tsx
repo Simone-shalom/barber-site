@@ -4,6 +4,7 @@ import getCurrentUser from "@/actions/get-current-user"
 import { categories } from "@/components/Categories"
 import { ImageUpload } from "@/components/ImageUpload"
 import { Button } from "@/components/ui/button"
+import { Card } from "@/components/ui/card"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -69,8 +70,10 @@ const CreateListingForm = () => {
 
   return (
     (
-        <div className='flex flex-col gap-2 w-full h-full z-10 pt-32 px-20 xl:px-40 '>
-            <p className="text-center text-3xl lg:text-4xl  pb-4">Listing creation form</p>
+        <div className='flex flex-col gap-2 w-full h-full z-10 pt-32 px-10 xl:px-40'>
+            <p className="text-center text-3xl lg:text-4xl  pb-4"></p>
+            <Card className='px-5 md:px-10 lg:px-20 py-6 border-black/5
+        hover:shadow-2xl shadow-xl transition cursor-pointer w-full '>
             <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}
                 className="space-y-8 pb-10 text-lg font-semibold">
@@ -178,6 +181,7 @@ const CreateListingForm = () => {
                 </div>
             </form>
         </Form>
+        </Card>
         </div>
     )
   )
