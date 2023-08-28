@@ -37,7 +37,7 @@ export const ImageUpload = ({value, onChange, disabled}:
                 <p>Add Image for the service</p>
                 {value && (
                     <div className='absolute inset-0 w-full h-full'>
-                        <Image alt='Upload' className="rounded-md object-cover" fill   src={value}/>
+                        <Image alt='Upload' className="rounded-md object-cover" fill src={value}/>
                     </div>
                 )}
                 </div>

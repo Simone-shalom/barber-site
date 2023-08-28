@@ -4,9 +4,10 @@ import Logo from "./Logo"
 import Search from "./Search"
 import UserMenu from "./UserMenu"
 import Categories from "./Categories"
+import { safeUser } from "@/types/types"
 
 interface NavbarProps {
-  currentUser?:User | null
+  currentUser?:safeUser | null
 }
 
 

@@ -12,9 +12,10 @@ import { useRegisterModal } from "@/hooks/use-register-modal"
 import Image from "next/image"
 import { ADMIN_ID } from "@/permissions"
 import { useListingModal } from "@/hooks/use-listing-modal"
+import { safeUser } from "@/types/types"
 
 interface UserMenuProps{
-  currentUser?: User | null
+  currentUser?: safeUser | null
 } 
 
 const UserMenu = ({currentUser}: UserMenuProps) => {
