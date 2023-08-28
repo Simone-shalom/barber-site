@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "rsuite/dist/rsuite.css";
+
 html, body,
 :root {
   height: 100%;

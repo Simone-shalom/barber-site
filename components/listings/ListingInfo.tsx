@@ -8,13 +8,16 @@ import ListingReservation from "./ListingReservation"
 interface ListingInfoProps {
     listing: safeListing
     currentUser: safeUser | null
+    user: safeUser
+    onSubmit: () => void
 }
 
-const ListingInfo = ({currentUser, listing}: ListingInfoProps) => {
+const ListingInfo = ({currentUser, listing, user ,onSubmit }:
+   ListingInfoProps) => {
   return (
-    <div className="space-y-10">
-        <ListingDetails />
-        <ListingReservation />
+    <div className="space-y-5 pb-64">
+        <ListingDetails listing={listing} user={user}/>
+        <ListingReservation onSubmit={onSubmit} />
     </div>
   )
 }
