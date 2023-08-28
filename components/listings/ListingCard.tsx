@@ -31,7 +31,7 @@ const ListingCard = ({data, currentUser}:ListingCardProps) => {
                         </div>
                     )}
             </div>
-            <div className='text-xl'>
+            <div className='text-xl font-semibold'>
                  {data.title}
             </div>
             <div className='text-sm'>
