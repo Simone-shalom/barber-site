@@ -1,5 +1,6 @@
 import getCurrentUser from "@/actions/get-current-user";
 import getListingById from "@/actions/get-listingById";
+import getReservations from "@/actions/get-reservations";
 import ListingSingle from "@/app/(routes)/(listing)/listings/[listingId]/components/ListingSingle";
 import { ADMIN_ID } from "@/permissions";
 import { redirect } from "next/navigation";
@@ -13,6 +14,7 @@ const ListingPage = async({params}:{params: ListingParams}) => {
 
     const currentUser= await getCurrentUser()
     const listing = await getListingById(params)
+    const reservations = await getReservations({})
 
     if(currentUser?.id === ADMIN_ID){
       redirect('/mylistings')
@@ -37,7 +39,8 @@ const ListingPage = async({params}:{params: ListingParams}) => {
 
   return (
     <div>
-        <ListingSingle listing={listing} currentUser={currentUser}/>
+        <ListingSingle listing={listing} currentUser={currentUser}
+          reservations={reservations}/>
     </div>
   )
 }

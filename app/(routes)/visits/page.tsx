@@ -1,6 +1,8 @@
 import getCurrentUser from "@/actions/get-current-user";
 import getReservations from "@/actions/get-reservations";
 import VisitClient from "./components/VisitClient";
+import { ADMIN_ID } from "@/permissions";
+import { redirect } from "next/navigation";
 
 
 const VisitsPage = async() => {
@@ -17,6 +19,9 @@ const VisitsPage = async() => {
         </div>
       );
     }
+    if(currentUser?.id === ADMIN_ID){
+      redirect('/mylistings')
+    }
   
 
     if(!reservations){
@@ -29,7 +34,7 @@ const VisitsPage = async() => {
 
   return (
     <div>
-        <VisitClient reservations={reservations}/>
+        <VisitClient reservations={reservations} currentUser={currentUser}/>
     </div>
   )
 }

@@ -5,8 +5,7 @@ import ListingImage from "@/components/listings/ListingImage"
 import ListingInfo from "@/components/listings/ListingInfo"
 import { Card } from "@/components/ui/card"
 import { useLoginModal } from "@/hooks/use-login-modal"
-import { safeListing, safeUser } from "@/types/types"
-import { Reservation } from "@prisma/client"
+import { safeListing, safeReservation, safeUser } from "@/types/types"
 import axios from "axios"
 import { useRouter } from "next/navigation"
 import { useMemo, useState } from "react"
@@ -18,7 +17,7 @@ interface ListingSingleProps {
     listing: safeListing & {
       user: safeUser
     }
-    reservations?: Reservation[]
+    reservations?: safeReservation[]
 }
 
 export interface Datetype {
@@ -36,19 +35,10 @@ const ListingSingle = ({currentUser, listing ,reservations=[]}:
   const loginModal = useLoginModal()
   const router = useRouter()
 
-
   const disabledDates = useMemo(() => {
-    let dates : Date[] = []
-
-    reservations.forEach((reservation) => {
-      const reservationDate = reservation.date
-   
-     dates = [...dates,reservationDate]
-    })
-    return dates
-  },[reservations])
-
-  console.log(disabledDates)
+    const dates = reservations.map(reservation => new Date(reservation.date));
+    return dates;
+  }, [reservations]);
 
   const dateTime =date.dateTime
 
@@ -60,18 +50,16 @@ const ListingSingle = ({currentUser, listing ,reservations=[]}:
 
     try {
       setIsLoading(true)
-      console.log(date.dateTime)
 
       await axios.post('/api/reservation', {
          dateTime, price:listing.price, listingId:listing.id
       })
       toast.success('Reservation Created Successfully')
-      console.log(date)
       router.push("/visits")
 
     }catch(error){
         console.log(error)
-        toast.error('Reservation Failed')
+        toast.error('You have to choose time for reservation')
         
     }finally{
         setIsLoading(false)
@@ -90,6 +78,7 @@ const ListingSingle = ({currentUser, listing ,reservations=[]}:
           listing={listing} currentUser={currentUser} user={listing.user}
           onChangeDate={(value) => setDate(value)} 
           date={date} setDate={setDate}
+          dDates={disabledDates}
           />
         </Card>
       </div>

@@ -15,16 +15,17 @@ interface ListingInfoProps {
     onChangeDate: (value: any) => void
     setDate: Dispatch<SetStateAction<Datetype>>
     date: Datetype
+    dDates: Date[]
 }
 
 const ListingInfo = ({currentUser, listing, user ,onSubmit,
-   onChangeDate, setDate, date }:
+   onChangeDate, setDate, date, dDates }:
    ListingInfoProps) => {
   return (
     <div className="space-y-1 ">
         <ListingDetails listing={listing} user={user}/>
         <ListingReservation onSubmit={onSubmit} onChangeDate={onChangeDate}
-          setDate={setDate} date={date}/>
+          setDate={setDate} date={date} dDates={dDates}/>
     </div>
   )
 }

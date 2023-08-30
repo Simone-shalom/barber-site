@@ -12,14 +12,15 @@ interface ListingReservationProps {
   onChangeDate: (value: any) => void
   date: Datetype
   setDate: Dispatch<SetStateAction<Datetype>>
+  dDates: Date[]
 }
 
-const ListingReservation = ({onSubmit ,onChangeDate, setDate, date}:
+const ListingReservation = ({onSubmit ,onChangeDate, setDate, date ,dDates}:
    ListingReservationProps) => {
   return (
     <div className="">
       <p className="font-italic text-xl px-5 text-center">Choose day and hour</p>
-      <Calendar setDate={setDate}  date={date}/>
+      <Calendar setDate={setDate}  date={date} disabledDates={dDates}/>
       <div className="pt-5 w-full flex justify-center items-center gap-x-3">
           <Button 
             onClick={onSubmit}

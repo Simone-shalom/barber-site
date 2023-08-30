@@ -6,21 +6,41 @@ import { useRouter } from "next/navigation"
 import HeartButton from "../HeartButton"
 import { safeListing, safeReservation, safeUser } from "@/types/types"
 import { ADMIN_ID } from "@/permissions"
+import { Button } from "../ui/button"
+import { useCallback } from "react"
 
 
 interface ListingCardProps {
     data: safeListing
     currentUser?: safeUser | null
     reservation?: safeReservation
+    onAction?: (id: string) => void
+    disabled?: boolean
+    actionLabel?: string
+    actionId?: string
 }
 
-const ListingCard = ({data, currentUser, reservation}:
+const ListingCard = ({data, currentUser, reservation,
+     onAction, disabled, actionLabel, actionId=''}:
     ListingCardProps) => {
 
     const router = useRouter()
 
+    const handleCancel = useCallback((e:
+         React.MouseEvent<HTMLButtonElement>) => {
+        
+        e.stopPropagation()
+
+        if(disabled){
+            return 
+        }
+        onAction?.(actionId)
+    },[disabled, onAction, actionId])
+
+
+
   return (
-    <div 
+    <div
         onClick={()=> router.push(`/listings/${data.id}`)}
         className='col-span-1 cursor-pointer'>
         <div className='flex flex-col gap-2 w-full'>
@@ -45,6 +65,16 @@ const ListingCard = ({data, currentUser, reservation}:
                 </div>
               
             </div>
+            {onAction && actionLabel && (
+                <div>
+                    <p>
+                        {reservation?.date}
+                    </p>
+                    <Button disabled={disabled}  onClick={handleCancel}>
+                        {actionLabel}  
+                    </Button>
+                </div>
+            )}
         </div>
     </div>
   )

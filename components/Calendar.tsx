@@ -8,9 +8,11 @@ import 'react-calendar/dist/Calendar.css';
 interface CalendarProps {
     date: Datetype
     setDate: Dispatch<SetStateAction<Datetype>>
+    disabledDates?: Date[]
 }
 
-const Calendar = ({setDate,date}: CalendarProps) => {
+const Calendar = ({setDate,date, disabledDates}:
+     CalendarProps) => {
 
     const [mounted, setMounted] = useState(false)
 
@@ -39,6 +41,9 @@ if(!mounted){
 
     const times = getTimes()
 
+    console.log(disabledDates)
+
+   
 
   return (
     <div className='flex justify-center items-center pt-2'>
@@ -58,7 +63,7 @@ if(!mounted){
                 ))}
             </div>
         ) :(
-            <ReactCalendar  
+            <ReactCalendar
                 
                 minDate={new Date()} view='month'
                 onClickDay={(date) => setDate((prev)=> ({...prev, justDate: date}))}/>

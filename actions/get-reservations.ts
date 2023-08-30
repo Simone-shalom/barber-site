@@ -2,6 +2,7 @@ import prismadb from "@/lib/prismadb"
 
 interface IReservationsParams {
     userId?: string
+    listingId?: string
 }
 
 
@@ -9,16 +10,21 @@ export default async function getReservations(params:IReservationsParams){
 
     try {
 
-        const {userId} = params
+        const {userId, listingId} = params
 
-        if(!userId){
-          throw new Error("userId is required")
+        const query:any = {}
+
+        if(listingId){
+            query.listingId = listingId
         }
 
+        if(userId){
+            query.userId = userId
+        }
+       
+
         const reservations = await prismadb.reservation.findMany({
-            where: {
-                userId: userId
-            },
+            where: query,
             include: {
                 listing: true
             },
