@@ -1,20 +1,25 @@
 'use client'
 
+import { Datetype } from "@/app/(routes)/(listing)/listings/[listingId]/components/ListingSingle"
+import Calendar from "../Calendar"
 import { DateTimeSelection } from "../DateTimeSelection"
 import { Button } from "../ui/button"
+import { Dispatch, SetStateAction } from "react"
 
 
 interface ListingReservationProps {
   onSubmit: () => void
   onChangeDate: (value: any) => void
+  date: Datetype
+  setDate: Dispatch<SetStateAction<Datetype>>
 }
 
-const ListingReservation = ({onSubmit ,onChangeDate}:
+const ListingReservation = ({onSubmit ,onChangeDate, setDate, date}:
    ListingReservationProps) => {
   return (
     <div className="">
-      <DateTimeSelection  onChange={(value) => onChangeDate(value)}
-      />
+      <p className="font-italic text-xl px-5 text-center">Choose day and hour</p>
+      <Calendar setDate={setDate}  date={date}/>
       <div className="pt-5 w-full flex justify-center items-center gap-x-3">
           <Button 
             onClick={onSubmit}

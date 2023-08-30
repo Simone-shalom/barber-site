@@ -3,6 +3,8 @@
 import { safeListing, safeUser } from "@/types/types"
 import ListingDetails from "./ListingDetails"
 import ListingReservation from "./ListingReservation"
+import { Datetype } from "@/app/(routes)/(listing)/listings/[listingId]/components/ListingSingle"
+import { Dispatch, SetStateAction } from "react"
 
 
 interface ListingInfoProps {
@@ -11,15 +13,18 @@ interface ListingInfoProps {
     user: safeUser
     onSubmit: () => void
     onChangeDate: (value: any) => void
+    setDate: Dispatch<SetStateAction<Datetype>>
+    date: Datetype
 }
 
 const ListingInfo = ({currentUser, listing, user ,onSubmit,
-   onChangeDate }:
+   onChangeDate, setDate, date }:
    ListingInfoProps) => {
   return (
-    <div className="space-y-5 pb-64">
+    <div className="space-y-1 ">
         <ListingDetails listing={listing} user={user}/>
-        <ListingReservation onSubmit={onSubmit} onChangeDate={onChangeDate}/>
+        <ListingReservation onSubmit={onSubmit} onChangeDate={onChangeDate}
+          setDate={setDate} date={date}/>
     </div>
   )
 }

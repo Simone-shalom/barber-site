@@ -12,9 +12,9 @@ export async function POST(request: Request){
     }
 
     const body = await request.json()
-    const {price, date, listingId} = body
+    const {price, dateTime, listingId} = body
 
-    if(!listingId || !date  || !price){
+    if(!listingId || !dateTime  || !price){
         return new NextResponse("Missing fields", {status:400})
     }
 
@@ -26,7 +26,7 @@ export async function POST(request: Request){
           reservations: {
             create: {
                 price,
-                date: date,
+                date: dateTime,
                 userId: currentUser.id,
             }
           }

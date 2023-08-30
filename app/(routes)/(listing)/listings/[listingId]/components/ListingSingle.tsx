@@ -21,12 +21,18 @@ interface ListingSingleProps {
     reservations?: Reservation[]
 }
 
-const initialDate = new Date()
+export interface Datetype {
+  justDate: Date | null
+  dateTime: Date | null
+}
 
-const ListingSingle = ({currentUser, listing ,reservations=[]}: ListingSingleProps) => {
+const ListingSingle = ({currentUser, listing ,reservations=[]}:
+   ListingSingleProps) => {
 
   const [isLoading, setIsLoading] =useState(false)
-  const [date, setDate] = useState(initialDate)
+  const [date, setDate] = useState<Datetype>({
+    justDate: null, dateTime: null,
+  })
   const loginModal = useLoginModal()
   const router = useRouter()
 
@@ -42,7 +48,9 @@ const ListingSingle = ({currentUser, listing ,reservations=[]}: ListingSinglePro
     return dates
   },[reservations])
 
+  console.log(disabledDates)
 
+  const dateTime =date.dateTime
 
   const onCreateReservation = async() => {
 
@@ -52,9 +60,10 @@ const ListingSingle = ({currentUser, listing ,reservations=[]}: ListingSinglePro
 
     try {
       setIsLoading(true)
+      console.log(date.dateTime)
 
       await axios.post('/api/reservation', {
-        date, price:listing.price, listingId:listing.id
+         dateTime, price:listing.price, listingId:listing.id
       })
       toast.success('Reservation Created Successfully')
       console.log(date)
@@ -80,6 +89,7 @@ const ListingSingle = ({currentUser, listing ,reservations=[]}: ListingSinglePro
           onSubmit={onCreateReservation}
           listing={listing} currentUser={currentUser} user={listing.user}
           onChangeDate={(value) => setDate(value)} 
+          date={date} setDate={setDate}
           />
         </Card>
       </div>
