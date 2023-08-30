@@ -4,16 +4,18 @@ import { Listing, User } from "@prisma/client"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import HeartButton from "../HeartButton"
-import { safeUser } from "@/types/types"
+import { safeListing, safeReservation, safeUser } from "@/types/types"
 import { ADMIN_ID } from "@/permissions"
 
 
 interface ListingCardProps {
-    data: Listing
+    data: safeListing
     currentUser?: safeUser | null
+    reservation?: safeReservation
 }
 
-const ListingCard = ({data, currentUser}:ListingCardProps) => {
+const ListingCard = ({data, currentUser, reservation}:
+    ListingCardProps) => {
 
     const router = useRouter()
 

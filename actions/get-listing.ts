@@ -21,5 +21,10 @@ export default async function getListings(searchparams: getListingsParams){
         }
     })
 
-    return listings
+    const safeListing = listings.map((listing) => ({
+        ...listing,
+        createdAt: listing.createdAt.toISOString()
+    }))
+
+    return safeListing
 }

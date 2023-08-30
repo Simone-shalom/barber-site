@@ -62,9 +62,8 @@ model Listing {
 
 model Reservation {
   id String @id @default(auto()) @map("_id")@db.ObjectId
-  startDate DateTime
-  endDate DateTime
-  totalPrice Int
+  date DateTime
+  price Int
   createdAt DateTime @default(now())
   userId String @db.ObjectId
   listingId String @db.ObjectId

@@ -15,9 +15,7 @@ Listing, 'createdAt'> & {
 
 export type safeReservation = Omit<
 Reservation, 
-'createdAt' | 'startDate' | 'date'| 'listing'> & {
+'createdAt' | 'date'> & {
     createdAt: string
-    startDate: string
-    date: string 
-    listing: safeListing
+    date: string
 }

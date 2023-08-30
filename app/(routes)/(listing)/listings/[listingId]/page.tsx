@@ -12,6 +12,15 @@ const ListingPage = async({params}:{params: ListingParams}) => {
     const currentUser= await getCurrentUser()
     const listing = await getListingById(params)
 
+
+    if (!currentUser) {
+        return (
+          <div>
+            Unauthenticated
+          </div>
+        );
+      }
+
     if(!listing){
         return (
             <div>

@@ -6,9 +6,11 @@ import ListingInfo from "@/components/listings/ListingInfo"
 import { Card } from "@/components/ui/card"
 import { useLoginModal } from "@/hooks/use-login-modal"
 import { safeListing, safeUser } from "@/types/types"
-import { now } from "next-auth/client/_utils"
-import Image from "next/image"
-import { useState } from "react"
+import { Reservation } from "@prisma/client"
+import axios from "axios"
+import { useRouter } from "next/navigation"
+import { useMemo, useState } from "react"
+import { toast } from "react-hot-toast"
 
 
 interface ListingSingleProps {
@@ -16,17 +18,33 @@ interface ListingSingleProps {
     listing: safeListing & {
       user: safeUser
     }
+    reservations?: Reservation[]
 }
 
-const ListingSingle = ({currentUser, listing}: ListingSingleProps) => {
+const initialDate = new Date()
+
+const ListingSingle = ({currentUser, listing ,reservations=[]}: ListingSingleProps) => {
 
   const [isLoading, setIsLoading] =useState(false)
-  const [date, setDate] = useState(new Date())
-  const [time, setTime] = useState(new Date())
+  const [date, setDate] = useState(initialDate)
   const loginModal = useLoginModal()
+  const router = useRouter()
 
 
-  const onCreateReservation = () => {
+  const disabledDates = useMemo(() => {
+    let dates : Date[] = []
+
+    reservations.forEach((reservation) => {
+      const reservationDate = reservation.date
+   
+     dates = [...dates,reservationDate]
+    })
+    return dates
+  },[reservations])
+
+
+
+  const onCreateReservation = async() => {
 
     if(!currentUser){
       return loginModal.onOpen()
@@ -35,14 +53,22 @@ const ListingSingle = ({currentUser, listing}: ListingSingleProps) => {
     try {
       setIsLoading(true)
 
-      console.log(listing.id, date, time)
+      await axios.post('/api/reservation', {
+        date, price:listing.price, listingId:listing.id
+      })
+      toast.success('Reservation Created Successfully')
+      console.log(date)
+      router.push("/visits")
 
     }catch(error){
-      console.log(error)
+        console.log(error)
+        toast.error('Reservation Failed')
+        
+    }finally{
+        setIsLoading(false)
+
+
     }
-
-
-
   }
 
   return (
@@ -53,6 +79,7 @@ const ListingSingle = ({currentUser, listing}: ListingSingleProps) => {
          <ListingInfo 
           onSubmit={onCreateReservation}
           listing={listing} currentUser={currentUser} user={listing.user}
+          onChangeDate={(value) => setDate(value)} 
           />
         </Card>
       </div>

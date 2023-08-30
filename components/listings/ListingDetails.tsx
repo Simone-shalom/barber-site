@@ -1,8 +1,6 @@
 'use client'
 
 import { safeListing, safeUser } from "@/types/types"
-import { list } from "postcss"
-import { Button } from "../ui/button"
 
 interface ListingDetailsProps {
   listing : safeListing

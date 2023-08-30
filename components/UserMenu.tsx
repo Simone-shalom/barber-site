@@ -45,7 +45,7 @@ const UserMenu = ({currentUser}: UserMenuProps) => {
             {/*If user is not admin access to*/}
               {currentUser.id !== ADMIN_ID && (
                 <>
-                 <MenuItem label='My Visits' onClick={() => router.push('/trips')} />
+                 <MenuItem label='My Visits' onClick={() => router.push('/visits')} />
                   <MenuItem label='My Favourites' onClick={() => router.push('/favourites')} />
                 </>
               )}
