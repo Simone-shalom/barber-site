@@ -6,25 +6,31 @@ export interface getListingsParams {
 
 export default async function getListings(searchparams: getListingsParams){
 
-    const {category} = searchparams;
+    try {
 
-    let query: any = {}
+        const {category} = searchparams;
 
-    if(category){
-        query.category = category
-    }
+        let query: any = {}
 
-    const listings = await prismadb.listing.findMany({
-        where: query,
-        orderBy: {
-            createdAt: 'desc'
+        if(category){
+            query.category = category
         }
-    })
 
-    const safeListing = listings.map((listing) => ({
-        ...listing,
-        createdAt: listing.createdAt.toISOString()
-    }))
+        const listings = await prismadb.listing.findMany({
+            where: query,
+            orderBy: {
+                createdAt: 'desc'
+            }
+        })
 
-    return safeListing
+        const safeListing = listings.map((listing) => ({
+            ...listing,
+            createdAt: listing.createdAt.toISOString()
+        }))
+
+        return safeListing
+
+    }catch(error: any){
+        throw new Error(error)
+    }
 }

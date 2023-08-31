@@ -3,7 +3,7 @@
 import Container from "@/components/Container"
 import { Heading } from "@/components/Heading"
 import ListingCard from "@/components/listings/ListingCard"
-import { safeListing, safeReservation, safeUser } from "@/types/types"
+import { safeListing, safeUser } from "@/types/types"
 import axios from "axios"
 import { useRouter } from "next/navigation"
 import { useState } from "react"

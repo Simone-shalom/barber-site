@@ -15,6 +15,13 @@ const MyListings = async() => {
       redirect('/')
   }
 
+  if(lisitngs.length === 0){
+    return (
+      <div>
+        empty
+      </div>
+    )
+  }
 
   return (
     <div>

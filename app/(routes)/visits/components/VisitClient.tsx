@@ -3,8 +3,6 @@
 import Container from "@/components/Container"
 import { Heading } from "@/components/Heading"
 import ListingCard from "@/components/listings/ListingCard"
-import ListingInfo from "@/components/listings/ListingInfo"
-import { Card } from "@/components/ui/card"
 import { safeReservation, safeUser } from "@/types/types"
 import axios from "axios"
 import { useRouter } from "next/navigation"

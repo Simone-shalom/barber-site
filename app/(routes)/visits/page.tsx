@@ -3,7 +3,6 @@ import getReservations from "@/actions/get-reservations";
 import VisitClient from "./components/VisitClient";
 import { ADMIN_ID } from "@/permissions";
 import { redirect } from "next/navigation";
-import Categories from "@/components/Categories";
 
 const VisitsPage = async() => {
 
