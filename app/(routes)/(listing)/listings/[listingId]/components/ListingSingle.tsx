@@ -55,6 +55,7 @@ const ListingSingle = ({currentUser, listing ,reservations=[]}:
          dateTime, price:listing.price, listingId:listing.id
       })
       toast.success('Reservation Created Successfully')
+      router.refresh()
       router.push("/visits")
 
     }catch(error){

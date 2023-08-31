@@ -7,7 +7,8 @@ import HeartButton from "../HeartButton"
 import { safeListing, safeReservation, safeUser } from "@/types/types"
 import { ADMIN_ID } from "@/permissions"
 import { Button } from "../ui/button"
-import { useCallback } from "react"
+import { useCallback, useMemo } from "react"
+import { format } from "date-fns"
 
 
 interface ListingCardProps {
@@ -38,6 +39,16 @@ const ListingCard = ({data, currentUser, reservation,
     },[disabled, onAction, actionId])
 
 
+    const ReservatoionDate = useMemo(() => {
+        if(!reservation){
+            return null
+        }
+
+        const date = new Date(reservation.date)
+
+        return `${format(date, 'HH:mm PP')}`
+    },[reservation])
+
 
   return (
     <div
@@ -67,8 +78,8 @@ const ListingCard = ({data, currentUser, reservation,
             </div>
             {onAction && actionLabel && (
                 <div>
-                    <p>
-                        {reservation?.date}
+                    <p className="text-lg pb-1">
+                        {ReservatoionDate}
                     </p>
                     <Button disabled={disabled}  onClick={handleCancel}>
                         {actionLabel}  

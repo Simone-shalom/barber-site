@@ -57,6 +57,7 @@ const CreateListingForm = () => {
         setIsLoading(true)
         await axios.post('/api/create', data)
         toast.success("Created Listing")
+        router.refresh()
         router.push('/')
 
     }catch(error: any){

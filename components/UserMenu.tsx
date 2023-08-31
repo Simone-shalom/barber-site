@@ -52,8 +52,8 @@ const UserMenu = ({currentUser}: UserMenuProps) => {
               {/* if user is Admin- can create and manage listings/ reservations*/}
               {currentUser?.id  === ADMIN_ID && (
                 <div>
+                 <MenuItem label='My Reservations' onClick={() => router.push('/myreservations')} />
                  <MenuItem label='My Listings' onClick={() => router.push('/mylistings')} />
-                 <MenuItem label='My Reservations' onClick={() => router.push('/reservations')} />
                  <MenuItem label='Create listing' onClick={()=> router.push('create')} />
                 </div>
               )}

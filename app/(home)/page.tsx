@@ -5,8 +5,6 @@ import Container from '@/components/Container'
 import ListingCard from '@/components/listings/ListingCard'
 import Image from 'next/image'
 
-export const revalidate = 0
-
 
 interface HomeProps {
   searchParams: getListingsParams
@@ -20,7 +18,7 @@ export default async function Home({searchParams}: HomeProps) {
 
   if(listings.length === 0) {
     return (
-      <div>
+      <div className="pt-48">
         Empty 
       </div>
     )
@@ -29,7 +27,7 @@ export default async function Home({searchParams}: HomeProps) {
 
   return (
   <Container>
-     <div className="pt-48 gap-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 
+     <div className="pt-52 gap-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 
           ld:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
           {listings.map((listing) => (
            <ListingCard data={listing} key={listing.id} currentUser={currentUser}/>
