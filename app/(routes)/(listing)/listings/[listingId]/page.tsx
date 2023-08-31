@@ -21,14 +21,6 @@ const ListingPage = async({params}:{params: ListingParams}) => {
     }
 
 
-    if (!currentUser) {
-        return (
-          <div>
-            Unauthenticated
-          </div>
-        );
-      }
-
     if(!listing){
         return (
             <div>

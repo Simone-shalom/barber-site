@@ -29,7 +29,7 @@ const ListingCard = ({data, currentUser, reservation,
 
     const handleCancel = useCallback((e:
          React.MouseEvent<HTMLButtonElement>) => {
-        
+        //overwrite the onclick on parent div element
         e.stopPropagation()
 
         if(disabled){

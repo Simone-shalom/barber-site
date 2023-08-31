@@ -32,7 +32,7 @@ const VisitClient = ({reservations ,currentUser}: VisitClientProps) => {
   useEffect(() => {
     setMounted(true)
     router.refresh()
-  },[])
+  },[router])
 
   if(!mounted){
     return null

@@ -9,7 +9,7 @@ export async function POST(req: Request, res: Response) {
     const currentUser = await getCurrentUser()
 
     if(!currentUser || currentUser.id !== ADMIN_ID) {
-        return NextResponse.error()
+        return new NextResponse("Unathenticated", {status: 403})
     }
 
     const body = await req.json()
