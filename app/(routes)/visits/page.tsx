@@ -3,6 +3,7 @@ import getReservations from "@/actions/get-reservations";
 import VisitClient from "./components/VisitClient";
 import { ADMIN_ID } from "@/permissions";
 import { redirect } from "next/navigation";
+import Empty from "@/components/Empty";
 
 const VisitsPage = async() => {
 
@@ -14,9 +15,8 @@ const VisitsPage = async() => {
 
     if (!currentUser) {
       return (
-        <div className="pt-48">
-          Unauthenticated
-        </div>
+        <Empty title="Unathenticated" desc="Please login or signup" 
+          login/>
       );
     }
     if(currentUser?.id === ADMIN_ID){
@@ -26,9 +26,8 @@ const VisitsPage = async() => {
 
     if(reservations.length=== 0){
       return (
-          <div className="pt-48">
-          No listings found
-          </div>
+        <Empty title="No Visits yet" desc="Make a reservation first"  
+          home/>
       )
   }
 

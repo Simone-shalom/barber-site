@@ -3,6 +3,7 @@ import getFavourites from "@/actions/get-favourites";
 import { ADMIN_ID } from "@/permissions";
 import { redirect } from "next/navigation";
 import FavouriteClient from "./components/FavouriteClient";
+import Empty from "@/components/Empty";
 
 
 const FavouritesPage = async() => {
@@ -13,9 +14,8 @@ const FavouritesPage = async() => {
 
     if (!currentUser) {
         return (
-          <div className="pt-48">
-            Unauthenticated
-          </div>
+          <Empty title="Unathenticated" desc="Please login or signup" 
+            login/>
         );
       }
       if(currentUser?.id === ADMIN_ID){
@@ -24,9 +24,8 @@ const FavouritesPage = async() => {
 
       if(favourites?.length === 0){
         return (
-            <div>
-                adad
-            </div>
+              <Empty title="No favourites found" desc="Get one by adding listing" 
+                home/>
         )
     }
     

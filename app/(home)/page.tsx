@@ -2,6 +2,7 @@
 import getCurrentUser from '@/actions/get-current-user'
 import getListings, { getListingsParams } from '@/actions/get-listing'
 import Container from '@/components/Container'
+import Empty from '@/components/Empty'
 import ListingCard from '@/components/listings/ListingCard'
 import Image from 'next/image'
 
@@ -18,9 +19,10 @@ export default async function Home({searchParams}: HomeProps) {
 
   if(listings.length === 0) {
     return (
-      <div className="pt-48">
-        Empty 
+      <div className='pt-6'>
+          <Empty title='No listings yet' desc=''/>
       </div>
+
     )
   }
 

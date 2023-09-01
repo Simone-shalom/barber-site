@@ -3,6 +3,7 @@ import { ADMIN_ID } from "@/permissions"
 import { redirect } from "next/navigation"
 import ReservationClient from "./components/ReservationClient"
 import getReservations from "@/actions/get-reservations"
+import Empty from "@/components/Empty"
 
 
 const MyReservationPage = async() => {
@@ -17,9 +18,8 @@ const MyReservationPage = async() => {
 
     if(reservations.length === 0) {
         return (
-            <div className="absolute top-[500px]">
-                No Reservations Yet
-            </div>
+           <Empty title="No reservations yet" desc="Wait for your clients to make an reservation"
+            home/>
         )
     }
 

@@ -3,6 +3,7 @@ import { ADMIN_ID } from "@/permissions"
 import { redirect } from "next/navigation"
 import ListingClient from "./components/ListingClient"
 import getListings from "@/actions/get-listing"
+import Empty from "@/components/Empty"
 
 
 const MyListings = async() => {
@@ -17,9 +18,8 @@ const MyListings = async() => {
 
   if(lisitngs.length === 0){
     return (
-      <div>
-        empty
-      </div>
+      <Empty title="No Listings yet" desc="Start by creating a listing" 
+        create/>
     )
   }
 

@@ -2,6 +2,7 @@ import getCurrentUser from "@/actions/get-current-user";
 import getListingById from "@/actions/get-listingById";
 import getReservations from "@/actions/get-reservations";
 import ListingSingle from "@/app/(routes)/(listing)/listings/[listingId]/components/ListingSingle";
+import Empty from "@/components/Empty";
 import { ADMIN_ID } from "@/permissions";
 import { redirect } from "next/navigation";
 
@@ -23,9 +24,7 @@ const ListingPage = async({params}:{params: ListingParams}) => {
 
     if(!listing){
         return (
-            <div>
-            No listings found
-            </div>
+            <Empty title="No Listings yet" desc=""/>
         )
     }
 
