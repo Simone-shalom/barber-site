@@ -73,9 +73,9 @@ const CreateListingForm = () => {
   return (
     (
         <div className='flex gap-2 sm:flex-col lg:flex-row w-full lg:space-x-5 
-            xl:space-x-10 h-full z-10 pt-32 xl:px-10'>
+            xl:space-x-10 md:h-full z-10 pt-32 xl:px-10'>
             <Card className='px-5 md:px-10 lg:px-20 lg:w-1/2 py-2 border-black/5
-        hover:shadow-2xl shadow-xl  transition cursor-pointer w-full flex-col'>
+                hover:shadow-2xl shadow-xl  transition cursor-pointer w-full flex-col'>
             <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}
                 className="space-y-8  pb-10 text-lg font-semibold">
@@ -92,7 +92,7 @@ const CreateListingForm = () => {
                      )}/>
 
                
-                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 ">
                      {/*Title input form*/}
                      <FormField name="title" control={form.control}
                          render={({field}) => (
@@ -123,7 +123,7 @@ const CreateListingForm = () => {
                                      />
                                  </FormControl>
                                  <FormDescription className="text-xs">
-                                     Short description, what client can expect from that service
+                                    What client can expect from that service ?
                                  </FormDescription>
                                  <FormMessage/>
                              </FormItem>

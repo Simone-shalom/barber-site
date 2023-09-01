@@ -23,7 +23,6 @@ const UserMenu = ({currentUser}: UserMenuProps) => {
     const router = useRouter()
     const loginModal = useLoginModal()
     const registerModal = useRegisterModal()
-    const listingModal = useListingModal()
 
   return (
     <div>
@@ -33,11 +32,11 @@ const UserMenu = ({currentUser}: UserMenuProps) => {
              border-[1px] transition font-semibold">
             <MenuIcon size={20}/>
             <div>
-              <p className="text-sm">{currentUser?.name}</p>
+              <p className="text-lg">{currentUser?.name}</p>
             </div> 
         </DropdownMenuTrigger>
 
-        <DropdownMenuContent className="cursor-pointer mt-4 md:mt-0">
+        <DropdownMenuContent className="cursor-pointer mt-4 md:mt-0 mr-3 md:mr-0">
         <>
         {/*If there is logged in user*/}
           {currentUser ? (
@@ -45,7 +44,7 @@ const UserMenu = ({currentUser}: UserMenuProps) => {
             {/*If user is not admin access to*/}
               {currentUser.id !== ADMIN_ID && (
                 <>
-                 <MenuItem label='My Visits' onClick={() => router.push('/visits')} />
+                 <MenuItem label='My Visits' onClick={() => router.push('/visits')}/>
                   <MenuItem label='My Favourites' onClick={() => router.push('/favourites')} />
                 </>
               )}

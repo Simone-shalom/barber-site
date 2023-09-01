@@ -14,7 +14,7 @@ const CreateListingPage = async() => {
  
   return (
     (
-      <CreateListingForm/>
+       <CreateListingForm/>
     )
   )
 }

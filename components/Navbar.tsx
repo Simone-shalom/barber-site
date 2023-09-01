@@ -1,7 +1,6 @@
-import { User } from "@prisma/client"
+
 import Container from "./Container"
 import Logo from "./Logo"
-import Search from "./Search"
 import UserMenu from "./UserMenu"
 import Categories from "./Categories"
 import { safeUser } from "@/types/types"
@@ -21,7 +20,7 @@ const Navbar = ({currentUser}:
         <Container>
           <div className="flex items-center justify-between gap-3 md:gap-0">
             <Logo />
-            <Search />
+            <p></p>
             <UserMenu currentUser={currentUser}/>
           </div>
         </Container>

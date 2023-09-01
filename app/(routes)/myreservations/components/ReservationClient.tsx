@@ -41,7 +41,7 @@ const ReservationClient = ({reservations, currentUser}:
   return (
     <Container>
     <Heading title="Your Reservations" desc="All reservations made on your listings, you can cancel them if you want" />
-    <div className="pt-7 gap-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 
+    <div className="pt-7 pb-5 gap-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 
         ld:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 ">
         {reservations.map((reservation: any) => (
           <div key={reservation.id}>

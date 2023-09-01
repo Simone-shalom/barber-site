@@ -78,7 +78,7 @@ const ListingCard = ({data, currentUser, reservation,
             </div>
             {onAction && actionLabel && (
                 <div>
-                    <p className="text-lg ">
+                    <p className="text-lg pb-1 ">
                         {ReservatoionDate}
                     </p>
                     {admin && (
@@ -89,9 +89,18 @@ const ListingCard = ({data, currentUser, reservation,
                             </span>
                         </p>
                     )}
-                    <Button disabled={disabled}  onClick={handleCancel}>
-                        {actionLabel}  
-                    </Button>
+                    {currentUser?.id === ADMIN_ID ? (
+                        <Button
+                            disabled={disabled}  onClick={handleCancel}>
+                            {actionLabel}  
+                        </Button>
+                    ): (
+                        <Button 
+                            variant='cancel'
+                            disabled={disabled}  onClick={handleCancel}>
+                            {actionLabel}  
+                        </Button>
+                    )}
                 </div>
             )}
         </div>
