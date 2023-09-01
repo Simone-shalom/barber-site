@@ -28,6 +28,7 @@ export async function POST(request: Request){
                 price,
                 date: dateTime,
                 userId: currentUser.id,
+                userName: currentUser.name
             }
           }
         }

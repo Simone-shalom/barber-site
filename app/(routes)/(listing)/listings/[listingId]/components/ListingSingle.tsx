@@ -77,7 +77,6 @@ const ListingSingle = ({currentUser, listing ,reservations=[]}:
          <ListingInfo 
           onSubmit={onCreateReservation}
           listing={listing} currentUser={currentUser} user={listing.user}
-          onChangeDate={(value) => setDate(value)} 
           date={date} setDate={setDate}
           dDates={disabledDates}
           />

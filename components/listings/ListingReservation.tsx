@@ -8,13 +8,12 @@ import { Dispatch, SetStateAction } from "react"
 
 interface ListingReservationProps {
   onSubmit: () => void
-  onChangeDate: (value: any) => void
   date: Datetype
   setDate: Dispatch<SetStateAction<Datetype>>
   dDates: Date[]
 }
 
-const ListingReservation = ({onSubmit ,onChangeDate, setDate, date ,dDates}:
+const ListingReservation = ({onSubmit, setDate, date ,dDates}:
    ListingReservationProps) => {
   return (
     <div className="">

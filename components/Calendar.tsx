@@ -1,6 +1,6 @@
 'use client'
 import { Datetype } from '@/app/(routes)/(listing)/listings/[listingId]/components/ListingSingle';
-import { add, format } from 'date-fns';
+import { add, format, isBefore } from 'date-fns';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import ReactCalendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css';
@@ -31,9 +31,14 @@ const getTimes = () =>{
     const begginning = add(justDate, {hours: 9})
     const end = add(justDate, {hours: 18})
     const interval = 60 // in minutes
+    const now = new Date() // current time
 
     const times = []
     for(let i = begginning; i <=end; i= add(i, {minutes: interval})){
+         // Check if the time is in the past
+      if (isBefore(i, add(now, { hours: 1 })))  {
+        continue; // Skip past times
+      }
         times.push(i)
     }
 
@@ -51,8 +56,11 @@ const getTimes = () =>{
 
 const times = getTimes()
 
-    console.log(disabledDates)
-   
+    const tileDisabled = ({ date }: { date: Date }) => {
+    // Check if the date is a Saturday (6) or Sunday (0)
+    return date.getDay() === 6 || date.getDay() === 0;
+  };
+
 
   return (
     <div className='flex justify-center items-center pt-2'>
@@ -73,6 +81,7 @@ const times = getTimes()
             </div>
         ) :(
             <ReactCalendar
+            tileDisabled={tileDisabled}
                 minDate={new Date()} view='month'
                 onClickDay={(date) => setDate((prev)=> ({...prev, justDate: date}))}/>
         )}

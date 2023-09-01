@@ -64,6 +64,7 @@ model Reservation {
   id String @id @default(auto()) @map("_id")@db.ObjectId
   date DateTime
   price Int
+  userName String?
   createdAt DateTime @default(now())
   userId String @db.ObjectId
   listingId String @db.ObjectId

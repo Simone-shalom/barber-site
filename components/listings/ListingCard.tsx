@@ -19,10 +19,11 @@ interface ListingCardProps {
     disabled?: boolean
     actionLabel?: string
     actionId?: string
+    admin?: boolean
 }
 
 const ListingCard = ({data, currentUser, reservation,
-     onAction, disabled, actionLabel, actionId=''}:
+     onAction, disabled, actionLabel, actionId='', admin}:
     ListingCardProps) => {
 
     const router = useRouter()
@@ -74,13 +75,20 @@ const ListingCard = ({data, currentUser, reservation,
                 <div className='font-semibold'>
                     $ {data.price}
                 </div>
-              
             </div>
             {onAction && actionLabel && (
                 <div>
-                    <p className="text-lg pb-1">
+                    <p className="text-lg ">
                         {ReservatoionDate}
                     </p>
+                    {admin && (
+                        <p className="text-lg pb-2 text-muted-foreground">
+                            ClientName:   
+                            <span className="text-xl capitalize  text-black pl-2 ">  
+                            {reservation?.userName}
+                            </span>
+                        </p>
+                    )}
                     <Button disabled={disabled}  onClick={handleCancel}>
                         {actionLabel}  
                     </Button>

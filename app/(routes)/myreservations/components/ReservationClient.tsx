@@ -47,7 +47,7 @@ const ReservationClient = ({reservations, currentUser}:
           <div key={reservation.id}>
             <ListingCard reservation={reservation} data={reservation.listing}
              actionId={reservation.id} onAction={onCancel} 
-             currentUser={currentUser} actionLabel="Remove reservation"
+             currentUser={currentUser} actionLabel="Remove reservation" admin
              />
           </div>
         ))}
