@@ -11,7 +11,7 @@ interface CalendarProps {
     disabledDates?: Date[]
 }
 
-const Calendar = ({setDate,date, disabledDates}:
+const Calendar = ({setDate,date, disabledDates=[]}:
      CalendarProps) => {
 
     const [mounted, setMounted] = useState(false)
@@ -23,26 +23,35 @@ const Calendar = ({setDate,date, disabledDates}:
 if(!mounted){
     return null
 }
-    const getTimes = () =>{
-        if(!date.justDate) return 
+const getTimes = () =>{
+    if(!date.justDate) return 
 
-        const {justDate} = date
+    const {justDate} = date
 
-        const begginning = add(justDate, {hours: 9})
-        const end = add(justDate, {hours: 18})
-        const interval = 60 // in minutes
+    const begginning = add(justDate, {hours: 9})
+    const end = add(justDate, {hours: 18})
+    const interval = 60 // in minutes
 
-        const times = []
-        for(let i = begginning; i <=end; i= add(i, {minutes: interval})){
-            times.push(i)
-        }
-        return times   
+    const times = []
+    for(let i = begginning; i <=end; i= add(i, {minutes: interval})){
+        times.push(i)
     }
 
-    const times = getTimes()
+      // Filter out times that match the disabledDates
+      const filteredTimes = times.filter((time) => {
+        return !disabledDates.some((disabledDate) =>
+        time.getFullYear() === disabledDate.getFullYear() &&
+        time.getMonth() === disabledDate.getMonth() &&
+        time.getDate() === disabledDate.getDate() &&
+        time.getHours() === disabledDate.getHours()
+        );
+    });
+    return  filteredTimes
+}
+
+const times = getTimes()
 
     console.log(disabledDates)
-
    
 
   return (
@@ -64,7 +73,6 @@ if(!mounted){
             </div>
         ) :(
             <ReactCalendar
-                
                 minDate={new Date()} view='month'
                 onClickDay={(date) => setDate((prev)=> ({...prev, justDate: date}))}/>
         )}
