@@ -1,9 +1,13 @@
 'use client'
+
 import { Datetype } from '@/app/(routes)/(listing)/listings/[listingId]/components/ListingSingle';
 import { add, format, isBefore } from 'date-fns';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import ReactCalendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css';
+import { Button } from './ui/button';
+import { useRouter } from 'next/navigation';
+import { CalendarCheck } from 'lucide-react';
 
 interface CalendarProps {
     date: Datetype
@@ -23,6 +27,7 @@ const Calendar = ({setDate,date, disabledDates=[]}:
 if(!mounted){
     return null
 }
+
 const getTimes = () =>{
     if(!date.justDate) return 
 
@@ -61,23 +66,46 @@ const times = getTimes()
     return date.getDay() === 6 || date.getDay() === 0;
   };
 
+  const router = useRouter()
+
+  const removeDate = () => {
+    
+    date.justDate= null
+    router.refresh()
+  }
 
   return (
     <div className='flex justify-center items-center pt-2'>
         {date.justDate ? (
-            <div className='flex gap-4 overflow-x-auto p-3 border
-            border-black/80 rounded-xl '>
-                {times?.map((time, i) => (
-                    <div key={`time-${i}`} className='rounded-md bg-gray-100  '>
-                        <button type='button'
-                            className=' focus:bg-gray-300 p-2 rounded-md' 
-                            onClick={() => setDate((prev) => ({
-                                ...prev, dateTime:time
-                        }))}>
-                            {format(time, 'kk')}:00
-                        </button>
-                    </div>
-                ))}
+            <div className='flex gap-4  overflow-x-auto p-3  rounded-xl  '>
+                {times && times.length === 0 ? (
+                  <div className='flex flex-col items-center justify-center space-y-3'>
+                    <p className='text-2xl px-4 text-center'>
+                     No Times available that day
+                    </p>
+                    <Button 
+                        onClick={removeDate}
+                        variant='secondary' className='bg-gray-200 text-lg font-semibold'>
+                        Remove Date <CalendarCheck className='ml-3'/>
+                    </Button>
+                  </div>
+                ):(
+                    <div className='flex gap-4 overflow-x-auto 
+                     rounded-xl pb-3 border
+                     border-black/80 p-3'>
+                    {times?.map((time, i) => (
+                        <div key={`time-${i}`} className='rounded-md bg-gray-100  '>
+                            <button type='button'
+                                className=' focus:bg-gray-300 p-2 rounded-md' 
+                                onClick={() => setDate((prev) => ({
+                                    ...prev, dateTime:time
+                            }))}>
+                                {format(time, 'kk')}:00
+                            </button>
+                        </div>
+                    ))}
+                     </div>
+                )}
             </div>
         ) :(
             <ReactCalendar
