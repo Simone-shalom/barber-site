@@ -5,7 +5,7 @@ import { AlertCircle } from "lucide-react";
 interface MenuItemProps {
     onClick: () => void;
     label: string;
-    alert?: boolean | null
+    alert?: boolean 
 }
 
 const MenuItem: React.FC<MenuItemProps> = ({onClick, label, alert}) => {

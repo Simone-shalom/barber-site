@@ -1,4 +1,5 @@
 import prismadb from "@/lib/prismadb";
+import { ADMIN_ID } from "@/permissions";
 
 interface INotificationsParams{
     userId?: string;

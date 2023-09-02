@@ -19,11 +19,9 @@ interface ModalProps {
 
 
 const Modal = ({
-    isOpen,onClose, onSubmit, title, body, footer, disabled
+    isOpen,onClose, title, body, footer,
 }:ModalProps) => {
 
-    const loginModal = useLoginModal()
-    const registerModal = useRegisterModal()
 
 
   return (

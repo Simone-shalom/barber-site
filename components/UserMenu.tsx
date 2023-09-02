@@ -9,17 +9,31 @@ import { signOut } from "next-auth/react"
 import { useLoginModal } from "@/hooks/use-login-modal"
 import { useRegisterModal } from "@/hooks/use-register-modal"
 import { ADMIN_ID } from "@/permissions"
-import { safeUser } from "@/types/types"
+import { safeNotification, safeUser } from "@/types/types"
+import { useEffect, useState } from "react"
 
 interface UserMenuProps{
   currentUser?: safeUser | null
+  notifications: safeNotification[]
 } 
 
-const UserMenu = ({currentUser}: UserMenuProps) => {
+const UserMenu = ({currentUser, notifications}: UserMenuProps) => {
 
     const router = useRouter()
     const loginModal = useLoginModal()
     const registerModal = useRegisterModal()
+    const [mounted, setMounted] = useState(false)
+
+    useEffect(() => {
+      setMounted(true)
+      router.refresh()
+    },[router])
+  
+    if(!mounted){
+      return null
+    }
+
+   const hasNotif = notifications.length > 0
 
   return (
     <div>
@@ -49,7 +63,7 @@ const UserMenu = ({currentUser}: UserMenuProps) => {
               {currentUser?.id  === ADMIN_ID && (
                 <div>
                   <MenuItem label='Notifications' onClick={() => router.push('/notifications')} 
-                    alert={currentUser.hasNotification}/>
+                    alert={hasNotif}/>
                  <MenuItem label='My Reservations' onClick={() => router.push('/myreservations')} />
                  <MenuItem label='My Listings' onClick={() => router.push('/mylistings')} />
                  <MenuItem label='Create listing' onClick={()=> router.push('create')} />
