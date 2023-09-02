@@ -38,6 +38,7 @@ export async function POST(req: Request, {params}: {params: IFavouriteParams}) {
         return NextResponse.json(updateUser)
 
     }catch(error){
+        console.log('POST FAV_ERROR' , error)
         return new NextResponse ('Internal Server Error', {status:500})
     }
 }
@@ -75,6 +76,7 @@ export async function DELETE(req: Request, {params}: {params: IFavouriteParams})
         return NextResponse.json(updateUser)
 
     }catch(error){
+        console.log('DELETE FAV_ERROR' , error)
         return new NextResponse ('Internal Server Error', {status:500})
     }
 

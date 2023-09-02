@@ -5,13 +5,10 @@ import MenuItem from "./MenuItem"
 import { DropdownMenu, DropdownMenuContent,
      DropdownMenuTrigger } from "./ui/dropdown-menu"
 import {MenuIcon} from 'lucide-react'
-import { User } from "@prisma/client"
 import { signOut } from "next-auth/react"
 import { useLoginModal } from "@/hooks/use-login-modal"
 import { useRegisterModal } from "@/hooks/use-register-modal"
-import Image from "next/image"
 import { ADMIN_ID } from "@/permissions"
-import { useListingModal } from "@/hooks/use-listing-modal"
 import { safeUser } from "@/types/types"
 
 interface UserMenuProps{
@@ -51,6 +48,8 @@ const UserMenu = ({currentUser}: UserMenuProps) => {
               {/* if user is Admin- can create and manage listings/ reservations*/}
               {currentUser?.id  === ADMIN_ID && (
                 <div>
+                  <MenuItem label='Notifications' onClick={() => router.push('/notifications')} 
+                    alert={currentUser.hasNotification}/>
                  <MenuItem label='My Reservations' onClick={() => router.push('/myreservations')} />
                  <MenuItem label='My Listings' onClick={() => router.push('/mylistings')} />
                  <MenuItem label='Create listing' onClick={()=> router.push('create')} />

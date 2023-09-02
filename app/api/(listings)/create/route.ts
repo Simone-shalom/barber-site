@@ -6,27 +6,34 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request, res: Response) {
 
-    const currentUser = await getCurrentUser()
+    try {
 
-    if(!currentUser || currentUser.id !== ADMIN_ID) {
-        return new NextResponse("Unathenticated", {status: 403})
-    }
+        const currentUser = await getCurrentUser()
 
-    const body = await req.json()
-    const {title, desc, imageSrc, category, price} = body
-
-    const listing = await prismadb.listing.create({
-        data: {
-            title: title,
-            description: desc,
-            imageSrc: imageSrc,
-            category: category,
-            price: parseInt(price,10),
-            userId: currentUser.id
-            
+        if(!currentUser || currentUser.id !== ADMIN_ID) {
+            return new NextResponse("Unathenticated", {status: 403})
         }
-    })
 
-    return NextResponse.json(listing)
+        const body = await req.json()
+        const {title, desc, imageSrc, category, price} = body
+
+        const listing = await prismadb.listing.create({
+            data: {
+                title: title,
+                description: desc,
+                imageSrc: imageSrc,
+                category: category,
+                price: parseInt(price,10),
+                userId: currentUser.id
+                
+            }
+        })
+
+        return NextResponse.json(listing)
+
+    }catch(error){
+        console.log('POST CREATE_ERROR' , error)
+        return new NextResponse ('Internal Server Error', {status:500})
+    }
 
 }

@@ -4,6 +4,8 @@ import bcrypt from "bcrypt";
 
 export async function POST(req: NextRequest, res: NextResponse) {
 
+    try {
+
         const body = await req.json()
         const {email, password, name} = body
 
@@ -18,6 +20,11 @@ export async function POST(req: NextRequest, res: NextResponse) {
         })
 
         return NextResponse.json(user);
+        
+    }catch(error){
+        console.log('POST REGISTER_ERROR' , error)
+        return new NextResponse ('Internal Server Error', {status:500})
+    }
 
    
 }

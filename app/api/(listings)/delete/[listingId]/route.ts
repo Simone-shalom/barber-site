@@ -10,24 +10,32 @@ interface Iparams {
 
 export async function DELETE(req: Request, {params}: {params: Iparams}){
 
-    const {listingId} = params
+    try {
 
-    const currentUser = await getCurrentUser()
 
-    if(!currentUser || currentUser.id !==ADMIN_ID){
-        return new NextResponse("Unathenticated", {status: 403})
+        const {listingId} = params
+
+        const currentUser = await getCurrentUser()
+
+        if(!currentUser || currentUser.id !==ADMIN_ID){
+            return new NextResponse("Unathenticated", {status: 403})
+        }
+
+        if(!listingId || typeof listingId !== 'string'){
+            return new NextResponse("Listing id is required", {status:400})
+        }
+
+        const listing = await prismadb.listing.delete({
+            where: {
+                id: listingId
+            }   
+        })
+
+        return NextResponse.json(listing)
+        
+    }catch(error){
+        console.log('DELETE LISTING_ERROR' , error)
+        return new NextResponse ('Internal Server Error', {status:500})
     }
-
-    if(!listingId || typeof listingId !== 'string'){
-        return new NextResponse("Listing id is required", {status:400})
-    }
-
-    const listing = await prismadb.listing.delete({
-        where: {
-            id: listingId
-        }   
-    })
-
-    return NextResponse.json(listing)
 
 }

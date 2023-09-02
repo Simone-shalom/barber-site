@@ -19,10 +19,12 @@ model User {
   hashedPassword String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  hasNotification Boolean?
   favouriteIds String[] @db.ObjectId
   accounts Account[]
   listings Listing[]
   reservations Reservation[]
+  notifications Notification[]
 }
 
 model Account {
@@ -73,4 +75,16 @@ model Reservation {
   listing Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
 
   @@index([listingId, userId])
+}
+
+model Notification {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  body String
+  userId String @db.ObjectId
+  userName String?
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
 }
