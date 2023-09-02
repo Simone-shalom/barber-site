@@ -19,6 +19,8 @@ const Calendar = ({setDate,date, disabledDates=[]}:
      CalendarProps) => {
 
     const [mounted, setMounted] = useState(false)
+    const router = useRouter()
+
 
     useEffect(() => {
         setMounted(true)
@@ -66,7 +68,6 @@ const times = getTimes()
     return date.getDay() === 6 || date.getDay() === 0;
   };
 
-  const router = useRouter()
 
   const removeDate = () => {
     

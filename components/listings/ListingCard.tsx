@@ -82,12 +82,14 @@ const ListingCard = ({data, currentUser, reservation,
                         {ReservatoionDate}
                     </p>
                     {admin && (
-                        <p className="text-lg pb-2 text-muted-foreground">
-                            ClientName:   
-                            <span className="text-xl capitalize  text-black pl-2 ">  
+                        <div className="text-lg pb-2 text-muted-foreground text-start">
+                            <p >
+                            ClientName
+                            </p>   
+                            <span className="text-xl capitalize  text-black ">  
                             {reservation?.userName}
                             </span>
-                        </p>
+                        </div>
                     )}
                     {currentUser?.id === ADMIN_ID ? (
                         <Button

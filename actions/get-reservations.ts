@@ -29,7 +29,7 @@ export default async function getReservations(params:IReservationsParams){
                 listing: true
             },
             orderBy: {
-                createdAt: 'desc'
+                date: 'asc'
             }
         }) 
         const safeReservations = reservations.map((reservation)=> ({
