@@ -41,7 +41,7 @@ export async function DELETE(req:Request, {params}: {params: Iparams}){
             if(currentUser.id !== ADMIN_ID){
                 await prismadb.notification.create({
                     data: {
-                        body: 'User Deleted a Reservation',
+                        body: 'User Deleted Reservation',
                         userId: currentUser.id,
                         userName: currentUser.name
                     }

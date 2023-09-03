@@ -46,8 +46,8 @@ const NotificationsClient = ({ currentUser, notifications}:
   return (
     <Container>
     <Heading title="Notifications" desc="Check your recent notifications" />
-    <div className="pt-7 pb-5 gap-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 
-        ld:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 ">
+    <div className="pt-7 pb-5 gap-8 grid grid-cols-1 md:grid-cols-2 
+         xl:grid-cols-3 2xl:grid-cols- ">
         {notifications.map((notification) => (
           <div key={notification.id}>
             <NotificationCard body={notification.body} 
@@ -55,10 +55,16 @@ const NotificationsClient = ({ currentUser, notifications}:
               userName={notification.userName}/>
           </div>
         ))}
+    </div>
+    <div className="flex flex-col gap-4 items-center justify-center pb-5 ">
         <Button onClick={onDelete}>
           Clear all
         </Button>
-    </div>
+        <Button onClick={()=>router.push('/myreservations')}
+          variant='cancel'>
+          Check reservations
+        </Button>
+      </div>
    </Container>
   )
 }

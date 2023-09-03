@@ -42,7 +42,7 @@ export async function POST(request: Request){
 
            await prismadb.notification.create({
             data: {
-                body: 'User Created a Reservation',
+                body: 'User Created Reservation',
                 userId: currentUser.id,
                 userName: currentUser.name
             }
