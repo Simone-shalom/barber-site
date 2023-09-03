@@ -22,6 +22,7 @@ const NotificationInfo = ({notifications}:
         const router = useRouter()
 
         useEffect(() => {
+            setMounted(true)
             if (notifications.length > 0) {
               setIsNotificationOpen(true);
             } else {
@@ -42,6 +43,9 @@ const NotificationInfo = ({notifications}:
             setIsNotificationOpen(false)
         }
 
+        if(!mounted){
+            return null
+        }
     
       return (
         <>

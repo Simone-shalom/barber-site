@@ -21,7 +21,6 @@ export default async function getReservations(params:IReservationsParams){
         if(userId){
             query.userId = userId
         }
-       
 
         const reservations = await prismadb.reservation.findMany({
             where: query,
@@ -31,8 +30,17 @@ export default async function getReservations(params:IReservationsParams){
             orderBy: {
                 date: 'asc'
             }
-        }) 
-        const safeReservations = reservations.map((reservation)=> ({
+        })
+
+        // filtering reservations if date is in past/ its outdated
+        const currentDate= new Date()
+
+        const filteredReservations = reservations.filter(reservation => {
+            const reservationDate = new Date(reservation.date)
+            return reservationDate >= currentDate
+        })
+
+        const safeReservations = filteredReservations.map((reservation)=> ({
             ...reservation,
             createdAt: reservation.createdAt.toISOString(),
             date: reservation.date.toISOString(),
