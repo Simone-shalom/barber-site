@@ -57,11 +57,11 @@ const NotificationsClient = ({ currentUser, notifications}:
         ))}
     </div>
     <div className="flex flex-col gap-4 items-center justify-center pb-5 ">
-        <Button onClick={onDelete}>
+        <Button onClick={onDelete} className="text-lg">
           Clear all
         </Button>
         <Button onClick={()=>router.push('/myreservations')}
-          variant='cancel'>
+          variant='cancel' className="text-lg">
           Check reservations
         </Button>
       </div>

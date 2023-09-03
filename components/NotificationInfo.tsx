@@ -28,7 +28,7 @@ const NotificationInfo = ({notifications}:
             } else {
               setIsNotificationOpen(false);
             }
-          }, [notifications]);
+          }, [notifications.length]);
 
 
 
