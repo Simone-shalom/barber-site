@@ -49,26 +49,36 @@ const ListingSingle = ({currentUser, listing ,reservations=[]}:
     }
 
     try {
-      setIsLoading(true)
-
-      await axios.post('/api/reservation', {
-         dateTime, price:listing.price, listingId:listing.id
-      })
-      toast.success('Reservation Created Successfully')
-      router.refresh()
-      router.push("/visits")
-
-    }catch(error){
-        console.log(error)
-        toast.error('You have to choose time for reservation')
-        
-    }finally{
-        setIsLoading(false)
-
-
+      setIsLoading(true);
+    
+      const response = await axios.post('/api/reservation', {
+        dateTime,
+        price: listing.price,
+        listingId: listing.id,
+      });
+    
+      if (response.status === 200) {
+        toast.success('Reservation Created Successfully');
+        router.refresh();
+        router.push('/visits');
+      }
+    } catch (error: any) {
+      console.error(error);
+    
+      if (error.response && error.response.status === 422) {
+        toast.error('You have to choose day and time:');
+      } else if (error.response && error.response.status === 429) {
+        toast.error('Too Many Reservations');
+      } else {
+        // Handle other errors if necessary
+        toast.error('An error occurred');
+      }
+    } finally {
+      setIsLoading(false);
     }
+   
   }
-
+    
   return (
     <Container>
       <div className="py-20  px-4 sm:px-6 lg:px-8 w-full h-full">

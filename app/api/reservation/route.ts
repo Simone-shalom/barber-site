@@ -1,5 +1,6 @@
 import getCurrentUser from "@/actions/get-current-user";
 import prismadb from "@/lib/prismadb";
+import { ratelimit } from "@/lib/rate-limit";
 import { NextResponse } from "next/server";
 
 
@@ -17,8 +18,18 @@ export async function POST(request: Request){
         const {price, dateTime, listingId} = body
 
         if(!listingId || !dateTime  || !price){
-            return new NextResponse("Missing fields", {status:400})
+            return new NextResponse("Missing fields", {status:422})
         }
+
+         //rate limit part 
+         const identifier = request.url + '-' + currentUser.id
+         const {success} = await ratelimit(identifier)
+ 
+         if(!success){
+             return new NextResponse("To many Reservations created",{status:429})
+         }
+         //
+ 
 
         const listingAndReservation = await prismadb.listing.update({
             where: {
