@@ -66,7 +66,8 @@ const PanelClient = ({ currentUser, reservationsCount,
       </div>
     <div className="pt-7 pb-5 gap-8 grid grid-cols-1 md:grid-cols-2 
          xl:grid-cols-3 2xl:grid-cols-4  ">
-          <Card className="flex flex-col space-y-2 col-span-1">
+          <Card className="flex flex-col space-y-2 col-span-1 py-2 border-black/5
+                hover:shadow-2xl shadow-xl  transition cursor-pointer w-full">
             <CardContent >
             <h1 className="text-3xl font-semibold text-center pt-2 pb-5">
               Incoming Reservation
@@ -87,7 +88,8 @@ const PanelClient = ({ currentUser, reservationsCount,
             </CardContent>
           </Card>
     
-          <Card>
+          <Card className="px-2  py-2 border-black/5
+                hover:shadow-2xl shadow-xl  transition cursor-pointer w-full">
             <CardContent>
               <h1 className="text-3xl pb-10 pt-3 text-center font-semibold">
                 Your statistics
@@ -129,7 +131,8 @@ const PanelClient = ({ currentUser, reservationsCount,
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="px-2  py-2 border-black/5
+                hover:shadow-2xl shadow-xl  transition cursor-pointer w-full">
             <CardContent className="space-y-10">
               <h1 className="text-3xl font-semibold py-3 text-center">
                 Payments
