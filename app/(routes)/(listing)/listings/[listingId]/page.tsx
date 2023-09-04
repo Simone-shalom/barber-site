@@ -18,7 +18,7 @@ const ListingPage = async({params}:{params: ListingParams}) => {
     const reservations = await getReservations({})
 
     if(currentUser?.id === ADMIN_ID){
-      redirect('/mylistings')
+      redirect('/myreservations')
     }
 
 
