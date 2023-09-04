@@ -21,21 +21,25 @@ const ListingClient = ({listings, currentUser}:
   const router = useRouter()
   const [deletedId, setDeletedId] = useState('')
 
+      // const onCancel = ((id: string) => {
+        // setDeletedId(id)
+    
+        // axios.delete(`/api/delete/${id}`)
+        // .then(() => {
+          // toast.success('Listing deleted')
+          // router.refresh()
+        // })
+        // .catch(() => {
+          // toast.error('Error cancelling reservation')
+        // })
+        // .finally(() => {
+          // setDeletedId('')
+        // })
+    // 
+      // })
+
       const onCancel = ((id: string) => {
-        setDeletedId(id)
-    
-        axios.delete(`/api/delete/${id}`)
-        .then(() => {
-          toast.success('Listing deleted')
-          router.refresh()
-        })
-        .catch(() => {
-          toast.error('Error cancelling reservation')
-        })
-        .finally(() => {
-          setDeletedId('')
-        })
-    
+        toast.error("I've commented out the deleted functionality, so i got listings on my site,  it is fully working :3")
       })
 
   return (
