@@ -25,3 +25,11 @@ export type safeNotification = Omit<
 Notification, 'createdAt'> & {
     createdAt: string
 }
+
+
+export type safePastReservation = Omit<
+Reservation, 
+'createdAt' | 'date'> & {
+    createdAt: string
+    date: string
+}

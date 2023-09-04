@@ -66,7 +66,8 @@ const UserMenu = ({currentUser, notifications}: UserMenuProps) => {
                     alert={hasNotif}/>
                  <MenuItem label='My Reservations' onClick={() => router.push('/myreservations')} />
                  <MenuItem label='My Listings' onClick={() => router.push('/mylistings')} />
-                 <MenuItem label='Create listing' onClick={()=> router.push('create')} />
+                 <MenuItem label='Create Listing' onClick={()=> router.push('/create')} />
+                 <MenuItem label='Admin Panel' onClick={()=> router.push('/panel')} />
                 </div>
               )}
             
