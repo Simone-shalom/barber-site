@@ -6,7 +6,6 @@ import RegisterModal from '@/components/modals/RegisterModal'
 import LoginModal from '@/components/modals/LoginModal'
 import ToasterProvider from '@/providers/ToasterProvider'
 import getCurrentUser from '@/actions/get-current-user'
-import ListingModal from '@/components/modals/ListingModal'
 
 const poppins = Montserrat({ 
   weight: '400',
@@ -16,6 +15,7 @@ const poppins = Montserrat({
 export const metadata: Metadata = {
   title: 'Barber site',
   description: 'Make reservations in your favourite barber',
+  metadataBase: new URL("http://barber-site.vercel.app")
 }
 
 export default async function RootLayout({

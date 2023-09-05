@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+Disallow: /panel/payments
+Sitemap: http://barber-site.vercel.app/sitemap.xml
