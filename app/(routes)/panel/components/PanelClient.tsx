@@ -2,12 +2,11 @@
 
 import Container from "@/components/Container"
 import { Heading } from "@/components/Heading"
+import Statistics from "@/components/Statistics"
 import ListingCard from "@/components/listings/ListingCard"
 import { Card, CardContent } from "@/components/ui/card"
 import { safePastReservation, safeReservation, safeUser } from "@/types/types"
 import axios from "axios"
-import { BanknoteIcon, HomeIcon, Pencil } from "lucide-react"
-import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
 import { toast } from "react-hot-toast"
@@ -18,10 +17,11 @@ interface PanelClientProps {
     pastReservations: safePastReservation[] 
     newestReservation: safeReservation | null
     allUsers: number
+    reservations: safeReservation[]
 }
 
 const PanelClient = ({ currentUser, reservationsCount,
-     pastReservations, newestReservation, allUsers }:
+     pastReservations, newestReservation, allUsers, reservations }:
      PanelClientProps) => {
 
       
@@ -35,6 +35,24 @@ const PanelClient = ({ currentUser, reservationsCount,
   pastReservations.forEach(reservation => {
     totalIncome += reservation.price;
 });
+
+// logic for getting the hours of reservations for current day
+const currentDate = new Date();
+
+const filteredReservations = reservations.filter((reservation) => {
+  const date = new Date(reservation.date);
+  return (
+    date.getDate() === currentDate.getDate() &&
+    date.getMonth() === currentDate.getMonth() &&
+    date.getFullYear() === currentDate.getFullYear()
+  );
+});
+
+const takenTimes = filteredReservations.map((reservation) => {
+  const date = new Date(reservation.date);
+  return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+});
+//
 
 
   const onCancel = ((id: string) => {
@@ -90,44 +108,8 @@ const PanelClient = ({ currentUser, reservationsCount,
           <Card className="px-2  py-2 border-black/5
                 hover:shadow-2xl shadow-xl  transition cursor-pointer w-full">
             <CardContent>
-              <h1 className="text-3xl pb-10 pt-3 text-center font-semibold">
-                Your statistics
-              </h1>
-              <div className="space-y-6">
-                <div>
-                  <BanknoteIcon size={32}/>
-                  <p className="text-2xl">
-                    Total Income
-                    <span className="font-bold ml-2">
-                      {totalIncome} $</span>
-                  </p>
-                </div>
-                
-                <div>
-                  <Pencil size={32}/>
-                  <p className="text-2xl">
-                    Reservations Count
-                    <span className="font-bold ml-2">{reservationsCount}</span>
-                  </p>
-                </div>
-
-                <div>
-                  <HomeIcon size={32}/>
-                  <p className="text-2xl">
-                    Users Count
-                    <span className="font-bold ml-2">{allUsers}</span>
-                  </p>
-                </div>
-
-                <div className=" flex flex-col pt-5 items-center justify-center">
-                  <Image src='/images/pexels-photo-2608582.jpeg' 
-                    alt="Cover image"
-                    width={100} height={100} className="object-cover rounded-md"/>
-                  <p className="text-xl pt-5">Free times from calendar soon for that day</p>
-                </div>
-
-              </div>
-             
+             <Statistics allUsers={allUsers} reservationsCount={reservationsCount}
+              totalIncome={totalIncome} takenTimes={takenTimes}/>
             </CardContent>
           </Card>
 

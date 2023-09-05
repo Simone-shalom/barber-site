@@ -6,7 +6,6 @@ import PanelClient from "./components/PanelClient"
 import prismadb from "@/lib/prismadb"
 import getReservations from "@/actions/get-reservations"
 import getPastReservations from "@/actions/get-past-reservations"
-import getAllUsers from "@/actions/get-all-users"
 
 
 const PanelPage = async() => {
@@ -45,7 +44,7 @@ const PanelPage = async() => {
         reservationsCount={reservationsCount}
         pastReservations={pastReservations}
         newestReservation={newestReservation}
-         allUsers={allUsers}/>
+         allUsers={allUsers} reservations={reservations}/>
     </div>
   )
 }
