@@ -3,10 +3,8 @@
 import Container from "@/components/Container"
 import { Heading } from "@/components/Heading"
 import NotificationCard from "@/components/NotificationCard"
-import { PageWrapper } from "@/components/animations/pageWrapper"
 import { Button } from "@/components/ui/button"
 import { safeNotification, safeUser } from "@/types/types"
-import { Notification } from "@prisma/client"
 import axios from "axios"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
@@ -46,7 +44,6 @@ const NotificationsClient = ({ currentUser, notifications}:
 
   return (
     <Container>
-      <PageWrapper>
     <Heading title="Notifications" desc="Check your recent notifications" />
     <div className="pt-7 pb-5 gap-8 grid grid-cols-1 md:grid-cols-2 
          xl:grid-cols-3 2xl:grid-cols- ">
@@ -67,7 +64,6 @@ const NotificationsClient = ({ currentUser, notifications}:
           Check reservations
         </Button>
       </div>
-      </PageWrapper>
    </Container>
   )
 }

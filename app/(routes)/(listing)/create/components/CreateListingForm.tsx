@@ -2,7 +2,6 @@
 
 import { categories } from "@/components/Categories"
 import { ImageUpload } from "@/components/ImageUpload"
-import { PageWrapper } from "@/components/animations/pageWrapper"
 import { Button } from "@/components/ui/button"
 import { Card,  } from "@/components/ui/card"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
@@ -17,8 +16,7 @@ import { useState } from "react"
 import {useForm } from "react-hook-form"
 import { toast } from "react-hot-toast"
 import * as z from "zod"
-import { motion } from "framer-motion";
-import { CardWrapper } from "@/components/animations/cardWrapper"
+
 
 
 
@@ -77,7 +75,6 @@ const CreateListingForm = () => {
             xl:space-x-10 md:h-full z-10 pt-32 xl:px-10'>
             <Card className='px-5 md:px-10 lg:px-20 lg:w-1/2 py-2 border-black/5
                 hover:shadow-2xl shadow-xl  transition cursor-pointer w-full flex-col'>
-            <PageWrapper>
             <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}
                 className="space-y-8  pb-10 text-lg font-semibold">
@@ -185,7 +182,6 @@ const CreateListingForm = () => {
                 </div>
             </form>
         </Form>
-        </PageWrapper>
 
         </Card>
         {/*Medium device image*/}

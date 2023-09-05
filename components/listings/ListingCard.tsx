@@ -1,6 +1,5 @@
 'use client'
 
-import { Listing, User } from "@prisma/client"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import HeartButton from "../HeartButton"
@@ -9,8 +8,6 @@ import { ADMIN_ID } from "@/permissions"
 import { Button } from "../ui/button"
 import { useCallback, useMemo } from "react"
 import { format } from "date-fns"
-import { PageWrapper } from "../animations/pageWrapper"
-import { CardWrapper } from "../animations/cardWrapper"
 
 
 interface ListingCardProps {
@@ -54,7 +51,6 @@ const ListingCard = ({data, currentUser, reservation,
 
 
   return (
-    <CardWrapper>
     <div
         onClick={()=> router.push(`/listings/${data.id}`)}
         className='col-span-1 cursor-pointer'>
@@ -110,7 +106,6 @@ const ListingCard = ({data, currentUser, reservation,
             )}
         </div>
     </div>
-    </CardWrapper>
   )
 }
 

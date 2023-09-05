@@ -3,8 +3,6 @@
 import Container from "@/components/Container"
 import { Heading } from "@/components/Heading"
 import ListingCard from "@/components/listings/ListingCard"
-import { PageWrapper } from "@/components/animations/pageWrapper"
-import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { safePastReservation, safeReservation, safeUser } from "@/types/types"
 import axios from "axios"
@@ -62,7 +60,6 @@ const PanelClient = ({ currentUser, reservationsCount,
 
   return (
     <Container>
-      <PageWrapper>
       <div className="flex items-center">
       <Heading title="Admin Panel" desc="Your daily dashboard"/>
       </div>
@@ -147,7 +144,6 @@ const PanelClient = ({ currentUser, reservationsCount,
           </Card>
 
     </div>
-    </PageWrapper>
    </Container>
   )
 }
