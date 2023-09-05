@@ -3,6 +3,7 @@
 import Container from "@/components/Container"
 import ListingImage from "@/components/listings/ListingImage"
 import ListingInfo from "@/components/listings/ListingInfo"
+import { PageWrapper } from "@/components/animations/pageWrapper"
 import { Card } from "@/components/ui/card"
 import { useLoginModal } from "@/hooks/use-login-modal"
 import { safeListing, safeReservation, safeUser } from "@/types/types"
@@ -81,6 +82,7 @@ const ListingSingle = ({currentUser, listing ,reservations=[]}:
     
   return (
     <Container>
+      <PageWrapper>
       <div className="py-20  px-4 sm:px-6 lg:px-8 w-full h-full">
         <Card className="md:grid md:grid-cols-2  md:items-start md:gap-x-8 mt-20 ">
          <ListingImage listing={listing} currentUser={currentUser}/>
@@ -92,7 +94,7 @@ const ListingSingle = ({currentUser, listing ,reservations=[]}:
           />
         </Card>
       </div>
-
+      </PageWrapper>
     </Container>
   )
 }

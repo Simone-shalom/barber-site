@@ -1,23 +1,24 @@
 'use client'
 
-import getCurrentUser from "@/actions/get-current-user"
 import { categories } from "@/components/Categories"
 import { ImageUpload } from "@/components/ImageUpload"
+import { PageWrapper } from "@/components/animations/pageWrapper"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
+import { Card,  } from "@/components/ui/card"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Separator } from "@/components/ui/separator"
 import { zodResolver } from "@hookform/resolvers/zod"
 import axios from "axios"
 import { ArrowRight } from "lucide-react"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form"
+import {useForm } from "react-hook-form"
 import { toast } from "react-hot-toast"
 import * as z from "zod"
+import { motion } from "framer-motion";
+import { CardWrapper } from "@/components/animations/cardWrapper"
 
 
 
@@ -76,6 +77,7 @@ const CreateListingForm = () => {
             xl:space-x-10 md:h-full z-10 pt-32 xl:px-10'>
             <Card className='px-5 md:px-10 lg:px-20 lg:w-1/2 py-2 border-black/5
                 hover:shadow-2xl shadow-xl  transition cursor-pointer w-full flex-col'>
+            <PageWrapper>
             <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}
                 className="space-y-8  pb-10 text-lg font-semibold">
@@ -183,6 +185,8 @@ const CreateListingForm = () => {
                 </div>
             </form>
         </Form>
+        </PageWrapper>
+
         </Card>
         {/*Medium device image*/}
         <div className="lg:hidden hidden space-x-[500px] md:flex justify-between left-10 absolute top-40 ">
@@ -193,13 +197,15 @@ const CreateListingForm = () => {
         </div>
 
           {/*Desktop image*/}
-        <Card className='hidden lg:flex lg:justify-center px-2 pb-5 lg:w-1/2  border-black/5
-            hover:shadow-2xl shadow-xl transition cursor-pointer w-full'>
+        <Card
+            className='hidden lg:flex lg:justify-center px-2 pb-5 lg:w-1/2  border-black/5
+            hover:shadow-2xl shadow-xl transition cursor-pointer w-full'
+      >
             <Image src='/images/pexels-photo-2608582.jpeg' alt="" 
-                width={720} height={300} className="object-cover rounded-md"/>
+                width={720} height={300} className="object-cover rounded-md" 
+                />
         </Card>
-
-        </div>
+    </div>
     )
   )
 }

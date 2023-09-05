@@ -3,6 +3,7 @@
 import Container from "@/components/Container"
 import { Heading } from "@/components/Heading"
 import ListingCard from "@/components/listings/ListingCard"
+import { PageWrapper } from "@/components/animations/pageWrapper"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { safePastReservation, safeReservation, safeUser } from "@/types/types"
@@ -61,6 +62,7 @@ const PanelClient = ({ currentUser, reservationsCount,
 
   return (
     <Container>
+      <PageWrapper>
       <div className="flex items-center">
       <Heading title="Admin Panel" desc="Your daily dashboard"/>
       </div>
@@ -99,7 +101,8 @@ const PanelClient = ({ currentUser, reservationsCount,
                   <BanknoteIcon size={32}/>
                   <p className="text-2xl">
                     Total Income
-                    <span className="font-bold ml-2">{totalIncome} $</span>
+                    <span className="font-bold ml-2">
+                      {totalIncome} $</span>
                   </p>
                 </div>
                 
@@ -144,6 +147,7 @@ const PanelClient = ({ currentUser, reservationsCount,
           </Card>
 
     </div>
+    </PageWrapper>
    </Container>
   )
 }

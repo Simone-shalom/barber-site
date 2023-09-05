@@ -4,7 +4,6 @@ import getListings, { getListingsParams } from '@/actions/get-listing'
 import Container from '@/components/Container'
 import Empty from '@/components/Empty'
 import ListingCard from '@/components/listings/ListingCard'
-import Image from 'next/image'
 
 
 interface HomeProps {
