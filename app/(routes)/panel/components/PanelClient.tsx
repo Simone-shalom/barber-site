@@ -52,8 +52,10 @@ const takenTimes = filteredReservations.map((reservation) => {
   const date = new Date(reservation.date);
   return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
 });
-//
-
+// current date
+const current = new Date();
+const currentDayName = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+  
 
   const onCancel = ((id: string) => {
     setLoading(true)
@@ -109,7 +111,8 @@ const takenTimes = filteredReservations.map((reservation) => {
                 hover:shadow-2xl shadow-xl  transition cursor-pointer w-full">
             <CardContent>
              <Statistics allUsers={allUsers} reservationsCount={reservationsCount}
-              totalIncome={totalIncome} takenTimes={takenTimes}/>
+              totalIncome={totalIncome} takenTimes={takenTimes} 
+              currentDayName={currentDayName} currentUser={currentUser}/>
             </CardContent>
           </Card>
 
