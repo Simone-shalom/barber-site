@@ -62,6 +62,11 @@
 ##### - Payments(paddle.js)-* in future
 
 
+## Credentials :
+### Admin - #### admin@gmail.com / admin1234
+### User - #### simon@gmail.com / simon1234
+
+
 ## Local Development
 
 First, run the development server:
