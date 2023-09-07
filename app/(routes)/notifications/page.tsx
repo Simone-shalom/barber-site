@@ -11,6 +11,10 @@ const NotificationsPage = async() => {
 
     const notifications = await getNotifications({userId: currentUser?.id})
 
+    if(!currentUser){
+      return redirect('/')
+    }
+
     if(currentUser?.id !==ADMIN_ID) {
       redirect('/')
     }

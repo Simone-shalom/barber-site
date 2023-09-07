@@ -12,6 +12,10 @@ const MyReservationPage = async() => {
     //get all reservations for admin
     const reservations = await getReservations({})
 
+    if(!currentUser){
+      return redirect('/')
+    }
+
     if(currentUser?.id !== ADMIN_ID) {
         redirect('/')
     }

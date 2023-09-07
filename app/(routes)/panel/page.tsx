@@ -25,6 +25,10 @@ const PanelPage = async() => {
       redirect('/')
     }
     
+    if(!currentUser){
+      return redirect('/')
+    }
+    
     if(reservationsCount === 0){
       return (
         <Empty title="No Reservations yet" desc="Wait and see"  

@@ -12,6 +12,10 @@ const MyListings = async() => {
   // get all listings for admin
   const lisitngs = await getListings({})
 
+  if(!currentUser){
+    return redirect('/')
+  }
+
   if(currentUser?.id !== ADMIN_ID) {
       redirect('/')
   }
