@@ -8,6 +8,7 @@ import { ADMIN_ID } from "@/permissions"
 import { Button } from "../ui/button"
 import { useCallback, useMemo } from "react"
 import { format } from "date-fns"
+import { toast } from "react-hot-toast"
 
 
 interface ListingCardProps {
@@ -48,6 +49,12 @@ const ListingCard = ({data, currentUser, reservation,
 
         return `${format(date, 'HH:mm PP')}`
     },[reservation])
+
+    const payNow =((e:
+        React.MouseEvent<HTMLButtonElement>) => {
+            e.stopPropagation()
+        toast.error('payments available soon')
+    })
 
 
   return (
@@ -96,11 +103,19 @@ const ListingCard = ({data, currentUser, reservation,
                             {actionLabel}  
                         </Button>
                     ): (
-                        <Button 
-                            variant='cancel'
-                            disabled={disabled}  onClick={handleCancel}>
-                            {actionLabel}  
-                        </Button>
+                        <div className="flex flex-col space-y-2">
+                            <Button 
+                                variant='cancel'
+                                disabled={disabled}  onClick={handleCancel}>
+                                {actionLabel}  
+                            </Button>
+                            <Button 
+                                variant='secondary'
+                                disabled={disabled} onClick={payNow}>
+                                Pay now  
+                            </Button>
+                        </div>
+                      
                     )}
                 </div>
             )}
