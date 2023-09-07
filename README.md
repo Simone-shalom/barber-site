@@ -5,17 +5,17 @@
 ##Introduction
 Modern reservation app with client/admin roles to create and manage your customers
 
-##Tech Stack
-Next.js – framework
-Typescript – language
-Tailwind, shadcn – CSS
-Upstash – redis
-Mongodb – database
-NextAuth.js – auth
-Vercel – hosting
+Tech Stack: 
+ - Next.js – framework
+ - Typescript – language
+ - Tailwind, shadcn – CSS
+ - Upstash – redis
+ - Mongodb, Prisma – database
+ - NextAuth.js – auth
+ - Vercel – hosting
 
 ##Making reservations
-Client can make reservation only on not taken dates and times, is rateLimited by upstash redis to not allowed users to spam 
+Client can make reservation only on not taken dates and times, is rateLimited by upstash redis 
 <img width="935" alt="Zrzut ekranu 2023-09-07 124549" src="https://github.com/Simone-shalom/barber-site/assets/117103936/4e02a7c9-29b2-4311-a06d-42045d692fb9">
 
 ##Managing your visits
