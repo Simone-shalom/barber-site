@@ -1,0 +1,1 @@
+export const ADMIN_ID =process.env.ADMIN_ID 
