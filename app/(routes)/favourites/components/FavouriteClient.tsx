@@ -2,6 +2,7 @@
 
 import Container from "@/components/Container"
 import { Heading } from "@/components/Heading"
+import { PageWrapper } from "@/components/animations/pageWrapper"
 import ListingCard from "@/components/listings/ListingCard"
 import { safeListing, safeUser } from "@/types/types"
 
@@ -21,11 +22,13 @@ const FavouriteClient = ({favourites ,currentUser}:
       <div className="pt-7 pb-5 gap-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 
           ld:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 ">
           {favourites?.map((favourite: any) => (
+            <PageWrapper key={favourite.id}>
             <div key={favourite.id}>
               <ListingCard  data={favourite}
                currentUser={currentUser} 
                />
             </div>
+            </PageWrapper>
           ))}
       </div>
      </Container>

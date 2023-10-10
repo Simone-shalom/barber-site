@@ -1,6 +1,7 @@
 'use client'
 
 import Container from "@/components/Container"
+import LeftSlidder from "@/components/animations/leftSlidder"
 import ListingImage from "@/components/listings/ListingImage"
 import ListingInfo from "@/components/listings/ListingInfo"
 import { Card } from "@/components/ui/card"
@@ -81,7 +82,8 @@ const ListingSingle = ({currentUser, listing ,reservations=[]}:
     
   return (
     <Container>
-      <div className="py-20  px-4 sm:px-6 lg:px-8 w-full h-full">
+      <div className="py-20  px-4 sm:px-6 lg:px-8 w-full h-full ">
+        <LeftSlidder>
         <Card className="md:grid md:grid-cols-2  md:items-start md:gap-x-8 mt-20 ">
          <ListingImage listing={listing} currentUser={currentUser}/>
          <ListingInfo 
@@ -91,6 +93,7 @@ const ListingSingle = ({currentUser, listing ,reservations=[]}:
           dDates={disabledDates}
           />
         </Card>
+        </LeftSlidder>
       </div>
     </Container>
   )
