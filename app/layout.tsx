@@ -7,7 +7,7 @@ import LoginModal from '@/components/modals/LoginModal'
 import ToasterProvider from '@/providers/ToasterProvider'
 import getCurrentUser from '@/actions/get-current-user'
 
-const poppins = Montserrat({ 
+const montse = Montserrat({ 
   weight: '400',
   subsets: ['latin']
  })
@@ -28,7 +28,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={poppins.className}>
+      <body className={montse.className}>
         <ToasterProvider />
         <LoginModal/>
         <RegisterModal />
