@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "../ui/button";
 
 
@@ -10,16 +11,18 @@ interface HeroHeadingProps {
 const HeroHeading = ({title, desc, href}: HeroHeadingProps) => {
   return (
     <div className="flex flex-col space-y-4 text-center">
-        <h1 className="text-4xl font-bold ">
+        <h1 className="text-4xl font-bold leading-tight ">
            {title} 
         </h1>
         <p className="text-muted-foreground text-lg">
             {desc}
         </p>
         <div className="flex items-center justify-center">
-        <Button variant='landing' className="w-40 rounded-xl">
-            Get started
-        </Button>
+        <Link href={href}>
+            <Button variant='landing' className="w-40 rounded-xl">
+                Get started
+            </Button>
+        </Link>
         </div>
     </div>
   )

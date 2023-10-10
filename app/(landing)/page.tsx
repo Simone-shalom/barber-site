@@ -20,7 +20,7 @@ export default async function Landing() {
   return (
   <Container>
     <div className='pt-32'>
-      <div className='h-1/3'>
+      <div className='h-1/3 pb-10'>
       <HeroTop />
       </div>
     <HeroAction />
