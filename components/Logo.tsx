@@ -11,7 +11,7 @@ const Logo = () => {
   return (
 
     <div className=''>
-       <Image 
+       <img 
         onClick={() => router.push('/home')}
         src='/images/barber-logo.png' alt='Logo'
         className='cursor-pointer object-contain'

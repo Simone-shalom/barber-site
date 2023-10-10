@@ -12,7 +12,7 @@ export const HeroIcon = ({Icon, title, desc}: HeroIconProps) => {
       <div className="p-2 bg-white rounded-xl">
       <Icon size={32} color="black"/>
       </div>
-      <h1 className="text-2xl font-semibold capitalize">
+      <h1 className="text-lg font-semibold capitalize">
         {title}
       </h1>
       <p className="font-thin leading-none ">
