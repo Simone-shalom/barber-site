@@ -19,8 +19,10 @@ export default async function Landing() {
 
   return (
   <Container>
-    <div className='pt-28'>
-    <HeroTop />
+    <div className='pt-32'>
+      <div className='h-1/3'>
+      <HeroTop />
+      </div>
     <HeroAction />
     <Herobanner />
     <Testimonials />
