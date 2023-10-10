@@ -19,7 +19,7 @@ const ListingReservation = ({onSubmit, setDate, date ,dDates}:
     <div className="">
       <p className="font-italic text-xl px-5 text-center">Choose day and hour</p>
       <Calendar setDate={setDate}  date={date} disabledDates={dDates}/>
-      <div className="pt-5 w-full flex justify-center items-center gap-x-3">
+      <div className="pt-4 w-full flex justify-center items-center gap-x-3">
           <Button 
             onClick={onSubmit}
             className="w-full mx-20">Reserve</Button>

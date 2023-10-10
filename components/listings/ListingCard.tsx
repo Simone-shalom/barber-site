@@ -110,7 +110,7 @@ const ListingCard = ({data, currentUser, reservation,
                                 {actionLabel}  
                             </Button>
                             <Button 
-                                variant='secondary'
+                                variant='outline'
                                 disabled={disabled} onClick={payNow}>
                                 Pay now  
                             </Button>

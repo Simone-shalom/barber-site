@@ -22,14 +22,14 @@ const ListingDetails = ({listing, user}: ListingDetailsProps) => {
        <p className="text-xl font-semibold pt-6">
               {listing.category}
         </p>
-       <hr className="my-6"/>
+       <hr className="my-3"/>
        <div className="flex flex-col gap-y-2">
             <div className="flex flex-col  gap-x-10 space-y-3">
                 <h3 className="font-semibold text-lg text-black">
                   {listing.description} </h3>
             </div>
         </div>
-        <p className="text-lg pt-12 text-muted-foreground font-bold">
+        <p className="text-lg pt-8 text-muted-foreground font-bold">
                     Barber - @<span className="text-black font-bold text-xl capitalize">
                       {user.name}</span>
                   </p>

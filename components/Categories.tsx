@@ -35,7 +35,7 @@ const Categories = () => {
     const category = searchparams?.get('category')
     const pathname = usePathname()
 
-    const isMainPage = pathname === '/'
+    const isMainPage = pathname === '/home'
 
     if(!isMainPage) {
         return null
