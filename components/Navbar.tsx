@@ -20,8 +20,8 @@ const Navbar = async({currentUser}:
     const notifications = await getNotifications({userId: currentUser?.id})
 
   return (
-    <div className="fixed bg-white w-full z-50 shadow-md rounded-b-md h-28">
-      <div className="py-4 border-b-[1px]">
+    <div className="fixed bg-white w-full z-50 shadow-md rounded-b-md">
+      <div className="py-2 border-b-[1px]">
         <Container>
           <div className="flex items-center justify-between gap-3 md:gap-0">
             <Logo />

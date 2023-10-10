@@ -15,7 +15,7 @@ const Logo = () => {
         onClick={() => router.push('/home')}
         src='/images/barber-logo.png' alt='Logo'
         className='cursor-pointer object-contain'
-        height={60} width={200} />
+        height={50} width={200} />
     </div>
   )
 }
