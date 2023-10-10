@@ -39,7 +39,7 @@ const CategoryBox = ({label, icon:Icon, description, selected }:
 
             const url = qs.stringifyUrl({
                 query: updatedQuery,
-                url: '/'
+                url: '/home'
             },{skipNull: true})
 
             router.push(url)
