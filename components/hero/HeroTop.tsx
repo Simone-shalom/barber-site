@@ -10,11 +10,11 @@ const HeroTop = () => {
     <div className="flex flex-col lg:flex-row space-y-10 lg:space-y-0 mx-10">
         {/* Left side */}
         <section className="w-full lg:w-1/2 items-center justify-center flex">
-        <HeroHeading title="Feel Yourself in a complete new style" desc="We are providing the best possible services for our customers" href="/home"/>
+        <HeroHeading title="Feel Yourself in a completely new style" desc="We are providing the best possible services for our customers" href="/home"/>
         </section>
 
         {/* Right side */}
-        <section className="w-full relative lg:w-1/2 flex items-center justify-center pb-10 ">
+        <section className="w-full relative lg:w-1/2 flex items-center justify-center pb-5 ">
             <div className="z-20">
             <HeroImage src={'/images/pexels-photo-2608582.jpeg'} width={350}/>
             </div>
