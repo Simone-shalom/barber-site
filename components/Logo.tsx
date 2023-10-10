@@ -9,11 +9,14 @@ const Logo = () => {
     const router = useRouter()
 
   return (
-    <Image 
+
+    <div className=''>
+       <Image 
         onClick={() => router.push('/home')}
         src='/images/barber-logo.png' alt='Logo'
-        className='block cursor-pointer'
-        height={200} width={160}/>
+        className='cursor-pointer object-contain'
+        height={60} width={200} />
+    </div>
   )
 }
 
