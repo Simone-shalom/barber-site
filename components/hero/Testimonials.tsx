@@ -1,4 +1,5 @@
 
+import ScrollSlider from "../animations/scrollSlider"
 import HeroHeading from "./HeroHeading"
 import TestimonialCard from "./TestimonialCard"
 
@@ -6,6 +7,7 @@ import TestimonialCard from "./TestimonialCard"
 const Testimonials = () => {
   return (
     <div className="pt-10 pb-10">
+      <ScrollSlider>
       <div className="flex items-center justify-center ">
       <HeroHeading title="What people say about us" desc="" testimonials href=""/>
       </div>
@@ -14,6 +16,7 @@ const Testimonials = () => {
         <TestimonialCard title="A Fantastic First Experience: 5/5 Stars - I'll Definitely Return!" name="Alfredo Di Picasso" src={'/images/2c7d99fe281ecd3bcd65ab915bac6dd5.jpeg'}/>
         <TestimonialCard title="Unforgettable First Visit: 5/5 Rating - I'm Hooked and Coming Back for More!" name="Antoine Johansoen" src={'/images/images.jpg'}/>
       </div>
+      </ScrollSlider>
     </div>
   )
 }
