@@ -5,7 +5,7 @@ import TestimonialCard from "./TestimonialCard"
 
 const Testimonials = () => {
   return (
-    <div className="pt-10">
+    <div className="pt-10 pb-10">
       <div className="flex items-center justify-center ">
       <HeroHeading title="What people say about us" desc="" testimonials href=""/>
       </div>

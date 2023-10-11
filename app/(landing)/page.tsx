@@ -2,6 +2,7 @@
 import getCurrentUser from '@/actions/get-current-user'
 import Container from '@/components/Container'
 import { PageWrapper } from '@/components/animations/pageWrapper'
+import AdvertBlock from '@/components/hero/AdvertBlock'
 import Footer from '@/components/hero/Footer'
 import HeroAction from '@/components/hero/HeroAction'
 import HeroServices from '@/components/hero/HeroServices'
@@ -30,6 +31,7 @@ export default async function Landing() {
       <Herobanner />
       <HeroServices />
       <Testimonials />
+      <AdvertBlock />
       <Footer />
     </div>
     </PageWrapper>
