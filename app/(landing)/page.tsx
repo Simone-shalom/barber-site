@@ -4,6 +4,7 @@ import Container from '@/components/Container'
 import { PageWrapper } from '@/components/animations/pageWrapper'
 import Footer from '@/components/hero/Footer'
 import HeroAction from '@/components/hero/HeroAction'
+import HeroServices from '@/components/hero/HeroServices'
 import HeroTop from '@/components/hero/HeroTop'
 import Herobanner from '@/components/hero/Herobanner'
 import Testimonials from '@/components/hero/Testimonials'
@@ -27,6 +28,7 @@ export default async function Landing() {
       </div>
     <HeroAction />
     <Herobanner />
+    <HeroServices />
     <Testimonials />
     <Footer />
     </div>

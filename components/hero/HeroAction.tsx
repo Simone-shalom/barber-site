@@ -24,7 +24,7 @@ const HeroAction = () => {
 
         {/* Right side */}
         <section className="w-full lg:w-1/2 items-center justify-center flex pb-10">
-        <HeroHeading title="Making reservations" desc="Plenty of available cuts directly in your hand, make reservations on chosen time" href="/home"/>
+        <HeroHeading title="Making reservations" desc="Plenty of available cuts directly in your hand, make reservations on chosen time, anytime, anyweek. We provide options to both cancel and manage reservations for users and admin" href="/home"/>
         </section>
     </div>
   )
