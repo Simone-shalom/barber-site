@@ -6,9 +6,10 @@ interface HeroHeadingProps {
     title: string;
     desc: string;
     href: string
+    testimonials?: boolean
 }
 
-const HeroHeading = ({title, desc, href}: HeroHeadingProps) => {
+const HeroHeading = ({title, desc, href, testimonials}: HeroHeadingProps) => {
   return (
     <div className="flex flex-col space-y-4 text-center md:mx-10 xl:mx-20">
         <h1 className="text-4xl font-bold leading-tight capitalize ">
@@ -17,13 +18,15 @@ const HeroHeading = ({title, desc, href}: HeroHeadingProps) => {
         <p className="text-muted-foreground text-lg">
             {desc}
         </p>
-        <div className="flex items-center justify-center">
-        <Link href={href}>
-            <Button variant='landing' className="w-40 rounded-xl">
-                Get started
-            </Button>
-        </Link>
-        </div>
+        {!testimonials && (
+            <div className="flex items-center justify-center">
+            <Link href={href}>
+                <Button variant='landing' className="w-40 rounded-xl">
+                    Get started
+                </Button>
+            </Link>
+            </div>
+        )}
     </div>
   )
 }

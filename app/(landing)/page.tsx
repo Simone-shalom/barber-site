@@ -24,13 +24,13 @@ export default async function Landing() {
     <PageWrapper>
     <div className='pt-32'>
       <div className='h-1/3 pb-10'>
-      <HeroTop />
+        <HeroTop />
       </div>
-    <HeroAction />
-    <Herobanner />
-    <HeroServices />
-    <Testimonials />
-    <Footer />
+      <HeroAction />
+      <Herobanner />
+      <HeroServices />
+      <Testimonials />
+      <Footer />
     </div>
     </PageWrapper>
   </Container>

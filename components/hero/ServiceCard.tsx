@@ -11,7 +11,7 @@ interface ServiceCardProps {
 const ServiceCard = ({src, title, desc}: ServiceCardProps) => {
   return (
     <div className="flex items-center justify-center">
-        <Card className="p-3 md:mx-10 max-w-lg rounded-xl">
+        <Card className="p-3 md:mx-10 max-w-lg rounded-xl  hover:scale-110 hover:translate-x-2 transition duration-700">
             <Image src={src} width={500} height={200} className="object-cover aspect-video rounded-2xl" alt=""/>
             <div className="flex flex-col max-w-xs pt-1">
                 <h1 className="text-2xl font-semibold">

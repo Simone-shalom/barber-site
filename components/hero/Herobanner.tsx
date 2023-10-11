@@ -6,7 +6,7 @@ import RoundedBlock from "./RoundedBlock"
 
 const Herobanner = () => {
   return (
-    <div className="mx-5 md:mx-10 relative lg:mx-20 xl:mx-32 flex flex-col-reverse items-center justify-center lg:flex-row 2xl:mx-64 h-[250px] bg-gradient-to-r from-red-500 to-blue-500 rounded-3xl shadow-2xl">
+    <div className="mx-5 md:mx-10 relative lg:mx-20 xl:mx-32 flex flex-col-reverse items-center justify-center lg:flex-row 2xl:mx-64 h-[250px] bg-gradient-to-r from-red-500 to-blue-500 rounded-3xl shadow-2xl hover:opacity-95 hover:scale-105 transition-all   duration-1000">
       {/* left- text section */}
       <div className="hidden lg:flex md:w-1/2 h-full flex-col text-white px-10 items-center justify-center">
         <HeroHeading title="Our services beyond expectations" desc="" href="/home"/>
