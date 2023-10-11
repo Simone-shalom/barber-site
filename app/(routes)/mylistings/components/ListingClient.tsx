@@ -2,6 +2,7 @@
 
 import Container from "@/components/Container"
 import { Heading } from "@/components/Heading"
+import { PageWrapper } from "@/components/animations/pageWrapper"
 import ListingCard from "@/components/listings/ListingCard"
 import { safeListing, safeUser } from "@/types/types"
 import axios from "axios"
@@ -48,12 +49,16 @@ const ListingClient = ({listings, currentUser}:
     <div className="pt-7 pb-5 gap-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 
         ld:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 ">
         {listings.map((listing: any) => (
+          <>
+          <PageWrapper key={listing.id}>
           <div key={listing.id}>
             <ListingCard  data={listing}
              actionId={listing.id} onAction={onCancel} 
              currentUser={currentUser} actionLabel="Delete the listing"
              />
           </div>
+          </PageWrapper>
+          </>
         ))}
     </div>
    </Container>

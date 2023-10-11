@@ -1,12 +1,17 @@
 'use client'
 
 import Container from "@/components/Container"
+import { CurvyLine } from "@/components/CurvyLine"
 import { Heading } from "@/components/Heading"
 import Statistics from "@/components/Statistics"
+import { PageWrapper } from "@/components/animations/pageWrapper"
+import { HeroImage } from "@/components/hero/HeroImage"
+import { ScoreBox } from "@/components/hero/ScoreBox"
 import ListingCard from "@/components/listings/ListingCard"
 import { Card, CardContent } from "@/components/ui/card"
 import { safePastReservation, safeReservation, safeUser } from "@/types/types"
 import axios from "axios"
+import { CalendarCheck } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
 import { toast } from "react-hot-toast"
@@ -80,6 +85,7 @@ const currentDayName = `${current.getDate()}/${current.getMonth()+1}/${current.g
 
   return (
     <Container>
+      <PageWrapper>
       <div className="flex items-center">
       <Heading title="Admin Panel" desc="Your daily dashboard"/>
       </div>
@@ -125,10 +131,18 @@ const currentDayName = `${current.getDate()}/${current.getMonth()+1}/${current.g
               <h2 className="text-muted-foreground text-2xl">
                 Coming soon ...
               </h2>
+              <section className="w-full relative ">
+            <div className="z-20 flex items-center justify-center">
+            <HeroImage src={'/images/jeppe-monster-T_gTN3Po9RQ-unsplash.jpg'} width={250} />
+            </div>
+            <div className="absolute z-30 bottom-0 lg:-bottom-10 ">
+                <ScoreBox title="Visits" desc="Create reservation anytime anyday " icon={CalendarCheck} action/>
+            </div>
+        </section>
             </CardContent>
           </Card>
-
     </div>
+    </PageWrapper>
    </Container>
   )
 }

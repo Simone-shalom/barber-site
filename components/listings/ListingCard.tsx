@@ -64,7 +64,7 @@ const ListingCard = ({data, currentUser, reservation,
         <div className='flex flex-col gap-2 w-full'>
             <div className='aspect-square w-full relative overflow-hidden rounded-xl'>
                 <Image src={data.imageSrc} alt="Image url" fill  
-                    className='object-cover h-full w-full hover:scale-110 transition ease-in '/>
+                    className='object-cover h-full w-full hover:scale-125 transition ease-in duration-300 '/>
                     { currentUser?.id !== ADMIN_ID && (
                         <div className='absolute top-3 right-6'>
                             <HeartButton listingId={data.id} currentUser={currentUser}/>

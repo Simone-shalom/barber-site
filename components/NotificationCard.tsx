@@ -1,7 +1,6 @@
 'use client'
 
 import { format } from "date-fns";
-import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
 import Image from "next/image";
 
@@ -23,7 +22,7 @@ const NotificationCard = ({body, userId, createdAt, userName}:
   return (
     <div>
       <Card className='px-2  py-2 border-black/5
-                hover:shadow-2xl shadow-xl  transition cursor-pointer w-full flex'>
+                hover:shadow-2xl shadow-xl  transition w-full flex hover:scale-105  duration-500'>
         <CardContent className=" text-lg flex">
           <div className="flex flex-col space-y-2">
             <div className='text-xl font-semibold'>

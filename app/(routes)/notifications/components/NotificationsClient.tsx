@@ -3,7 +3,10 @@
 import Container from "@/components/Container"
 import { Heading } from "@/components/Heading"
 import NotificationCard from "@/components/NotificationCard"
+import { PageWrapper } from "@/components/animations/pageWrapper"
 import { Button } from "@/components/ui/button"
+import { ScrollArea } from "@/components/ui/scroll-area"
+import { Separator } from "@/components/ui/separator"
 import { safeNotification, safeUser } from "@/types/types"
 import axios from "axios"
 import { useRouter } from "next/navigation"
@@ -45,17 +48,24 @@ const NotificationsClient = ({ currentUser, notifications}:
   return (
     <Container>
     <Heading title="Notifications" desc="Check your recent notifications" />
+
+    <ScrollArea className="h-[500px] w-full rounded-md border scroll-smooth mt-10 px-5">
     <div className="pt-7 pb-5 gap-8 grid grid-cols-1 md:grid-cols-2 
          xl:grid-cols-3 2xl:grid-cols- ">
         {notifications.map((notification) => (
+          <>
+          <PageWrapper key={notification.id}>
           <div key={notification.id}>
             <NotificationCard body={notification.body} 
               userId={notification.userId} createdAt={notification.createdAt}
               userName={notification.userName}/>
           </div>
+          </PageWrapper>
+          </>
         ))}
     </div>
-    <div className="flex flex-col gap-4 items-center justify-center pb-5 ">
+    </ScrollArea>
+    <div className="flex flex-col gap-4 items-center justify-center pb-5 pt-20">
         <Button onClick={onDelete} className="text-lg">
           Clear all
         </Button>
