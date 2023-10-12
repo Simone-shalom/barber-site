@@ -1,11 +1,6 @@
 'use client'
 
-import { cn } from "@/lib/utils"
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "./ui/dialog"
-
-import { useLoginModal } from "@/hooks/use-login-modal"
-import { useRegisterModal } from "@/hooks/use-register-modal"
-import { Button } from "./ui/button"
+import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "./ui/dialog"
 
 interface ModalProps {
     isOpen?: boolean

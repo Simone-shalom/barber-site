@@ -85,7 +85,7 @@ const ListingSingle = ({currentUser, listing ,reservations=[]}:
       <div className="py-20  px-4 sm:px-6 lg:px-8 w-full h-full ">
         <LeftSlidder>
         <Card className="md:grid md:grid-cols-2  md:items-start md:gap-x-8 mt-20 ">
-         <ListingImage listing={listing} currentUser={currentUser}/>
+         <ListingImage listing={listing}/>
          <ListingInfo 
           onSubmit={onCreateReservation}
           listing={listing} currentUser={currentUser} user={listing.user}
