@@ -46,8 +46,8 @@ const ListingClient = ({listings, currentUser}:
   return (
     <Container>
     <Heading title="All your Listings" desc="You can manage them, by deleting when necessary" />
-    <div className="pt-7 pb-5 gap-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 
-        ld:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 ">
+    <div className="pt-7 pb-5 gap-8 grid grid-cols-1 md:grid-cols-2 
+          lg:grid-cols-3 2xl:grid-cols-4 ">
         {listings.map((listing: any) => (
           <>
           <PageWrapper key={listing.id}>

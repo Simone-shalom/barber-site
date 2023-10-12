@@ -86,19 +86,17 @@ const currentDayName = `${current.getDate()}/${current.getMonth()+1}/${current.g
   return (
     <Container>
       <PageWrapper>
-      <div className="flex items-center">
       <Heading title="Admin Panel" desc="Your daily dashboard"/>
-      </div>
-    <div className="pt-7 pb-5 gap-8 grid grid-cols-1 md:grid-cols-2 
-         xl:grid-cols-3 2xl:grid-cols-4  ">
+    <div className="pt-7 pb-5 gap-8 grid grid-cols-1 
+          lg:grid-cols-2 2xl:grid-cols-3  ">
           <Card className="flex flex-col space-y-2 col-span-1 py-2 border-black/5
-                hover:shadow-2xl shadow-xl  transition cursor-pointer w-full">
+                hover:shadow-2xl shadow-xl  transition cursor-pointer w-full ">
             <CardContent >
             <h1 className="text-3xl font-semibold text-center pt-2 pb-5">
               Incoming Reservation
             </h1>
               {newestReservation ? (
-               <div>
+               <div className="pt-6">
                 <ListingCard data={newestReservation.listing} 
                 reservation={newestReservation} actionLabel="Cancel Reservation"
                   onAction={onCancel} admin currentUser={currentUser}

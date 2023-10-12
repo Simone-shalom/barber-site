@@ -3,7 +3,11 @@ import getCurrentUser from '@/actions/get-current-user'
 import getListings, { getListingsParams } from '@/actions/get-listing'
 import Container from '@/components/Container'
 import Empty from '@/components/Empty'
+import { Heading } from '@/components/Heading'
+import { HomeAdvert } from '@/components/HomeAdvert'
 import CardSlider from '@/components/animations/cardSlidder'
+import { PageWrapper } from '@/components/animations/pageWrapper'
+import AdvertBlock from '@/components/hero/AdvertBlock'
 import ListingCard from '@/components/listings/ListingCard'
 
 
@@ -31,8 +35,13 @@ export default async function Home({searchParams}: HomeProps) {
 
   return (
   <Container>
-     <div className="pt-52 pb-5 gap-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 
-          ld:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
+    <PageWrapper>
+    <div className='pt-52 '>
+   <HomeAdvert />
+    </div>
+    </PageWrapper>
+     <div className="pt-8 pb-5 gap-8 grid grid-cols-1 md:grid-cols-2 
+          lg:grid-cols-3 2xl:grid-cols-4">
           {listings.map((listing, index) => (
             <CardSlider index={index} key={listing.id}>
            <ListingCard data={listing} key={listing.id} currentUser={currentUser}/>

@@ -78,15 +78,20 @@ const Statistics = ({totalIncome, allUsers, reservationsCount,
                     )}
                    
                 </div>
-                <div className=" flex flex-col pt-6 items-center justify-center">
-                  Barber
-                  <p className="text-xl ">@ {currentUser.name}</p>
-                </div>
-                <div className="flex items-center justify-center pt-5">
+                <div className="flex items-center justify-center pt-8">
                   <Button onClick={()=> router.push('/myreservations')}>
                     Check reservations
                   </Button>
                 </div>
+                <div className=" flex flex-col pt-2 items-center justify-center">
+                  Barber
+                  <p className="text-xl ">@ {currentUser.name}</p>
+                </div>
+                {/* <div className="flex items-center justify-center pt-5">
+                  <Button onClick={()=> router.push('/myreservations')}>
+                    Check reservations
+                  </Button>
+                </div> */}
 
               </div>
     </div>

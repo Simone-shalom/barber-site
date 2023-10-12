@@ -9,6 +9,8 @@ import { Button } from "../ui/button"
 import { useCallback, useMemo } from "react"
 import { format } from "date-fns"
 import { toast } from "react-hot-toast"
+import { Card } from "../ui/card"
+import { ArrowRight } from "lucide-react"
 
 
 interface ListingCardProps {
@@ -61,30 +63,35 @@ const ListingCard = ({data, currentUser, reservation,
     <div
         onClick={()=> router.push(`/listings/${data.id}`)}
         className='col-span-1 cursor-pointer'>
-        <div className='flex flex-col gap-2 w-full'>
-            <div className='aspect-square w-full relative overflow-hidden rounded-xl'>
+        <Card className='flex flex-col gap-2 w-full rounded-b-lg pb-2'>
+            <div className='aspect-video w-full relative overflow-hidden rounded-t-xl'>
                 <Image src={data.imageSrc} alt="Image url" fill  
                     className='object-cover h-full w-full hover:scale-125 transition ease-in duration-300 '/>
-                    { currentUser?.id !== ADMIN_ID && (
+                     { currentUser?.id !== ADMIN_ID && (
                         <div className='absolute top-3 right-6'>
                             <HeartButton listingId={data.id} currentUser={currentUser}/>
                         </div>
                     )}
             </div>
+            <div className="px-3">
             <div className='text-xl font-semibold'>
                  {data.title}
             </div>
             <div className='text-sm'>
                  {data.category}
             </div>
-            <div className='flex items-center gap-1'>
+            <div className='flex items-center justify-between gap-1'>
                 <div className='font-semibold'>
                     $ {data.price}
                 </div>
+                <div className="flex justify-end ">
+                <ArrowRight size={24}/>
             </div>
+            </div>
+          
             {onAction && actionLabel && (
-                <div>
-                    <p className="text-lg pb-1 ">
+                <div className="text-center">
+                    <p className="text-lg pb-1 text-start">
                         {ReservatoionDate}
                     </p>
                     {admin && (
@@ -119,7 +126,8 @@ const ListingCard = ({data, currentUser, reservation,
                     )}
                 </div>
             )}
-        </div>
+            </div>
+        </Card>
     </div>
   )
 }

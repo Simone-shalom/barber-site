@@ -3,6 +3,7 @@
 import Container from "@/components/Container"
 import { Heading } from "@/components/Heading"
 import { PageWrapper } from "@/components/animations/pageWrapper"
+import HeroHeading from "@/components/hero/HeroHeading"
 import ListingCard from "@/components/listings/ListingCard"
 import { Button } from "@/components/ui/button"
 import { safeReservation, safeUser } from "@/types/types"
@@ -60,9 +61,9 @@ const VisitClient = ({reservations ,currentUser}: VisitClientProps) => {
   return (
  
      <Container>
-      <Heading title="Your Visits" desc="You can check your current visits and cancel them if you want" />
-      <div className="pt-7 pb-5 gap-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 
-          ld:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
+      <Heading title="Your Visits" desc="You can check your current visits and cancel them if you want"/>
+      <div className="pt-7 pb-5 gap-8 grid grid-cols-1 md:grid-cols-2 
+          lg:grid-cols-3 2xl:grid-cols-4">
           {reservations.map((reservation: any) => (
             <PageWrapper key={reservation.id}>
             <div key={reservation.id}>
