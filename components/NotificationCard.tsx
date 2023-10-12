@@ -3,6 +3,7 @@
 import { format } from "date-fns";
 import { Card, CardContent } from "./ui/card";
 import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 
 
 interface NotificationCardProps {
@@ -31,10 +32,13 @@ const NotificationCard = ({body, userId, createdAt, userName}:
             <div className='text-md'>
                   {formatedDate}
             </div>
-                <div className='font-semibold'>
+            <div className='font-semibold'>
                     {userName}
-                </div>
             </div>
+            <div>
+              <ArrowRight size={24}/>
+            </div>
+          </div>
         </CardContent>
         <Image src='/images/pexels-photo-2608582.jpeg' alt="" width={100} height={80} 
           className="object-cover rounded-md ml-auto pr-1"/>

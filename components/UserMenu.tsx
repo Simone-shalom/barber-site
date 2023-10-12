@@ -47,7 +47,7 @@ const UserMenu = ({currentUser, notifications}: UserMenuProps) => {
             </div> 
         </DropdownMenuTrigger>
 
-        <DropdownMenuContent className="cursor-pointer mt-4 md:mt-0 mr-3 md:mr-0">
+        <DropdownMenuContent className="cursor-pointer mt-4 md:mt-0 mr-3 md:mr-0 w-48">
         <>
         {/*If there is logged in user*/}
           {currentUser ? (

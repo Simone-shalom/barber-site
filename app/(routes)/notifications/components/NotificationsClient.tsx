@@ -49,9 +49,9 @@ const NotificationsClient = ({ currentUser, notifications}:
     <Container>
     <Heading title="Notifications" desc="Check your recent notifications" />
 
-    <ScrollArea className="h-[500px] w-full rounded-md border scroll-smooth mt-10 px-5">
-    <div className="pt-7 pb-5 gap-8 grid grid-cols-1 md:grid-cols-2 
-         xl:grid-cols-3 2xl:grid-cols- ">
+    <ScrollArea className="h-[500px] w-full rounded-md border scroll-smooth mt-10  px-3">
+    <div className="py-5 gap-8 grid grid-cols-1 md:grid-cols-2 
+         xl:grid-cols-3 ">
         {notifications.map((notification) => (
           <>
           <PageWrapper key={notification.id}>
