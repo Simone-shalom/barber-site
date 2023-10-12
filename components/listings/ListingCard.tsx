@@ -2,7 +2,6 @@
 
 import Image from "next/image"
 import { useRouter } from "next/navigation"
-import HeartButton from "../HeartButton"
 import { safeListing, safeReservation, safeUser } from "@/types/types"
 import { ADMIN_ID } from "@/permissions"
 import { Button } from "../ui/button"
@@ -67,11 +66,6 @@ const ListingCard = ({data, currentUser, reservation,
             <div className='aspect-video w-full relative overflow-hidden rounded-t-xl'>
                 <Image src={data.imageSrc} alt="Image url" fill  
                     className='object-cover h-full w-full hover:scale-125 transition ease-in duration-300 '/>
-                     { currentUser?.id !== ADMIN_ID && (
-                        <div className='absolute top-3 right-6'>
-                            <HeartButton listingId={data.id} currentUser={currentUser}/>
-                        </div>
-                    )}
             </div>
             <div className="px-3">
             <div className='text-xl font-semibold'>

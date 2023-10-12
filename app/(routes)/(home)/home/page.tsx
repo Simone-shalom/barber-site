@@ -7,8 +7,8 @@ import { Heading } from '@/components/Heading'
 import { HomeAdvert } from '@/components/HomeAdvert'
 import CardSlider from '@/components/animations/cardSlidder'
 import { PageWrapper } from '@/components/animations/pageWrapper'
-import AdvertBlock from '@/components/hero/AdvertBlock'
 import ListingCard from '@/components/listings/ListingCard'
+import { ADMIN_ID } from '@/permissions'
 
 
 interface HomeProps {
@@ -37,7 +37,11 @@ export default async function Home({searchParams}: HomeProps) {
   <Container>
     <PageWrapper>
     <div className='pt-52 '>
-   <HomeAdvert />
+      {currentUser?.id === ADMIN_ID ? (
+        <HomeAdvert admin/>
+      ): (
+        <HomeAdvert />
+      )}
     </div>
     </PageWrapper>
      <div className="pt-8 pb-5 gap-8 grid grid-cols-1 md:grid-cols-2 

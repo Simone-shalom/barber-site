@@ -56,7 +56,6 @@ const UserMenu = ({currentUser, notifications}: UserMenuProps) => {
               {currentUser.id !== ADMIN_ID && (
                 <>
                  <MenuItem label='My Visits' onClick={() => router.push('/visits')}/>
-                  <MenuItem label='My Favourites' onClick={() => router.push('/favourites')} />
                 </>
               )}
               {/* if user is Admin- can create and manage listings/ reservations*/}
@@ -65,7 +64,6 @@ const UserMenu = ({currentUser, notifications}: UserMenuProps) => {
                   <MenuItem label='Notifications' onClick={() => router.push('/notifications')} 
                     alert={hasNotif}/>
                  <MenuItem label='My Reservations' onClick={() => router.push('/myreservations')} />
-                 <MenuItem label='My Listings' onClick={() => router.push('/mylistings')} />
                  <MenuItem label='Create Listing' onClick={()=> router.push('/create')} />
                  <MenuItem label='Admin Panel' onClick={()=> router.push('/panel')} />
                 </div>

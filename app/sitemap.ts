@@ -13,7 +13,7 @@ export default async function sitemap() {
     }) ?? []
 
     const pages = [
-        'visits', 'favourites', 'notifications', 'create', 'myreservations',
+        'visits', 'notifications', 'create', 'myreservations',
          'mylisintgs', 'panel' 
     ]
     const pagesUrls = pages.map((page) => {
