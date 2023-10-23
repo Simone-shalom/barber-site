@@ -49,6 +49,7 @@
     "react-hot-toast": "^2.4.1",
     "react-query": "^3.39.3",
     "rsuite": "^5.38.0",
+    "stripe": "^14.1.0",
     "tailwind-merge": "^1.14.0",
     "tailwindcss": "3.3.3",
     "tailwindcss-animate": "^1.0.6",
