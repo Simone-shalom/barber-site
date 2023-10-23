@@ -62,13 +62,15 @@ const VisitClient =  ({reservations ,currentUser}: VisitClientProps) => {
 
     try{
       const response = await axios.post(`/api/checkout/${id}`)
-      
+
       window.location.assign(response.data.url)
 
     }catch(err){
       toast.error('Checkout unavailable')
     }
-
+    finally {
+      router.refresh()
+    }
   }
 
   return (
