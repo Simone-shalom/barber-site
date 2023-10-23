@@ -18,7 +18,7 @@ interface VisitClientProps {
     currentUser?: safeUser | null
 }
 
-const VisitClient = ({reservations ,currentUser}: VisitClientProps) => {
+const VisitClient =  ({reservations ,currentUser}: VisitClientProps) => {
 
   const [mounted, setMounted] = useState(false)
 
@@ -58,6 +58,19 @@ const VisitClient = ({reservations ,currentUser}: VisitClientProps) => {
 
   })
 
+  const onPay = async (id:string) =>{
+
+    try{
+      const response = await axios.post(`/api/checkout/${id}`)
+
+      window.location.assign(response.data.url)
+
+    }catch(err){
+      toast.error('Checkout unavailable')
+    }
+
+  }
+
   return (
  
      <Container>
@@ -68,7 +81,7 @@ const VisitClient = ({reservations ,currentUser}: VisitClientProps) => {
             <PageWrapper key={reservation.id}>
             <div key={reservation.id}>
               <ListingCard reservation={reservation} data={reservation.listing}
-               actionId={reservation.id} onAction={onCancel} 
+               actionId={reservation.id} onAction={onCancel} onPay={onPay}
                currentUser={currentUser} actionLabel="Cancel Reservation"
                />
             </div>

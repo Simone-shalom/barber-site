@@ -17,6 +17,7 @@ interface ListingCardProps {
     currentUser?: safeUser | null
     reservation?: safeReservation
     onAction?: (id: string) => void
+    onPay?: (id: string) => void
     disabled?: boolean
     actionLabel?: string
     actionId?: string
@@ -24,7 +25,7 @@ interface ListingCardProps {
 }
 
 const ListingCard = ({data, currentUser, reservation,
-     onAction, disabled, actionLabel, actionId='', admin}:
+     onAction, disabled, actionLabel, actionId='', admin, onPay}:
     ListingCardProps) => {
 
     const router = useRouter()
@@ -54,7 +55,7 @@ const ListingCard = ({data, currentUser, reservation,
     const payNow =((e:
         React.MouseEvent<HTMLButtonElement>) => {
             e.stopPropagation()
-        toast.error('payments available soon')
+            onPay?.(actionId)
     })
 
 
