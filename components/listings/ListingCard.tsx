@@ -9,7 +9,8 @@ import { useCallback, useMemo } from "react"
 import { format } from "date-fns"
 import { toast } from "react-hot-toast"
 import { Card } from "../ui/card"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, Check } from "lucide-react"
+import { Payment } from "@prisma/client"
 
 
 interface ListingCardProps {
@@ -22,10 +23,11 @@ interface ListingCardProps {
     actionLabel?: string
     actionId?: string
     admin?: boolean
+    purchase?: Payment
 }
 
 const ListingCard = ({data, currentUser, reservation,
-     onAction, disabled, actionLabel, actionId='', admin, onPay}:
+     onAction, disabled, actionLabel, actionId='', admin, onPay, purchase}:
     ListingCardProps) => {
 
     const router = useRouter()
@@ -58,6 +60,11 @@ const ListingCard = ({data, currentUser, reservation,
             onPay?.(actionId)
     })
 
+    const isPurchased = (purchase: any) => {
+        return purchase.length === 0;
+      };
+
+console.log(purchase)
 
   return (
     <div
@@ -106,16 +113,28 @@ const ListingCard = ({data, currentUser, reservation,
                         </Button>
                     ): (
                         <div className="flex flex-col space-y-2">
-                            <Button 
-                                variant='cancel'
-                                disabled={disabled}  onClick={handleCancel}>
-                                {actionLabel}  
-                            </Button>
-                            <Button 
-                                variant='outline'
-                                disabled={disabled} onClick={payNow}>
-                                Pay now  
-                            </Button>
+                             {isPurchased(purchase) ? (
+                                 <div className="flex flex-col">
+                                 <Button 
+                                     variant='cancel'
+                                     disabled={disabled}  onClick={handleCancel}>
+                                     {actionLabel}  
+                                </Button>
+
+                                <Button 
+                                     variant='default'
+                                     disabled={disabled} onClick={payNow}>
+                                     Pay now  
+                                 </Button>
+                             </div>
+                            ): (
+                              <div className="flex items-center justify-center space-x-3 pt-1">
+                              <p className="text-lg font-semibold py-6 text-center items-center">
+                              Already Paid  
+                              </p>
+                          <Check />
+                          </div>
+                            )}
                         </div>
                       
                     )}

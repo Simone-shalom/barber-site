@@ -83,7 +83,7 @@ const VisitClient =  ({reservations ,currentUser}: VisitClientProps) => {
             <PageWrapper key={reservation.id}>
             <div key={reservation.id}>
               <ListingCard reservation={reservation} data={reservation.listing}
-               actionId={reservation.id} onAction={onCancel} onPay={onPay}
+               actionId={reservation.id} onAction={onCancel} onPay={onPay} purchase={reservation.purchases}
                currentUser={currentUser} actionLabel="Cancel Reservation"
                />
             </div>

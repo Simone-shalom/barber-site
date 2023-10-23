@@ -12,6 +12,8 @@ const VisitsPage = async() => {
     //get reservations only for current user
     const reservations = await getReservations({userId: currentUser?.id})
 
+    console.log(reservations)
+
 
     if (!currentUser) {
       return (
