@@ -71,6 +71,8 @@ model Reservation {
   userId String @db.ObjectId
   listingId String @db.ObjectId
 
+  purchases Payment[]
+
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   listing Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
 
@@ -87,4 +89,27 @@ model Notification {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
+}
+
+model Payment {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  userId String
+
+  reservationId String @db.ObjectId
+  reservation Reservation @relation(fields: [reservationId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt()
+
+  @@unique([userId, reservationId])
+  @@index([reservationId])
+}
+
+model StripeCustomer {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  userId String @unique
+  stripeCustomerId String @unique
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
