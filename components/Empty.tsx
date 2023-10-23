@@ -26,7 +26,7 @@ const Empty = ({title, desc, login, home, create} : EmptyProps) => {
         </div>
         <div className="pt-5 space-x-2">
             {home && (
-                 <Link href='/'>
+                 <Link href='/home'>
                     <Button>
                         Home 
                     </Button>

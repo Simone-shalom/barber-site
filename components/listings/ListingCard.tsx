@@ -64,7 +64,7 @@ const ListingCard = ({data, currentUser, reservation,
         onClick={()=> router.push(`/listings/${data.id}`)}
         className='col-span-1 cursor-pointer'>
         <Card className='flex flex-col gap-2 w-full rounded-b-lg pb-2'>
-            <div className='aspect-video w-full relative overflow-hidden rounded-t-xl'>
+            <div className='aspect-video w-full relative overflow-hidden rounded-t-lg'>
                 <Image src={data.imageSrc} alt="Image url" fill  
                     className='object-cover h-full w-full hover:scale-125 transition ease-in duration-300 '/>
             </div>
