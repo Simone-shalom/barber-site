@@ -64,7 +64,6 @@ const ListingCard = ({data, currentUser, reservation,
         return purchase.length === 0;
       };
 
-console.log(purchase)
 
   return (
     <div
