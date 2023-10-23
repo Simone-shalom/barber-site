@@ -19,6 +19,9 @@ export async function POST(
     const reservation = await prismadb.reservation.findUnique({
       where: {
         id: params.reservationId,
+      },
+      include: {
+        listing: true
       }
     });
 
@@ -45,7 +48,7 @@ export async function POST(
         price_data: {
           currency: "USD",
           product_data: {
-            name: reservation.id,
+            name: reservation.listing.title
           },
           unit_amount: Math.round(reservation.price! * 100),
         }
@@ -78,8 +81,8 @@ export async function POST(
       customer: stripeCustomer.stripeCustomerId,
       line_items,
       mode: 'payment',
-      success_url: `${process.env.NEXT_PUBLIC_APP_URL}/visits/?success=1`,
-      cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/visits/?canceled=1`,
+      success_url: `${process.env.NEXT_PUBLIC_APP_URL}/visits?success=1`,
+      cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/visits?canceled=1`,
       metadata: {
         reservationId: reservation.id,
         userId: user.id,
