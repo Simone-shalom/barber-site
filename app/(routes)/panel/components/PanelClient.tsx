@@ -3,6 +3,7 @@
 import Container from "@/components/Container"
 import { CurvyLine } from "@/components/CurvyLine"
 import { Heading } from "@/components/Heading"
+import { PanelPayments } from "@/components/PanelPayments"
 import Statistics from "@/components/Statistics"
 import { PageWrapper } from "@/components/animations/pageWrapper"
 import { HeroImage } from "@/components/hero/HeroImage"
@@ -123,20 +124,7 @@ const currentDayName = `${current.getDate()}/${current.getMonth()+1}/${current.g
           <Card className="px-2  py-2 border-black/5
                 hover:shadow-2xl shadow-xl  transition cursor-pointer w-full">
             <CardContent className="space-y-10">
-              <h1 className="text-3xl font-semibold py-3 text-center">
-                Payments
-              </h1>
-              <h2 className="text-muted-foreground text-2xl">
-                Coming soon ...
-              </h2>
-              <section className="w-full relative ">
-            <div className="z-20 flex items-center justify-center">
-            <HeroImage src={'/images/jeppe-monster-T_gTN3Po9RQ-unsplash.jpg'} width={250} />
-            </div>
-            <div className="absolute z-30 bottom-0 lg:-bottom-10 ">
-                <ScoreBox title="Visits" desc="Create reservation anytime anyday " icon={CalendarCheck} action/>
-            </div>
-        </section>
+              <PanelPayments />
             </CardContent>
           </Card>
     </div>
