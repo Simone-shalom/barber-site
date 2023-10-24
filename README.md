@@ -17,6 +17,7 @@
  - [Vercel](https://vercel.com/) – hosting
  - [Zustand](https://zustand-demo.pmnd.rs/) - state manager
  - [Framer-Motion](https://www.framer.com/motion/) - animations
+ - [Stripe](https://stripe.com/) - Payments
  - [Jest](https://jestjs.io/) - unit testing *in future
 
 
@@ -67,7 +68,7 @@
  - Forms using Zod
  - Uploading images with next-cloudinary
  - Testing with Jest *in future
- - Payments(paddle.js)-* in future
+ - Payments using stripe payments and webhooks
 
 
 ## Credentials :
