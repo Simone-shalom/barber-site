@@ -1,7 +1,7 @@
 'use client'
 
 import { safeUser } from "@/types/types"
-import { BanknoteIcon, HomeIcon, Pencil } from "lucide-react"
+import { BanknoteIcon, HomeIcon, Palmtree, Pencil } from "lucide-react"
 import Image from "next/image"
 import { Button } from "./ui/button"
 import { useRouter } from "next/navigation"
@@ -56,7 +56,7 @@ const Statistics = ({totalIncome, allUsers, reservationsCount,
                   Today is <span className="font-semibold text-xl ml-1">{currentDayName}</span>
                 </h1>
                 <div className="pt-2">
-                    {takenTimes ? (
+                    {takenTimes&& takenTimes.length > 0 ? (
                       <div>
                         <h1 className="text-xl font-semibold pb-1">
                             Reservation times today:
@@ -72,9 +72,12 @@ const Statistics = ({totalIncome, allUsers, reservationsCount,
                         </div>
                       </div>
                     ): (
-                        <h1 className="text-xl font-semibold pb-1">
+                      <div className="flex items-center  space-x-2">
+                        <h1 className="text-xl  font-semibold pb-1">
                             No reservations Today
                         </h1>
+                        <Palmtree size={32}/>
+                      </div>
                     )}
                    
                 </div>
