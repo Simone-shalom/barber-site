@@ -49,7 +49,7 @@ const ReservationClient = ({reservations, currentUser}:
           <PageWrapper key={reservation.id}>
           <div key={reservation.id}>
             <ListingCard reservation={reservation} data={reservation.listing}
-             actionId={reservation.id} onAction={onCancel} 
+             actionId={reservation.id} onAction={onCancel} purchase={reservation.purchases}
              currentUser={currentUser} actionLabel="Remove reservation" admin
              />
           </div>

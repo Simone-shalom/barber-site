@@ -60,8 +60,8 @@ const ListingCard = ({data, currentUser, reservation,
             onPay?.(actionId)
     })
 
-    const isPurchased = (purchase: any) => {
-        return purchase.length === 0;
+      const isPurchased = (purchase: any) => {
+        return purchase && purchase.length === 0;
       };
 
 
@@ -106,10 +106,26 @@ const ListingCard = ({data, currentUser, reservation,
                         </div>
                     )}
                     {currentUser?.id === ADMIN_ID ? (
-                        <Button
-                            disabled={disabled}  onClick={handleCancel}>
-                            {actionLabel}  
-                        </Button>
+                        // <Button
+                        //     disabled={disabled}  onClick={handleCancel}>
+                        //     {actionLabel}  
+                        // </Button>
+                        <div className="flex flex-col">
+                        {isPurchased(purchase) ? (
+                            <Button 
+                                variant='cancel'
+                                disabled={disabled}  onClick={handleCancel}>
+                                {actionLabel}  
+                           </Button>
+                       ): (
+                         <div className="flex items-center justify-center space-x-3 pt-1">
+                            <p className="text-sm text-muted-foreground py-2 font-semibold  text-center items-center">
+                            Already Paid by <span className=" text-black">{reservation?.userName}  </span> 
+                            </p>
+                            <Check />
+                         </div>
+                       )}
+                        </div>
                     ): (
                         <div className="flex flex-col space-y-2">
                              {isPurchased(purchase) ? (
