@@ -12,7 +12,7 @@ import {useForm } from "react-hook-form"
 import * as z from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { FormControl,Form,  FormField, FormItem,
-   FormLabel, FormMessage } from "../ui/form"
+   FormLabel, FormMessage, FormDescription } from "../ui/form"
 import axios from 'axios'
 import { useRouter } from "next/navigation"
 import { toast } from "react-hot-toast"
@@ -96,6 +96,13 @@ const LoginModal = () => {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
+                      <FormLabel>Test credentials</FormLabel>
+                       <FormDescription className="text-lg">
+                     user-simon@gmail.com / simon1234
+                      </FormDescription>
+                      <FormDescription className="text-lg">
+                     admin-admin@gmail.com / admin1234
+                      </FormDescription>
                       <FormLabel>Email</FormLabel>
                       <FormControl>
                         <Input placeholder="simon@gmail.com" {...field} />
