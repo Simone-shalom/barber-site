@@ -10,7 +10,8 @@ import { HeroImage } from "@/components/hero/HeroImage"
 import { ScoreBox } from "@/components/hero/ScoreBox"
 import ListingCard from "@/components/listings/ListingCard"
 import { Card, CardContent } from "@/components/ui/card"
-import { safePastReservation, safeReservation, safeUser } from "@/types/types"
+import {PurchasedItem, safePastReservation, safeReservation, safeUser } from "@/types/types"
+import { Payment, Reservation } from "@prisma/client"
 import axios from "axios"
 import { CalendarCheck } from "lucide-react"
 import { useRouter } from "next/navigation"
@@ -24,10 +25,11 @@ interface PanelClientProps {
     newestReservation: safeReservation | null
     allUsers: number
     reservations: safeReservation[]
+    purchased: PurchasedItem[]
 }
 
 const PanelClient = ({ currentUser, reservationsCount,
-     pastReservations, newestReservation, allUsers, reservations }:
+     pastReservations, newestReservation, allUsers, reservations, purchased }:
      PanelClientProps) => {
 
       
@@ -123,8 +125,8 @@ const currentDayName = `${current.getDate()}/${current.getMonth()+1}/${current.g
 
           <Card className="px-2  py-2 border-black/5
                 hover:shadow-2xl shadow-xl  transition cursor-pointer w-full">
-            <CardContent className="space-y-10">
-              <PanelPayments />
+            <CardContent className="space-y-5">
+              <PanelPayments purchased={purchased}/>
             </CardContent>
           </Card>
     </div>

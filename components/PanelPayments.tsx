@@ -3,9 +3,15 @@ import { HeroImage } from "./hero/HeroImage"
 import { ScoreBox } from "./hero/ScoreBox"
 import Link from "next/link"
 import { Url } from "next/dist/shared/lib/router/router"
+import { PurchasedItem } from "@/types/types"
 
+interface PanelPaymentsProps {
+    purchased: PurchasedItem[]
+}
 
-export const PanelPayments = () => {
+export const PanelPayments = ({purchased}: PanelPaymentsProps) => {
+
+    console.log(purchased)
 
     const stripeLink = process.env.PRODUCTION === 'true'
         ? process.env.STRIPE_ACCOUNT_LINK as Url
@@ -23,6 +29,14 @@ export const PanelPayments = () => {
         <Link href={stripeLink} className="text-xl" target="_blank">
             Stripe
         </Link>
+        </div>
+        <div className="flex pb-3 items-center justify-center">
+            <h1>
+                All paid visits
+            </h1>
+            <p>
+                {}
+            </p>
         </div>
         <section className="w-full relative ">
             <div className="z-20 flex items-center justify-center">
