@@ -6,6 +6,7 @@ import PanelClient from "./components/PanelClient"
 import prismadb from "@/lib/prismadb"
 import getReservations from "@/actions/get-reservations"
 import getPastReservations from "@/actions/get-past-reservations"
+import getPurchased from "@/actions/get-all-purchased"
 
 
 const PanelPage = async() => {
@@ -20,6 +21,8 @@ const PanelPage = async() => {
     const pastReservations = await getPastReservations()
 
     const allUsers = await prismadb.user.count()
+
+    const purchased = await getPurchased()
 
     if(currentUser?.id !==ADMIN_ID) {
       redirect('/')
@@ -48,6 +51,7 @@ const PanelPage = async() => {
         reservationsCount={reservationsCount}
         pastReservations={pastReservations}
         newestReservation={newestReservation}
+        purchased={purchased}
          allUsers={allUsers} reservations={reservations}/>
     </div>
   )
