@@ -1,4 +1,4 @@
-import { CalendarCheck } from "lucide-react"
+import { CalendarCheck, DollarSign } from "lucide-react"
 import { HeroImage } from "./hero/HeroImage"
 import { ScoreBox } from "./hero/ScoreBox"
 import Link from "next/link"
@@ -11,7 +11,8 @@ interface PanelPaymentsProps {
 
 export const PanelPayments = ({purchased}: PanelPaymentsProps) => {
 
-    console.log(purchased)
+    // Calculate the total of all prices
+const totalPaid = purchased.reduce((total, item) => total + item.reservation.price, 0);
 
     const stripeLink = process.env.PRODUCTION === 'true'
         ? process.env.STRIPE_ACCOUNT_LINK as Url
@@ -30,12 +31,13 @@ export const PanelPayments = ({purchased}: PanelPaymentsProps) => {
             Stripe
         </Link>
         </div>
-        <div className="flex pb-3 items-center justify-center">
-            <h1>
-                All paid visits
+        <div className="flex pb-3 items-center justify-center space-x-3">
+            <h1 className="text-lg text-muted-foreground">
+                All paid visits with stripe
             </h1>
-            <p>
-                {}
+            <p className="text-lg flex font-bold">
+            {totalPaid}
+            <DollarSign />
             </p>
         </div>
         <section className="w-full relative ">
