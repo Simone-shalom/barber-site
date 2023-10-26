@@ -3,12 +3,12 @@ import getCurrentUser from '@/actions/get-current-user'
 import getListings, { getListingsParams } from '@/actions/get-listing'
 import Container from '@/components/Container'
 import Empty from '@/components/Empty'
-import { Heading } from '@/components/Heading'
 import { HomeAdvert } from '@/components/HomeAdvert'
 import CardSlider from '@/components/animations/cardSlidder'
 import { PageWrapper } from '@/components/animations/pageWrapper'
 import ListingCard from '@/components/listings/ListingCard'
 import { ADMIN_ID } from '@/permissions'
+import { safeListing } from '@/types/types'
 
 
 interface HomeProps {
@@ -46,7 +46,7 @@ export default async function Home({searchParams}: HomeProps) {
     </PageWrapper>
      <div className="pt-8 pb-5 gap-8 grid grid-cols-1 md:grid-cols-2 
           lg:grid-cols-3 2xl:grid-cols-4">
-          {listings.map((listing, index) => (
+          {listings.map((listing: safeListing, index: number) => (
             <CardSlider index={index} key={listing.id}>
            <ListingCard data={listing} key={listing.id} currentUser={currentUser}/>
            </CardSlider>
