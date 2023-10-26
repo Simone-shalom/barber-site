@@ -1,11 +1,12 @@
 import getListings from "@/actions/get-listing"
+import { safeListing } from "@/types/types"
 
 export default async function sitemap() {
 
     const baseUrl = 'http://barber-site.vercel.app'
 
     const listings = await getListings({})
-    const listingUrls = listings.map((listing) =>{
+    const listingUrls = listings.map((listing:safeListing) =>{
         return {
             url: `${baseUrl}/listings/${listing.id}`,
             lastModified: new Date()
