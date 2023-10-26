@@ -60,6 +60,7 @@
 ## Implementation:
  - Authentication using nextAuth
  - Rate limiting using upstash/redis
+ - Caching api data using redis
  - Handling client/user functionalities
  - Prisma as ORM for db
  - Responsive design
@@ -67,8 +68,8 @@
  - Managing global states with zustand
  - Forms using Zod
  - Uploading images with next-cloudinary
- - Testing with Jest *in future
  - Payments using stripe payments and webhooks
+ - Testing with Jest *in future
 
 
 ## Credentials :
