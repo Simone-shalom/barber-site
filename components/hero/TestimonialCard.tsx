@@ -15,7 +15,7 @@ const TestimonialCard = ({title, name, src}: TestimonialCardProps) => {
         {/* Image */}
         <div className="flex items-center justify-center">
         <Avatar>
-            <AvatarImage src={src}/>
+            <AvatarImage src={src} alt="Testimonial User image"/>
         </Avatar>
 
         </div>
