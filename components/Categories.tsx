@@ -1,6 +1,6 @@
 'use client'
 
-import { PocketKnife, Ruler, Scissors, ScissorsLineDashed, SendHorizontal } from "lucide-react"
+import { PocketKnife, Ruler, Scissors, ScissorsLineDashed} from "lucide-react"
 import Container from "./Container"
 import CategoryBox from "./CategoryBox"
 import { usePathname, useSearchParams } from "next/navigation"

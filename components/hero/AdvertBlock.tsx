@@ -10,9 +10,6 @@ const AdvertBlock = () => {
        <div className="flex flex-col items-center justify-center text-white font-serif px-5 py-2 ">
         <HeroHeading title="Experience Exceptional Services and Beyond: Your Ultimate Barber App" desc="" href="/home"/>
         </div>
-        {/* <div className="absolute right-10">
-        <Logo />
-        </div> */}
     </div>
     </div>
   )

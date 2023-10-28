@@ -16,7 +16,6 @@ interface NotificationInfoProps {
 const NotificationInfo = ({notifications}:
      NotificationInfoProps) => {
 
-        const [isLoading, setIsLoading]= useState(false)
         const [mounted, setMounted]= useState(false)
         const [isNotificationOpen, setIsNotificationOpen] = useState(false)
         const router = useRouter()

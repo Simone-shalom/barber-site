@@ -1,6 +1,6 @@
-import Image from "next/image"
+
 import { Card } from "../ui/card"
-import { BarChartIcon, LucideIcon } from "lucide-react"
+import { LucideIcon } from "lucide-react"
 
 interface ScoreBoxprops {
   icon: LucideIcon

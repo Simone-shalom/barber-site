@@ -2,7 +2,6 @@
 
 import { safeUser } from "@/types/types"
 import { BanknoteIcon, HomeIcon, Palmtree, Pencil } from "lucide-react"
-import Image from "next/image"
 import { Button } from "./ui/button"
 import { useRouter } from "next/navigation"
 

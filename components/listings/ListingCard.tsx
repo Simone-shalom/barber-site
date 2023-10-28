@@ -7,7 +7,6 @@ import { ADMIN_ID } from "@/permissions"
 import { Button } from "../ui/button"
 import { useCallback, useMemo } from "react"
 import { format } from "date-fns"
-import { toast } from "react-hot-toast"
 import { Card } from "../ui/card"
 import { ArrowRight, Check } from "lucide-react"
 import { Payment } from "@prisma/client"
@@ -106,10 +105,6 @@ const ListingCard = ({data, currentUser, reservation,
                         </div>
                     )}
                     {currentUser?.id === ADMIN_ID ? (
-                        // <Button
-                        //     disabled={disabled}  onClick={handleCancel}>
-                        //     {actionLabel}  
-                        // </Button>
                         <div className="flex flex-col">
                         {isPurchased(purchase) ? (
                             <Button 

@@ -40,7 +40,7 @@ const UserMenu = ({currentUser, notifications}: UserMenuProps) => {
       <DropdownMenu>
         <DropdownMenuTrigger className="flex items-center justify-center space-x-3
              focus:outline-none px-3 py-2 hover:shadow-lg rounded-xl 
-             border-[1px] transition font-semibold">
+             border-[1px] transition font-semibold" aria-label="button">
             <MenuIcon size={20}/>
             <div>
               <p className="text-lg">{currentUser?.name}</p>

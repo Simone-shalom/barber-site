@@ -1,4 +1,4 @@
-import { Brain, CalendarCheck } from "lucide-react"
+import { CalendarCheck } from "lucide-react"
 import HeroHeading from "./HeroHeading"
 import { HeroImage } from "./HeroImage"
 import { ScoreBox } from "./ScoreBox"

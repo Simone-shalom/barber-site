@@ -17,9 +17,6 @@ export const HomeAdvert = ({admin}: HomeAdvertProps) => {
           <HeroHeading title="Create Your first reservation" desc='' href="/home" testimonials/>
         )}
         </div>
-        {/* <div className="absolute right-10">
-        <Logo />
-        </div> */}
     </div>
     </div>
   )

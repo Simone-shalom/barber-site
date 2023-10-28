@@ -1,7 +1,6 @@
 import { ScissorsSquareDashedBottom } from "lucide-react"
 import HeroHeading from "./HeroHeading"
 import { HeroIcon } from "./HeroIcon"
-import RoundedBlock from "./RoundedBlock"
 import ScrollSlider from "../animations/scrollSlider"
 
 
