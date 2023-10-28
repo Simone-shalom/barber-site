@@ -1,4 +1,21 @@
-import { Listing, User, Reservation, Notification, Payment } from "@prisma/client";
+import { Listing, User, Reservation, Notification } from "@prisma/client";
+
+export type PurchasedItem = {
+    createdAt: string;
+    updatedAt: string;
+    reservation: {
+      createdAt: string;
+      date: string;
+      id: string;
+      price: number;
+      userName: string | null;
+      userId: string;
+      listingId: string;
+    };
+    id: string;
+    userId: string;
+    reservationId: string;
+  };
 
 export type safeUser = Omit<
 User, 
@@ -35,19 +52,4 @@ Reservation,
     date: string
 }
 
- export type PurchasedItem = {
-    createdAt: string;
-    updatedAt: string;
-    reservation: {
-      createdAt: string;
-      date: string;
-      id: string;
-      price: number;
-      userName: string | null;
-      userId: string;
-      listingId: string;
-    };
-    id: string;
-    userId: string;
-    reservationId: string;
-  };
+ 

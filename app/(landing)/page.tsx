@@ -15,11 +15,6 @@ export const dynamic = 'force-dynamic'
 
 export default async function Landing() {
 
-  const currentUser = await getCurrentUser()
-
-
-
-
   return (
   <Container>
     <PageWrapper>
