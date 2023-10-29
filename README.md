@@ -38,7 +38,7 @@
 
 ### Admin panel
   Allowes admin to remove incoming reservation, check for free hours for relevant day and see statistics 
-<img width="1275" alt="image" src="https://github.com/Simone-shalom/barber-site/assets/117103936/88a7e899-b11e-47e5-b315-4d0233e4a26e">
+<img width="1274" alt="image" src="https://github.com/Simone-shalom/barber-site/assets/117103936/0629067a-673e-46d5-89d0-9d578a21ddcc">
 
 
 ### Managing reservations
@@ -68,6 +68,7 @@
  - Managing global states with zustand
  - Forms using Zod
  - Uploading images with next-cloudinary
+ - Seo optimization using nextjs features
  - Payments using stripe payments and webhooks
  - Testing with Jest *in future
 
