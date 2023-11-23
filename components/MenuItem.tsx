@@ -16,7 +16,7 @@ const MenuItem: React.FC<MenuItemProps> = ({onClick, label, alert}) => {
         {label}
         {alert && (
           <div className="flex pl-2 animate-pulse duration-1000">
-            <AlertCircle />
+            <AlertCircle data-testid='alert-icon'/>
           </div>
         )}
     </div>
