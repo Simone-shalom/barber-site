@@ -10,6 +10,7 @@ import ListingCard from '@/components/listings/ListingCard'
 import { ADMIN_ID } from '@/permissions'
 import { safeListing } from '@/types/types'
 
+export const dynamic = 'force-dynamic'
 
 interface HomeProps {
   searchParams: getListingsParams
