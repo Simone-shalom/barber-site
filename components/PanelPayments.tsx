@@ -27,7 +27,9 @@ const totalPaid = purchased.reduce((total, item) => total + item.reservation.pri
         <h2 className="text-muted-foreground text-center text-xl">
             Link to Stripe account in production 
         </h2>
-        <Link href={stripeLink} className="text-xl" target="_blank">
+        <Link 
+            data-testid="stripe-link"
+            href={stripeLink} className="text-xl" target="_blank">
             Stripe
         </Link>
         </div>
