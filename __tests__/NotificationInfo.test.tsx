@@ -4,6 +4,12 @@ import '@testing-library/jest-dom/extend-expect'; // for additional matchers
 import NotificationInfo from '@/components/NotificationInfo';
 import { safeNotification } from '@/types/types';
 
+
+jest.mock('next/navigation', () => ({
+  useRouter: jest.fn(),
+}));
+
+
 describe('NotificationInfo component', () => {
   const notifications:safeNotification[] = [
     {
@@ -43,9 +49,11 @@ describe('NotificationInfo component', () => {
   });
 
   it('triggers "Check notifications" button click', () => {
-    const pushMock = jest.fn();
-    const useRouterMock = { push: pushMock };
-    jest.spyOn(require('next/router'), 'useRouter').mockImplementation(() => useRouterMock);
+    const useRouterMock = jest.requireMock('next/navigation').useRouter;
+            const pushMock = jest.fn();
+            useRouterMock.mockReturnValue({
+              push: pushMock,
+            });
 
     render(<NotificationInfo notifications={notifications} />);
 
@@ -57,6 +65,11 @@ describe('NotificationInfo component', () => {
   });
 
   it('triggers close button click', () => {
+    const useRouterMock = jest.requireMock('next/navigation').useRouter;
+    const pushMock = jest.fn();
+    useRouterMock.mockReturnValue({
+      push: pushMock,
+    });
     render(<NotificationInfo notifications={notifications} />);
 
     // Click the close button

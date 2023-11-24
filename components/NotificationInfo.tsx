@@ -64,7 +64,8 @@ const NotificationInfo = ({notifications}:
                             className="mt-5">
                             Check notifications
                         </Button>
-                        <XIcon 
+                        <XIcon
+                            data-testid='close-button' 
                             onClick={onClose}
                             className="absolute top-2 right-2 cursor-pointer 
                             hover:scale-110"
