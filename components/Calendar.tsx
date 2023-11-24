@@ -84,7 +84,7 @@ const times = getTimes()
                     <p className='text-2xl px-4 text-center'>
                      No Times available that day
                     </p>
-                    <Button 
+                    <Button
                         onClick={removeDate}
                         variant='secondary' className='bg-gray-200 text-lg font-semibold'>
                         Remove Date <CalendarCheck className='ml-3'/>
@@ -110,6 +110,7 @@ const times = getTimes()
             </div>
         ) :(
             <ReactCalendar
+            data-testid='calendar'
             tileDisabled={tileDisabled}
                 minDate={new Date()} view='month'
                 onClickDay={(date) => setDate((prev)=> ({...prev, justDate: date}))}/>
