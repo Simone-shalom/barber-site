@@ -3,7 +3,7 @@
 import { LucideIcon } from "lucide-react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { useCallback } from "react"
-import qs from 'query-string'
+import qs from 'query-string';
 
 
 interface CategoryBoxProps{
@@ -55,7 +55,9 @@ const CategoryBox = ({label, icon:Icon, description, selected }:
         hover:text-neutral-800 transition cursor-pointer h-[80px]
         ${selected ? 'border-b-neutral-800' : 'border-transparent'}
         ${selected? 'text-neutral-800' : 'text-neutral-500'} `}>
-        <Icon size={24}/>
+        <Icon 
+            data-testid='test-icon'
+            size={24}/>
         <div className='font-medium text-sm'>
             {label}
         </div>
