@@ -22,8 +22,8 @@ jest.mock('next-auth/react', () => ({
   signOut: jest.fn(),
 }));
 
-jest.mock('../hooks/use-login-modal', () => ({
-    ...jest.requireActual('../hooks/use-login-modal'),
+jest.mock('../../hooks/use-login-modal', () => ({
+    ...jest.requireActual('../../hooks/use-login-modal'),
     useLoginModal: jest.fn(),
   }));
 
