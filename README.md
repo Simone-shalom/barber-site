@@ -4,7 +4,7 @@
 
 
 ## Introduction
-### Modern reservation app with client/admin roles to create and manage your customers
+### Modern fullstack reservation app with client/admin roles to create and manage your customers
 
 ## Tech Stack: 
  - [Next.js](https://nextjs.org/) – framework
@@ -59,6 +59,7 @@
 
 ## Implementation:
  - Authentication using nextAuth
+ - Created API's using REST 
  - Rate limiting using upstash/redis
  - Caching api data using redis
  - Handling client/user functionalities
