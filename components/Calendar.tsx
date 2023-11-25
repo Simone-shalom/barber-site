@@ -76,7 +76,9 @@ const times = getTimes()
   }
 
   return (
-    <div className='flex justify-center items-center pt-2'>
+    <div 
+        data-testid='calendar-container'
+        className='flex justify-center items-center pt-2'>
         {date.justDate ? (
             <div className='flex gap-4  overflow-x-auto p-3  rounded-xl  '>
                 {times && times.length === 0 ? (
@@ -100,7 +102,8 @@ const times = getTimes()
                                 className=' focus:bg-gray-300 p-2 rounded-md' 
                                 onClick={() => setDate((prev) => ({
                                     ...prev, dateTime:time
-                            }))}>
+                            }))} 
+                            >
                                 {format(time, 'kk')}:00
                             </button>
                         </div>
