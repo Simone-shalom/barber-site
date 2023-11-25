@@ -71,7 +71,9 @@ const CreateListingForm = () => {
 
   return (
     (
-        <div className='flex gap-2 sm:flex-col lg:flex-row w-full lg:space-x-5 
+        <div 
+        data-testid='create-listing-form'    
+        className='flex gap-2 sm:flex-col lg:flex-row w-full lg:space-x-5 
             xl:space-x-10 md:h-full z-10 pt-32 xl:px-10'>
             <Card className='px-5 md:px-10 lg:px-20 lg:w-1/2 py-2 border-black/5
                 hover:shadow-2xl shadow-xl  transition cursor-pointer w-full flex-col'>
