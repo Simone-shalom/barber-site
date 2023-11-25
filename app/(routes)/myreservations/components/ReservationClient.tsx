@@ -11,7 +11,7 @@ import { useState } from "react"
 import { toast } from "react-hot-toast"
 
 interface ReservationClientProps {
-    reservations: safeReservation[]
+    reservations: any[]
     currentUser: safeUser
 }
 

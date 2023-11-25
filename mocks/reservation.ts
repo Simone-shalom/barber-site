@@ -25,3 +25,31 @@ export const mockReservation: safeReservation[] | undefined = [
     },
     // Add more mock reservations as needed
   ];
+
+  export const mockReservationsPurchase = [
+    {
+      id: 'reservation1',
+      createdAt: '2023-11-20T12:00:00Z',
+      date: '2023-12-01T01:00:00Z',
+      listing: {
+        createdAt: '2023-11-15T10:00:00Z',
+        id: 'listing1',
+        title: 'Mock Listing 1',
+        description: 'Mock Description 1',
+        imageSrc: '/mock-image.jpg',
+        category: 'Mock Category 1',
+        price: 50,
+        userId: 'user1',
+      },
+      purchases: [
+        {
+          id: 'purchase1',
+          userId: 'user1',
+          reservationId: 'reservation1',
+          createdAt: new Date('2023-11-25T08:00:00Z'),
+          updatedAt: new Date('2023-11-25T08:00:00Z'),
+        },
+      ],
+    },
+    // ... other reservations
+  ];

@@ -1,14 +1,13 @@
 import React from 'react';
-import { render, screen, fireEvent, waitFor, within } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import axios from 'axios';
 import { useLoginModal } from '@/hooks/use-login-modal';
 import { useRouter } from 'next/navigation';
-import ListingSingle, { Datetype } from '@/app/(routes)/(listing)/listings/[listingId]/components/ListingSingle';
+import ListingSingle from '@/app/(routes)/(listing)/listings/[listingId]/components/ListingSingle';
 
 import { mockCurrentUser } from '../../mocks/currentUser';
 import { mockListing } from '../../mocks/listing';
 import { mockReservation } from '../../mocks/reservation';
-import Calendar from '@/components/Calendar';
 
 // Mocking external dependencies
 jest.mock('axios');
