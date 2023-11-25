@@ -56,6 +56,12 @@
 <img width="1266" alt="image" src="https://github.com/Simone-shalom/barber-site/assets/117103936/f24895d7-a53f-4e94-a19e-cbe83c395a5c">
 
 
+### SEO && Performance
+  Amazing app performance utilising nextjs features
+<img width="553" alt="image" src="https://github.com/Simone-shalom/barber-site/assets/117103936/5635d3ea-1150-4e51-b615-c614f761057d">
+
+
+
 
 ## Implementation:
  - Authentication using nextAuth
