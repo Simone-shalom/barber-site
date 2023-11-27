@@ -7,7 +7,7 @@ import Statistics from "@/components/Statistics"
 import { PageWrapper } from "@/components/animations/pageWrapper"
 import ListingCard from "@/components/listings/ListingCard"
 import { Card, CardContent } from "@/components/ui/card"
-import {PurchasedItem, safePastReservation, safeReservation, safeUser } from "@/types/types"
+import {PurchasedItem, safePastReservation, safeReservation, safeReservation2, safeUser } from "@/types/types"
 import axios from "axios"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
@@ -17,9 +17,9 @@ interface PanelClientProps {
     currentUser: safeUser
     reservationsCount: number
     pastReservations: safePastReservation[] 
-    newestReservation: safeReservation | null
+    newestReservation: safeReservation2 | null
     allUsers: number
-    reservations: safeReservation[]
+    reservations: safeReservation2[]
     purchased: PurchasedItem[]
 }
 

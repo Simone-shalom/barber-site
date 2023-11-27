@@ -52,15 +52,15 @@ const NotificationsClient = ({ currentUser, notifications}:
     <div className="py-5 gap-8 grid grid-cols-1 md:grid-cols-2 
          xl:grid-cols-3 ">
         {notifications.map((notification) => (
-          <>
-          <PageWrapper key={notification.id}>
           <div key={notification.id}>
+          <PageWrapper>
+          <div>
             <NotificationCard body={notification.body} 
               userId={notification.userId} createdAt={notification.createdAt}
               userName={notification.userName}/>
           </div>
           </PageWrapper>
-          </>
+          </div>
         ))}
     </div>
     </ScrollArea>

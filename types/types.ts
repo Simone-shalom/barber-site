@@ -52,4 +52,25 @@ Reservation,
     date: string
 }
 
- 
+export type SafePurchase = {
+    id: string;
+    userId: string;
+    reservationId: string;
+    createdAt: Date;
+    updatedAt: Date;
+    // Add other fields from your Payment model
+  };
+
+ export type safeReservation2 = {
+    id: string,
+    price: number,
+    userId: string,
+    userName?: string | null
+    createdAt: string;
+    date: string;
+    listing: safeListing,
+    purchases: SafePurchase[];
+    listingId: string;
+    
+  };
+  
