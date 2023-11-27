@@ -85,7 +85,9 @@ const currentDayName = `${current.getDate()}/${current.getMonth()+1}/${current.g
     <Container>
       <PageWrapper>
       <Heading title="Admin Panel" desc="Your daily dashboard"/>
-    <div className="pt-7 pb-5 gap-8 grid grid-cols-1 
+    <div 
+      data-testid='panel-client'
+      className="pt-7 pb-5 gap-8 grid grid-cols-1 
           lg:grid-cols-2 2xl:grid-cols-3  ">
           <Card className="flex flex-col space-y-2 col-span-1 py-2 border-black/5
                 hover:shadow-2xl shadow-xl  transition cursor-pointer w-full ">
