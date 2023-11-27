@@ -45,8 +45,8 @@ const ReservationClient = ({reservations, currentUser}:
     <div className="pt-7 pb-5 gap-8 grid grid-cols-1 md:grid-cols-2 
           lg:grid-cols-3 2xl:grid-cols-4 ">
         {reservations.map((reservation: any) => (
-          <>
-          <PageWrapper key={reservation.id}>
+          <div key={reservation.id}>
+          <PageWrapper>
           <div key={reservation.id}>
             <ListingCard reservation={reservation} data={reservation.listing}
              actionId={reservation.id} onAction={onCancel} purchase={reservation.purchases}
@@ -54,7 +54,7 @@ const ReservationClient = ({reservations, currentUser}:
              />
           </div>
           </PageWrapper>
-          </>
+          </div>
         ))}
     </div>
    </Container>

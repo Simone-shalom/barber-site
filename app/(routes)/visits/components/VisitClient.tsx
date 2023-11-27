@@ -28,7 +28,7 @@ const VisitClient =  ({reservations ,currentUser}: VisitClientProps) => {
 // next caching, so its cached on client side, 
 // which means that after changes((canceling reservation by admin)) 
 //data will be refresh after 30s when we navigate in site 
-// im ommitting it by refeching it on call when user click into page
+// i am ommitting it by refeching it on call when user click into page
 //using useEffect and router.refresh()
 //so client/user have fresh data everytime 
   useEffect(() => {
