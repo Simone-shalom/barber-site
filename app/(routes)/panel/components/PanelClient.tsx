@@ -100,7 +100,7 @@ const currentDayName = `${current.getDate()}/${current.getMonth()+1}/${current.g
                 <ListingCard data={newestReservation.listing} 
                 reservation={newestReservation} actionLabel="Cancel Reservation"
                   onAction={onCancel} admin currentUser={currentUser}
-                  actionId={newestReservation.id}
+                  actionId={newestReservation.id} purchase={newestReservation.purchases}
                   />
                </div>
               ): (

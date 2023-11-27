@@ -22,7 +22,7 @@ interface ListingCardProps {
     actionLabel?: string
     actionId?: string
     admin?: boolean
-    purchase?: SafePurchase[] 
+    purchase?: SafePurchase[] | null
 }
 
 const ListingCard = ({data, currentUser, reservation,

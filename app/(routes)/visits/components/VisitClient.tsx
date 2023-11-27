@@ -6,7 +6,7 @@ import { PageWrapper } from "@/components/animations/pageWrapper"
 import HeroHeading from "@/components/hero/HeroHeading"
 import ListingCard from "@/components/listings/ListingCard"
 import { Button } from "@/components/ui/button"
-import { safeReservation, safeUser } from "@/types/types"
+import { safeReservation, safeReservation2, safeUser } from "@/types/types"
 import axios from "axios"
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
@@ -14,7 +14,7 @@ import { toast } from "react-hot-toast"
 
 
 interface VisitClientProps {
-    reservations: safeReservation[]
+    reservations: safeReservation2[]
     currentUser?: safeUser | null
 }
 
@@ -79,7 +79,7 @@ const VisitClient =  ({reservations ,currentUser}: VisitClientProps) => {
       <Heading title="Your Visits" desc="You can check your current visits and cancel them if you want"/>
       <div className="pt-7 pb-5 gap-8 grid grid-cols-1 md:grid-cols-2 
           lg:grid-cols-3 2xl:grid-cols-4">
-          {reservations.map((reservation: any) => (
+          {reservations.map((reservation: safeReservation2) => (
             <PageWrapper key={reservation.id}>
             <div key={reservation.id}>
               <ListingCard reservation={reservation} data={reservation.listing}

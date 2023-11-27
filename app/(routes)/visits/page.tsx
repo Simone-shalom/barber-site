@@ -13,7 +13,6 @@ const VisitsPage = async() => {
     //get reservations only for current user
     const reservations = await getReservations({userId: currentUser?.id})
 
-
     if (!currentUser) {
       return (
         <Empty title="Unathenticated" desc="Please login or signup" 
@@ -31,7 +30,6 @@ const VisitsPage = async() => {
           home/>
       )
   }
-
   return (
     <div>
         <VisitClient reservations={reservations} currentUser={currentUser}/>
