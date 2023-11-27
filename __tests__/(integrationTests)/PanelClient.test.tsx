@@ -50,7 +50,7 @@ describe('PanelClient component', () => {
 
     // Ensure that Axios.delete is called with the correct parameters
     await waitFor(() => {
-      expect(axios.delete).toHaveBeenCalledWith('/api/reservation/your_reservation_id');
+      expect(axios.delete).toHaveBeenCalledWith('/api/reservation/reservation1');
     });
 
     // Add more assertions based on your expected outcomes

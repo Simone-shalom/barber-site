@@ -4,7 +4,7 @@ import '@testing-library/jest-dom/extend-expect';
 import ListingCard from '@/components/listings/ListingCard';
 import { useRouter } from 'next/navigation';
 import { mockListing } from '@/mocks/listing';
-import { mockCurrentUser } from '@/mocks/currentUser';
+import { mockAdmin, mockCurrentUser } from '@/mocks/currentUser';
 import { mockReservation, mockReservationDefined, mockReservationSafe, mockReservationsPurchase,  } from '@/mocks/reservation';
 import { mockEmptyPurchase, mockPurchase } from '@/mocks/purchase';
 
@@ -60,35 +60,36 @@ describe('ListingCard component', () => {
         actionLabel='Cancel'
         onAction={mockOnAction}
         data={mockListing}
-        currentUser={mockCurrentUser}
+        currentUser={mockAdmin}
         reservation={mockReservationSafe}
         purchase={mockPurchase}
       />
     );
 
     // Add assertions for purchased item-specific content
-    expect(screen.getByText('Already Paid')).toBeInTheDocument();
+    expect(screen.getByText('Already Paid by')).toBeInTheDocument();
     // Add more assertions based on your component's structure
   });
 
-  // it('handles cancel button click', () => {
-  //   const mockOnAction = jest.fn();
-  //   render(
-  //     <ListingCard
-  //       data={mockListing}
-  //       currentUser={mockCurrentUser}
-  //       reservation={mockReservationSafe}
-  //       onAction={mockOnAction}
-  //       actionLabel='Cancel'
-  //     />
-  //   );
+  it('handles cancel button click', () => {
+    const mockOnAction = jest.fn();
+    render(
+      <ListingCard
+        data={mockListing}
+        currentUser={mockCurrentUser}
+        reservation={mockReservationSafe}
+        purchase={[]}
+        onAction={mockOnAction}
+        actionLabel='Cancel'
+      />
+    );
 
-  //   fireEvent.click(screen.getByText('Cancel')); // Adjust based on your actual button text
+    fireEvent.click(screen.getByText('Cancel')); // Adjust based on your actual button text
 
-  //   waitFor(() => {
-  //       expect(mockOnAction).toHaveBeenCalledWith(''); // Adjust based on your expected action id
-  //   })
-  // });
+    waitFor(() => {
+        expect(mockOnAction).toHaveBeenCalledWith(''); // Adjust based on your expected action id
+    })
+  });
 
   // Add more test cases for other interactions, edge cases, etc.
 });
