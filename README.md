@@ -18,7 +18,7 @@
  - [Zustand](https://zustand-demo.pmnd.rs/) - state manager
  - [Framer-Motion](https://www.framer.com/motion/) - animations
  - [Stripe](https://stripe.com/) - Payments
- - [Jest](https://jestjs.io/) - unit testing *in future
+ - [Jest](https://jestjs.io/) - unit testing *in progress
 
 
 ### Landing page
@@ -77,7 +77,7 @@
  - Uploading images with next-cloudinary
  - Seo optimization using nextjs features
  - Payments using stripe payments and webhooks
- - Testing with Jest *in future
+ - Testing with Jest & React-testing-library
 
 
 ## Credentials :
