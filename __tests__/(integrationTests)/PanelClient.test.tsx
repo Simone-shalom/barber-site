@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-hot-toast';
 import PanelClient from '@/app/(routes)/panel/components/PanelClient';
-import { mockCurrentUser } from '@/mocks/currentUser';
+import { mockAdmin, mockCurrentUser } from '@/mocks/currentUser';
 import { mockNewestReservation, mockReservation, mockReservationDefined, mockReservationsPurchase } from '@/mocks/reservation';
 import { mockListing } from '@/mocks/listing';
 
@@ -42,7 +42,7 @@ describe('PanelClient component', () => {
     // Mock the Axios.delete function to return a successful response
     (axios.delete as jest.Mock).mockResolvedValue({ status: 200 });
 
-    render(<PanelClient newestReservation={ mockNewestReservation } currentUser={mockCurrentUser} reservationsCount={2}
+    render(<PanelClient newestReservation={ mockNewestReservation } currentUser={mockAdmin} reservationsCount={2}
         pastReservations={[]} allUsers={10} reservations={mockReservationDefined} purchased={[]}  />);
 
     // Simulate clicking the "Cancel Reservation" button

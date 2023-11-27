@@ -1,5 +1,5 @@
 import ReservationClient from '@/app/(routes)/myreservations/components/ReservationClient';
-import { mockCurrentUser } from '@/mocks/currentUser';
+import { mockAdmin, mockCurrentUser } from '@/mocks/currentUser';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import axios, { AxiosResponse } from 'axios';
 import { toast } from 'react-hot-toast';
@@ -50,7 +50,7 @@ describe('ReservationClient component', () => {
     // (axios.delete as jest.Mock).mockResolvedValue({ status: 200 });
     (axios.delete as jest.Mock).mockResolvedValueOnce({} as AxiosResponse);
 
-    render(<ReservationClient reservations={reservationsMock} currentUser={currentUserMock} />);
+    render(<ReservationClient reservations={reservationsMock} currentUser={mockAdmin} />);
 
     // Simulate clicking the "Remove reservation" button
     fireEvent.click(screen.getByText('Remove reservation'));
@@ -73,7 +73,7 @@ describe('ReservationClient component', () => {
      // Mock the axios.delete function to return a rejected promise
      (axios.delete as jest.Mock).mockRejectedValueOnce(new Error('Cancellation error'));
 
-    render(<ReservationClient reservations={reservationsMock} currentUser={currentUserMock} />);
+    render(<ReservationClient reservations={reservationsMock} currentUser={mockAdmin} />);
 
     // Simulate clicking the "Remove reservation" button
     fireEvent.click(screen.getByText('Remove reservation'));
