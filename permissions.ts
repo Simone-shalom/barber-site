@@ -1,1 +1,1 @@
-export const ADMIN_ID = '64e9b3d43f9fca3b0ad4b3f1'
+export const ADMIN_ID = process.env.NEXT_PUBLIC_ADMIN_ID
