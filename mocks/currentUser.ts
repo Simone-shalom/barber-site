@@ -3,7 +3,7 @@ import { safeUser } from "@/types/types";
 
 export const mockCurrentUser: safeUser  = {
     id: '123',
-    name: 'John Doe',
+    name: 'johhnyy',
     email: 'john@example.com',
     emailVerified: new Date().toISOString(),
     image: 'profile.jpg',
