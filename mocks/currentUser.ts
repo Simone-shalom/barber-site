@@ -15,7 +15,7 @@ export const mockCurrentUser: safeUser  = {
   };
 
   export const mockAdmin: safeUser  = {
-    id: ADMIN_ID,
+    id: ADMIN_ID!,
     name: 'John Doe',
     email: 'john@example.com',
     emailVerified: new Date().toISOString(),
