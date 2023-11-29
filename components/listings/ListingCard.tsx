@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { useRouter } from "next/navigation"
-import { SafePurchase, safeListing, safeReservation, safeUser } from "@/types/types"
+import { SafePurchase, safeListing, safeReservation2, safeUser } from "@/types/types"
 import { ADMIN_ID } from "@/permissions"
 import { Button } from "../ui/button"
 import { useCallback, useMemo } from "react"
@@ -15,7 +15,7 @@ import { Payment } from "@prisma/client"
 interface ListingCardProps {
     data: safeListing
     currentUser?: safeUser | null
-    reservation?: any
+    reservation?: safeReservation2
     onAction?: (id: string) => void
     onPay?: (id: string) => void
     disabled?: boolean
