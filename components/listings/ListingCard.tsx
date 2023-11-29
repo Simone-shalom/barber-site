@@ -131,7 +131,8 @@ const ListingCard = ({data, currentUser, reservation,
                                      {actionLabel}  
                                 </Button>
 
-                                <Button 
+                                <Button
+                                    data-testid='pay-now' 
                                      variant='default'
                                      disabled={disabled} onClick={payNow}>
                                      Pay now  
