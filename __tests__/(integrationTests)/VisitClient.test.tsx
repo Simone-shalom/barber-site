@@ -2,7 +2,7 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import axios, { AxiosResponse } from 'axios';
 import { toast } from 'react-hot-toast';
-import { mockAdmin, mockCurrentUser } from '@/mocks/currentUser';
+import { mockCurrentUser } from '@/mocks/currentUser';
 import { mockReservationsPurchase } from '@/mocks/reservation';
 import VisitClient from '@/app/(routes)/visits/components/VisitClient';
 import { useRouter } from 'next/navigation';
@@ -23,6 +23,8 @@ jest.mock('next/navigation', () => ({
     push: pushMock,
     refresh: jest.fn(), // Add a mock for the refresh function
   });
+
+
 
 describe('VisitClient component', () => {
   const reservationsMock = mockReservationsPurchase;

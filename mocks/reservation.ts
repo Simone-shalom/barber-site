@@ -1,5 +1,6 @@
-import { safeReservation } from "@/types/types";
+import { safeReservation, safeReservation2 } from "@/types/types";
 import { mockListing } from "./listing";
+import { mockPurchase } from "./purchase";
 
 // Mock data for safeReservation
 export const mockReservation: safeReservation[] | undefined = [
@@ -26,7 +27,7 @@ export const mockReservation: safeReservation[] | undefined = [
     // Add more mock reservations as needed
   ];
 
-  export const mockReservationSafe: safeReservation = 
+  export const mockReservationSafe: safeReservation2 = 
     {
       id: '1',
       date: '2023-12-01',
@@ -35,7 +36,17 @@ export const mockReservation: safeReservation[] | undefined = [
       createdAt: '2023-11-25T08:30:00Z',
       userId: 'user123',
       listingId: 'listing123',
-      listing: mockListing,
+      listing: {
+        createdAt: '2023-11-15T10:00:00Z',
+        id: 'listing1',
+        title: 'Mock Listing 1',
+        description: 'Mock Description 1',
+        imageSrc: '/mock-image.jpg',
+        category: 'Mock Category 1',
+        price: 50,
+        userId: 'user1',
+      },
+      purchases: []
     }
     // Add more mock reservations as needed
   

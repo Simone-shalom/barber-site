@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import Categories from '@/components/Categories';
-import { ScissorsLineDashed, Ruler, Scissors, PocketKnife } from 'lucide-react';
 import { usePathname, useSearchParams } from 'next/navigation';
 import qs from 'query-string';
 

@@ -5,7 +5,7 @@ import ListingCard from '@/components/listings/ListingCard';
 import { useRouter } from 'next/navigation';
 import { mockListing } from '@/mocks/listing';
 import { mockAdmin, mockCurrentUser } from '@/mocks/currentUser';
-import { mockReservationSafe } from '@/mocks/reservation';
+import { mockReservation, mockReservationSafe, mockReservationsPurchase } from '@/mocks/reservation';
 import { mockPurchase } from '@/mocks/purchase';
 
 // Mock useRouter
@@ -26,7 +26,6 @@ jest.mock('next/navigation', () => ({
 
 describe('ListingCard component', () => {
  
-
   it('renders correctly with default props', () => {
     render(<ListingCard data={mockListing} />);
 
@@ -42,12 +41,11 @@ describe('ListingCard component', () => {
       actionLabel='Cancel'
         onAction={mockOnAction}
         data={mockListing}
-        currentUser={mockCurrentUser}
+        currentUser={mockAdmin}
         reservation={mockReservationSafe}
         admin
       />
     );
-
     // Add assertions for admin-specific content
     expect(screen.getByText('ClientName')).toBeInTheDocument();
     // Add more assertions based on your component's structure
@@ -89,6 +87,40 @@ describe('ListingCard component', () => {
     waitFor(() => {
         expect(mockOnAction).toHaveBeenCalledWith(''); // Adjust based on your expected action id
     })
+  });
+
+  // Add more test cases for other interactions, edge cases, etc.
+});
+
+
+
+describe('ListingCard OnPay functionality', () => {
+  it('calls onPay when "Pay Now" button is clicked', async () => {
+    const mockOnPay = jest.fn();
+    const mockOnCancel = jest.fn();
+
+
+    render(
+      <ListingCard
+        data={mockListing}
+        currentUser={mockCurrentUser}
+        reservation={mockReservationSafe}
+        purchase={[]}
+        onAction={mockOnCancel}
+        onPay={mockOnPay}
+        actionLabel='Cancel'
+      />
+    );
+
+    // Find and interact with the "Pay Now" button
+    const payNowButton = screen.getByTestId('pay-now');
+    fireEvent.click(payNowButton);
+
+    // Wait for the asynchronous operations to complete
+    await waitFor(() => {
+      // Ensure that onPay function is called
+      expect(mockOnPay).toHaveBeenCalledWith(''); // Adjust based on your expected action id
+    });
   });
 
   // Add more test cases for other interactions, edge cases, etc.
