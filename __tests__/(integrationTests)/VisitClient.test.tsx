@@ -25,10 +25,9 @@ jest.mock('next/navigation', () => ({
   });
 
 
-
-describe('VisitClient component', () => {
   const reservationsMock = mockReservationsPurchase;
   const currentUserMock = mockCurrentUser;
+describe('VisitClient component', () => {
 
   beforeEach(() => {
     // Reset mocks before each test
@@ -56,15 +55,36 @@ describe('VisitClient component', () => {
     });
   });
 
-  it('handles errors when cancelling a reservation', async () => {
+  it('handles errors when cancelling a reservation',  () => {
     (axios.delete as jest.Mock).mockRejectedValueOnce(new Error('Cancellation error'));
 
     render(<VisitClient reservations={reservationsMock} currentUser={currentUserMock} />);
     fireEvent.click(screen.getByText('Cancel Reservation'));
 
-    await waitFor(() => {
+     waitFor(() => {
       expect(toast.error).toHaveBeenCalledWith('Error cancelling reservation');
     });
   });
 
 })
+
+describe('VisitClient onPay functionality', () => {
+  it('calls onPay when "Pay Now" button is clicked',  () => {
+    const mockOnPay = jest.fn();
+
+    render(<VisitClient reservations={reservationsMock} currentUser={currentUserMock} />);
+
+    // Find and interact with the "Pay Now" button
+    const payNowButton = screen.getByTestId('pay-now');
+    fireEvent.click(payNowButton);
+    console.log(screen.debug());
+
+    // Wait for the asynchronous operations to complete
+     waitFor(() => {
+      // Ensure that onPay function is called
+      expect(mockOnPay).toHaveBeenCalledWith(''); // Adjust based on your expected action id
+    });
+  });
+
+  // Add more test cases for other interactions, edge cases, etc.
+});

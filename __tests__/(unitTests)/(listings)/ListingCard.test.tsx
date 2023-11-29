@@ -5,7 +5,7 @@ import ListingCard from '@/components/listings/ListingCard';
 import { useRouter } from 'next/navigation';
 import { mockListing } from '@/mocks/listing';
 import { mockAdmin, mockCurrentUser } from '@/mocks/currentUser';
-import { mockReservation, mockReservationSafe, mockReservationsPurchase } from '@/mocks/reservation';
+import { mockReservationSafe } from '@/mocks/reservation';
 import { mockPurchase } from '@/mocks/purchase';
 
 // Mock useRouter
