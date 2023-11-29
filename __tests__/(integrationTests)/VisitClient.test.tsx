@@ -66,6 +66,47 @@ describe('VisitClient component', () => {
     });
   });
 
+
+  it('handles payment when "Pay now" button is clicked', async () => {
+    render(<VisitClient reservations={reservationsMock} currentUser={currentUserMock} />);
+    const payNowButtons = screen.getAllByTestId('pay-now');
+
+    // Assuming there's at least one reservation
+    const reservationId = reservationsMock[0].id;
+
+    fireEvent.click(payNowButtons[0]);
+
+    // Wait for the asynchronous operations to complete (e.g., axios request)
+    await waitFor(() => {
+      expect(axios.post).toHaveBeenCalledWith(`/api/checkout/${reservationId}`);
+    });
+
+    // You might want to check if the UI is updated accordingly after payment
+  });
+
+  it('handles payment failure when "Pay now" button is clicked', async () => {
+    render(<VisitClient reservations={reservationsMock} currentUser={currentUserMock} />);
+    const payNowButtons = screen.getAllByTestId('pay-now');
+  
+    // Assuming there's at least one reservation
+    const reservationId = reservationsMock[0].id;
+  
+    // Mock the axios.post function to simulate a failure response
+    jest.spyOn(axios, 'post').mockRejectedValueOnce(new Error('Mocked error'));
+  
+    fireEvent.click(payNowButtons[0]);
+  
+    // Wait for the asynchronous operations to complete (e.g., axios request)
+    await waitFor(() => {
+      expect(axios.post).toHaveBeenCalledWith(`/api/checkout/${reservationId}`);
+    });
+  
+    // Check if an error toast is displayed (assuming you show an error toast for payment failure)
+    waitFor(() => {
+      expect(screen.getByText('Checkout unavailable')).toBeInTheDocument();
+    })
+  });
+
 })
 
 

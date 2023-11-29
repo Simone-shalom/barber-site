@@ -37,7 +37,7 @@ describe('ListingReservation component', () => {
     expect(screen.getByText('Choose day and hour')).toBeInTheDocument();
 
     // Mock user selecting a date (you may need to adjust this based on your Calendar implementation)
-    fireEvent.click(screen.getByText('02:00')); 
+    fireEvent.click(screen.getByText('06:00')); 
 
     // Find and interact with the "Reserve" button
     const reserveButton = screen.getByTestId('time-button-0');

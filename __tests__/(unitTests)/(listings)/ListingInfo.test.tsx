@@ -62,8 +62,9 @@ describe('ListingInfo component', () => {
       />
     );
    // Simulate choosing a day and hour (adjust this based on your component's implementation)
+   const currentDate = new Date();
    waitFor(() => {
-    const hourButton = screen.getByText('02:00'); // Adjust this based on your component's structure
+    const hourButton = screen.getByText('06:00'); // Adjust this based on your component's structure
     fireEvent.click(hourButton);
  
    })
