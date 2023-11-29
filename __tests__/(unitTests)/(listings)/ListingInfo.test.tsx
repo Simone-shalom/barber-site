@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import ListingInfo from '@/components/listings/ListingInfo';
 import { mockAdmin, mockCurrentUser } from '@/mocks/currentUser';
@@ -49,7 +49,7 @@ describe('ListingInfo component', () => {
     // Add more assertions based on your component's structure
   });
 
-  it('calls onSubmit and setDate when ListingReservation component is submitted', () => {
+  it('calls onSubmit and setDate when ListingReservation component is submitted',  async() => {
     render(
       <ListingInfo
       currentUser={mockCurrentUser}
@@ -61,13 +61,21 @@ describe('ListingInfo component', () => {
         dDates={[new Date()]}
       />
     );
+   // Simulate choosing a day and hour (adjust this based on your component's implementation)
+   waitFor(() => {
+    const hourButton = screen.getByText('02:00'); // Adjust this based on your component's structure
+    fireEvent.click(hourButton);
+ 
+   })
 
+   waitFor(() => {
     // Find and interact with the ListingReservation component
     const reservationButton = screen.getByText('Reserve');
     fireEvent.click(reservationButton);
+   })
 
     // Assert that onSubmit and setDate functions are called
-    waitFor(() => {
+    await waitFor(() => {
         expect(mockOnSubmit).toHaveBeenCalled();
         expect(mockSetDate).toHaveBeenCalled();
     }) 
@@ -75,5 +83,5 @@ describe('ListingInfo component', () => {
     // Add more assertions based on your component's interactions
   });
 
+})
   // Add more test cases or assertions as needed
-});

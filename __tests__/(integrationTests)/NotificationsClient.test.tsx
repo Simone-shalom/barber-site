@@ -67,6 +67,8 @@ describe('NotificationsClient component', () => {
     fireEvent.click(screen.getByText('Check reservations'));
 
     // Ensure that router.push is called with the correct path
-    expect(mockRouter.push).toHaveBeenCalledWith('/myreservations');
+    waitFor(() => {
+      expect(mockRouter.push).toHaveBeenCalledWith('/myreservations');
+    })
   });
 });

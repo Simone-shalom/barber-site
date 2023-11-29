@@ -69,7 +69,7 @@ describe('ListingCard component', () => {
     // Add more assertions based on your component's structure
   });
 
-  it('handles cancel button click', () => {
+  it('handles cancel button click', async () => {
     const mockOnAction = jest.fn();
     render(
       <ListingCard
@@ -84,7 +84,7 @@ describe('ListingCard component', () => {
 
     fireEvent.click(screen.getByText('Cancel')); // Adjust based on your actual button text
 
-    waitFor(() => {
+   await waitFor(() => {
         expect(mockOnAction).toHaveBeenCalledWith(''); // Adjust based on your expected action id
     })
   });
