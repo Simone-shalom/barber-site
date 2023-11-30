@@ -78,10 +78,9 @@ const RegisterModal = () => {
        toast.success('Registered successfully')
       }catch(error: any){
         toast.error('Something went wrong')
-
-   }
-
+   }  
   }
+
 
     const bodyContent = (
         <div className='flex flex-col gap-2 w-full'>

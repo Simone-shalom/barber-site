@@ -67,7 +67,7 @@ const LoginModal = () => {
  
   
    const onSubmit = async(values: z.infer<typeof formSchema>) => {
-      signIn('credentials', {
+        signIn('credentials', {
         ...values,
         redirect: false,
         callbackUrl: '/'
@@ -88,7 +88,9 @@ const LoginModal = () => {
     const bodyContent = (
         <div className='flex flex-col gap-2 w-full'>
              <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-2">
+              <form 
+                data-testid='login-form'
+                onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-2">
 
                 <FormField
                   control={form.control}
@@ -104,7 +106,9 @@ const LoginModal = () => {
                       </FormDescription>
                       <FormLabel>Email</FormLabel>
                       <FormControl>
-                        <Input placeholder="simon@gmail.com" {...field} />
+                        <Input 
+                        data-testid='email-field'
+                        placeholder="simon@gmail.com" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -118,20 +122,23 @@ const LoginModal = () => {
                     <FormItem>
                       <FormLabel>Password</FormLabel>
                       <FormControl>
-                        <Input placeholder="" {...field} type="password" />
+                      <Input
+                        data-testid='password-field' 
+                        placeholder="" {...field} type="password" />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
                 <div className="flex items-center justify-center w-full pt-5">
-                  <Button type="submit" className="w-[320px]">
+                  <Button 
+                    data-testid='login-btn'
+                    type="submit" className="w-[320px]">
                     Login
                   </Button>
                 </div>
               </form>
             </Form>
-
         </div>
     )
     const footerContent = (
