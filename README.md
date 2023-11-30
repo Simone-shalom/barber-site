@@ -4,7 +4,7 @@
 
 
 ## Introduction
-### Modern fullstack reservation app with client/admin roles to create and manage your customers
+### Modern fullstack reservation app with client/admin roles to mnanage and create bookings
 
 ## Tech Stack: 
  - [Next.js](https://nextjs.org/) – framework
@@ -18,7 +18,7 @@
  - [Zustand](https://zustand-demo.pmnd.rs/) - state manager
  - [Framer-Motion](https://www.framer.com/motion/) - animations
  - [Stripe](https://stripe.com/) - Payments
- - [Jest](https://jestjs.io/) - unit testing *in progress
+ - [Jest](https://jestjs.io/) - unit/integration testing *in progress
 
 
 ### Landing page
