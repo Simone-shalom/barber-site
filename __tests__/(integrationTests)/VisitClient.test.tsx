@@ -3,9 +3,10 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import axios, { AxiosResponse } from 'axios';
 import { toast } from 'react-hot-toast';
 import { mockCurrentUser } from '@/mocks/currentUser';
-import { mockReservationsPurchase } from '@/mocks/reservation';
+import { mockReservationDefined, mockReservationsPurchase } from '@/mocks/reservation';
 import VisitClient from '@/app/(routes)/visits/components/VisitClient';
 import { useRouter } from 'next/navigation';
+import userEvent from '@testing-library/user-event';
 
 // Mock the axios and toast modules
 jest.mock('axios');
@@ -102,59 +103,26 @@ describe('VisitClient component', () => {
     });
   
     // Check if an error toast is displayed (assuming you show an error toast for payment failure)
-    waitFor(() => {
-      expect(screen.getByText('Checkout unavailable')).toBeInTheDocument();
+   await waitFor(() => {
+    expect(toast.error).toHaveBeenCalledWith('Checkout unavailable');
     })
   });
-
+  it('handles successful payment', async () => {
+    render(<VisitClient reservations={reservationsMock} currentUser={currentUserMock} />);
+    // Mock the axios.post method to simulate successful payment
+     jest.spyOn(axios, 'post').mockResolvedValueOnce({ data: { url: 'mock-payment-url' } });
+      // Mock the window.location.assign method
+      const assignMock = jest.fn();
+          Object.defineProperty(window, 'location', {
+          value: { assign: assignMock },
+          writable: true,
+        });
+    // Trigger pay action
+    fireEvent.click(screen.getByTestId('pay-now'))
+    // Wait for the asynchronous operations to complete
+    await waitFor(() => {
+      // Assert that the window.location.assign is called with the correct URL
+      expect(assignMock).toHaveBeenCalledWith('mock-payment-url');
+    });
+  });
 })
-
-
-// describe('VisitClient onPay functionality',() => {
-//   // it('calls onPay when "Pay Now" button is clicked', async () => {
-//   //   const mockOnPay = jest.fn();
-
-//   //   render(<VisitClient reservations={reservationsMock} currentUser={currentUserMock} />);
-
-//   //   // Find and interact with the "Pay Now" button
-//   //   const payNowButton = screen.getByTestId('pay-now');
-//   //   fireEvent.click(payNowButton);
-//   //   console.log(screen.debug());
-
-//   //   // Wait for the asynchronous operations to complete
-//   //    await waitFor(() => {
-//   //     // Ensure that onPay function is called
-//   //     expect(mockOnPay).toHaveBeenCalledWith('reservation1'); // Adjust based on your expected action id
-//   //   });
-//   // });
-
-//   // it('handles successful payment', async() => {
-//   //   (axios.post as jest.Mock).mockResolvedValueOnce({ data: { url: 'mock-payment-url' } });
-
-//   //   render(<VisitClient reservations={reservationsMock} currentUser={currentUserMock} />);
-//   //   const payNowButton = screen.getByTestId('pay-now');
-//   //   fireEvent.click(payNowButton);
-
-//   //  await waitFor(() => {
-//   //     expect(window.location.assign).toHaveBeenCalledWith('mock-payment-url');
-//   //   });
-//   // });
-  
-
-//   // it('handles payment failure', async() => {
-//   //   (axios.post as jest.Mock).mockRejectedValueOnce(new Error('Payment error'));
-
-//   //   render(<VisitClient reservations={reservationsMock} currentUser={currentUserMock} />);
-
-//   //   const payNowButton = screen.getByTestId('pay-now');
-//   //   fireEvent.click(payNowButton);
-
-//   //  await waitFor(() => {
-//   //     // Check if the appropriate error message is displayed
-//   //     expect(toast.error).toHaveBeenCalledWith('Checkout unavailable');
-//   //   });
-//   // });
-
-
-//   // Add more test cases for other interactions, edge cases, etc.
-// });
