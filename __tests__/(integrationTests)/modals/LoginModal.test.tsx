@@ -7,7 +7,6 @@ import { useRouter } from 'next/navigation';
 import { useLoginModal } from '@/hooks/use-login-modal';
 
 // Mock next/router
-
 jest.mock('next/navigation', () => ({
   useRouter: jest.fn(),
 }));
@@ -66,9 +65,9 @@ describe('LoginModal component', () => {
         email: 'simon@gmail.com',
         password: 'simon1234',
         callbackUrl: '/',
-        redirect: false
-      });
-    });
+        redirect: false,
+      })
+    })
   });
 
   it('handles Google login click', async () => {

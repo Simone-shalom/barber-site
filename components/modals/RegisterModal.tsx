@@ -85,7 +85,9 @@ const RegisterModal = () => {
     const bodyContent = (
         <div className='flex flex-col gap-2 w-full'>
              <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-2">
+              <form 
+                data-testid='register-form'
+                onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-2">
                 <FormField
                   control={form.control}
                   name="name"
@@ -93,7 +95,9 @@ const RegisterModal = () => {
                     <FormItem>
                       <FormLabel>Name</FormLabel>
                       <FormControl>
-                        <Input placeholder="Simon" {...field} type="text"/>
+                        <Input 
+                          data-testid='name-field'
+                          placeholder="Simon" {...field} type="text"/>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -107,7 +111,9 @@ const RegisterModal = () => {
                     <FormItem>
                       <FormLabel>Email</FormLabel>
                       <FormControl>
-                        <Input placeholder="simon@gmail.com" {...field} type="email"/>
+                        <Input 
+                          data-testid='email-field'
+                          placeholder="simon@gmail.com" {...field} type="email"/>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -121,14 +127,18 @@ const RegisterModal = () => {
                     <FormItem>
                       <FormLabel>Password</FormLabel>
                       <FormControl>
-                        <Input placeholder="" {...field} type="password" />
+                        <Input 
+                          data-testid='password-field'
+                          placeholder="" {...field} type="password" />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
                 <div className="flex items-center justify-center w-full pt-5">
-                  <Button type="submit" className="w-[320px]">Register</Button>
+                  <Button 
+                    data-testid='register-btn'
+                    type="submit" className="w-[320px]">Register</Button>
                 </div>
               </form>
             </Form>
