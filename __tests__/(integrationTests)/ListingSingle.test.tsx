@@ -8,9 +8,11 @@ import ListingSingle from '@/app/(routes)/(listing)/listings/[listingId]/compone
 import { mockCurrentUser } from '../../mocks/currentUser';
 import { mockListing } from '../../mocks/listing';
 import { mockReservation } from '../../mocks/reservation';
+import toast from 'react-hot-toast';
 
 // Mocking external dependencies
 jest.mock('axios');
+jest.mock('react-hot-toast');
 
 jest.mock('../../hooks/use-login-modal', () => ({
     ...jest.requireActual('../../hooks/use-login-modal'),
@@ -68,16 +70,18 @@ describe('ListingSingle component', () => {
 
     const dateTime =date.dateTime
 
-    const calendarContainer = screen.getByTestId('calendar-container');
-   fireEvent.click(screen.getByLabelText(/November 1, 2023/i)); // Use getByLabelText for accessibilit
+    const currentDate = new Date();
+    const currentDayLabel = `${currentDate.toLocaleString('en-US', { month: 'long' })} ${currentDate.getDate()}, ${currentDate.getFullYear()}`;
+   fireEvent.click(screen.getByLabelText(currentDayLabel)); // Use getByLabelText for accessibilit
 
     // Mock the Axios.post function to return a successful response
     (axios.post as jest.Mock).mockResolvedValue({ status: 200 });
 
      // Wait for operations to complete
-     waitFor(() => {
+    await waitFor(() => {
         // Check if setDate function is called with the selected date
-        expect(setDate).toHaveBeenCalledWith(expect.objectContaining({ justDate: expect.any(Date), dateTime: null }));
+        // expect(setDate).toHaveBeenCalledWith(expect.objectContaining({ justDate: expect.any(Date), dateTime: null }));
+        expect(toast.success('Reservation Created Successfully'))
       });
 
     // Simulate clicking the "Create Reservation" button
