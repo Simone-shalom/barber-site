@@ -30,7 +30,10 @@ describe('Calendar component', () => {
         render(<Calendar date={date} setDate={setDate} />);
       
         // Click on a date in the calendar
-        fireEvent.click(screen.getByLabelText(/November 1, 2023/i)); // Use getByLabelText for accessibility
+        const currentDate = new Date()
+        const currentDayLabel = `${currentDate.toLocaleString('en-US', { month: 'long' })} ${currentDate.getDate()}, ${currentDate.getFullYear()}`;
+        fireEvent.click(screen.getByLabelText(currentDayLabel)); // Use getByLabelText for accessibilit
+        // fireEvent.click(screen.getByLabelText(/November 1, 2023/i)); // Use getByLabelText for accessibility
         // Adjust the label text based on how your calendar is labeled
       
         // Wait for operations to complete
