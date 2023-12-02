@@ -71,9 +71,9 @@ describe('RegisterModal component', () => {
     expect(screen.getByTestId('register-form')).toBeInTheDocument();
 
     // Mock user entering name, email, and password
-    await userEvent.type(screen.getByTestId('name-field'), 'Simon');
-    await userEvent.type(screen.getByTestId('email-field'), 'simon@gmail.com');
-    await userEvent.type(screen.getByTestId('password-field'), 'simon1234');
+    await userEvent.type(screen.getByTestId('name-field'), 'Sime');
+    await userEvent.type(screen.getByTestId('email-field'), 'sime@gmail.com');
+    await userEvent.type(screen.getByTestId('password-field'), 'sime1234');
 
     // Mock form submission
     fireEvent.click(screen.getByTestId('register-btn'));
@@ -81,7 +81,7 @@ describe('RegisterModal component', () => {
     // Wait for asynchronous operations to complete
     await waitFor(() => {
       // You can add assertions here based on the behavior of your component
-      expect(toast.success('Registered successfully'))
+      expect(useLoginModalMock).toHaveBeenCalled();
       // For example, check if the useRegisterModal.onClose function is calle
     });
   });

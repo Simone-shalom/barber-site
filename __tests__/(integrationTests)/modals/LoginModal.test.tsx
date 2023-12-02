@@ -70,7 +70,7 @@ describe('LoginModal component', () => {
       //   callbackUrl: '/',
       //   redirect: false,
       // })
-      expect(toast.success('Logged in successfully'))
+      expect(toast.success).toHaveBeenCalledWith('Logged in successfully');
     })
   });
 
