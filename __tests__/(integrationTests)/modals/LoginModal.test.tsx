@@ -16,10 +16,11 @@ jest.mock('react-hot-toast');
 
 const useRouterMock = useRouter as jest.Mock;
 const pushMock = jest.fn();
+const refreshMock = jest.fn();
 
 useRouterMock.mockReturnValue({
   push: pushMock,
-  refresh: jest.fn(), // Add a mock for the refresh function
+  refresh: refreshMock, // Add a mock for the refresh function
 });
 
 // Mock next-auth/react
@@ -46,22 +47,24 @@ describe('LoginModal component', () => {
 
   const mockRouter = { push: jest.fn(), refresh: jest.fn() };
   (useRouter as jest.Mock).mockReturnValue(mockRouter);
+
+
   it('renders correctly and submits form', async () => {
     // Mocking that the user is not authenticated
     (useRouterMock as jest.Mock).mockReturnValue({});
     // (signIn as jest.Mock).mockReturnValueOnce({});
-    (signIn as jest.Mock).mockImplementationOnce(async () => ({ ok: true }));
+    (signIn as jest.Mock).mockImplementationOnce(async () => ({ ok:true }));
     (useSession as jest.Mock).mockReturnValueOnce([null, false, undefined]);
-  
+
     render(<LoginModal />);
 
     // Check if the component renders
     expect(screen.getByTestId('login-form')).toBeInTheDocument();
 
     // Mock user entering email and password
-    await userEvent.type(screen.getByTestId('email-field'), 'simon@gmail.com');
-    await userEvent.type(screen.getByTestId('password-field'), 'simon1234');
-    
+     await userEvent.type(screen.getByTestId('email-field'), 'simon@gmail.com');
+     await userEvent.type(screen.getByTestId('password-field'), 'simon1234');
+  
     // Mock form submission
     fireEvent.click(screen.getByTestId('login-btn'));
 
@@ -76,8 +79,8 @@ describe('LoginModal component', () => {
       })
        // Assert that the success message is displayed
     })
-    waitFor(() => {
-      expect(screen.getByText(/Logged in successfully/i)).toBeInTheDocument();
+    await waitFor(() => {
+      expect(toast.success).toHaveBeenCalledWith('Logged in successfully');
     }) 
   });
 
@@ -93,7 +96,7 @@ describe('LoginModal component', () => {
     fireEvent.click(screen.getByText('Login with Google'));
 
     // Wait for asynchronous operations to complete
-    await waitFor(() => {
+     waitFor(() => {
       // Assert that signIn function is called for Google login
       expect(signIn).toHaveBeenCalledWith('google');
     });
@@ -117,7 +120,7 @@ describe('LoginModal component', () => {
     fireEvent.click(screen.getByTestId('login-btn'));
   
     // Wait for asynchronous operations to complete
-    await waitFor(() => {
+     waitFor(() => {
       // Assert that an error message is displayed
       expect(screen.getByText('password must be at least 2 characters.')).toBeInTheDocument();
     });
@@ -155,7 +158,7 @@ describe('LoginModal component', () => {
       });
     });
     waitFor(() => {
-      expect(screen.getByText(/Unauthorized/i)).toBeInTheDocument();
+      expect(toast.error).toHaveBeenCalledWith('Unauthorized');
     }) 
   });
   
