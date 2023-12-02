@@ -77,19 +77,12 @@ describe('ListingSingle component', () => {
     // Mock the Axios.post function to return a successful response
     (axios.post as jest.Mock).mockResolvedValue({ status: 200 });
 
-     // Wait for operations to complete
-    await waitFor(() => {
-        // Check if setDate function is called with the selected date
-        // expect(setDate).toHaveBeenCalledWith(expect.objectContaining({ justDate: expect.any(Date), dateTime: null }));
-        expect(toast.success('Reservation Created Successfully'))
-      });
-
     // Simulate clicking the "Create Reservation" button
     fireEvent.click(screen.getByText('Reserve'));
 
     // Ensure that useLoginModal.onOpen is not called (user is logged in)
-    waitFor(() => {
-        expect(useLoginModalMock).not.toHaveBeenCalled();
+   await waitFor(() => {
+      expect(toast.success).toHaveBeenCalledWith('Reservation Created Successfully')
     })
 
     // Ensure that Axios.post is called with the correct parameters
@@ -100,8 +93,7 @@ describe('ListingSingle component', () => {
         listingId: listing.id,
         });
     });
-
-
+    
     // Ensure that router.refresh and router.push are called after a successful reservation
     waitFor(() => {
         expect(mockRouter.refresh).toHaveBeenCalled();

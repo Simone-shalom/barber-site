@@ -43,10 +43,14 @@ const useLoginModalMock = useLoginModal as jest.MockedFunction<typeof useLoginMo
 useLoginModalMock.mockReturnValue(mockLoginModalStore);
 
 describe('LoginModal component', () => {
+
+  const mockRouter = { push: jest.fn(), refresh: jest.fn() };
+  (useRouter as jest.Mock).mockReturnValue(mockRouter);
   it('renders correctly and submits form', async () => {
     // Mocking that the user is not authenticated
     (useRouterMock as jest.Mock).mockReturnValue({});
-    (signIn as jest.Mock).mockReturnValueOnce({});
+    // (signIn as jest.Mock).mockReturnValueOnce({});
+    (signIn as jest.Mock).mockImplementationOnce(async () => ({ ok: true }));
     (useSession as jest.Mock).mockReturnValueOnce([null, false, undefined]);
   
     render(<LoginModal />);
@@ -70,8 +74,11 @@ describe('LoginModal component', () => {
         callbackUrl: '/',
         redirect: false,
       })
-      expect(useLoginModalMock).toHaveBeenCalledWith();
+       // Assert that the success message is displayed
     })
+    waitFor(() => {
+      expect(screen.getByText(/Logged in successfully/i)).toBeInTheDocument();
+    }) 
   });
 
   it('handles Google login click', async () => {
@@ -91,4 +98,67 @@ describe('LoginModal component', () => {
       expect(signIn).toHaveBeenCalledWith('google');
     });
   });
+
+  it('renders correctly and shows error on form submission without password', async () => {
+    // Mocking that the user is not authenticated
+    (useRouterMock as jest.Mock).mockReturnValue({});
+    (signIn as jest.Mock).mockReturnValueOnce({});
+    (useSession as jest.Mock).mockReturnValueOnce([null, false, undefined]);
+  
+    render(<LoginModal />);
+  
+    // Check if the component renders
+    expect(screen.getByTestId('login-form')).toBeInTheDocument();
+  
+    // Mock form submission without entering password
+    await userEvent.type(screen.getByTestId('email-field'), 'simon@gmail.com');
+    
+    //Click login button
+    fireEvent.click(screen.getByTestId('login-btn'));
+  
+    // Wait for asynchronous operations to complete
+    await waitFor(() => {
+      // Assert that an error message is displayed
+      expect(screen.getByText('password must be at least 2 characters.')).toBeInTheDocument();
+    });
+  });
+  
+  it('handles error response during form submission', async () => {
+    // Mocking that the user is not authenticated
+    (useRouterMock as jest.Mock).mockReturnValue({});
+    
+    // Mock signIn to return an error response
+    (signIn as jest.Mock).mockImplementationOnce(async () => ({ ok:false, error:'Unathorized' }));
+    
+    (useSession as jest.Mock).mockReturnValueOnce([null, false, undefined]);
+  
+    render(<LoginModal />);
+  
+    // Check if the component renders
+    expect(screen.getByTestId('login-form')).toBeInTheDocument();
+  
+    // Mock user entering email and password
+    await userEvent.type(screen.getByTestId('email-field'), 'simon@gmail.com');
+    await userEvent.type(screen.getByTestId('password-field'), 'simon1234');
+  
+    // Mock form submission
+    fireEvent.click(screen.getByTestId('login-btn'));
+  
+    // Wait for asynchronous operations to complete
+    await waitFor(() => {
+      // Assert that signIn function is called
+      expect(signIn).toHaveBeenCalledWith('credentials', {
+        email: 'simon@gmail.com',
+        password: 'simon1234',
+        callbackUrl: '/',
+        redirect: false,
+      });
+    });
+    waitFor(() => {
+      expect(screen.getByText(/Unauthorized/i)).toBeInTheDocument();
+    }) 
+  });
+  
+  
+
 });
