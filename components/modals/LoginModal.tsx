@@ -66,23 +66,46 @@ const LoginModal = () => {
 
  
   
-   const onSubmit = async(values: z.infer<typeof formSchema>) => {
-        signIn('credentials', {
+  //  const onSubmit = (values: z.infer<typeof formSchema>) => {
+  //       signIn('credentials', {
+  //       ...values,
+  //       redirect: false,
+  //       callbackUrl: '/'
+  //     }).then((callback) => {
+  //       if(callback?.ok) {
+  //           toast.success('Logged in successfully')
+  //           router.refresh()
+  //           loginModal.onClose()
+  //       }
+  //       if(callback?.error){
+  //           toast.error('Unaothorized')
+  //       }
+  //     })
+  //  }
+
+   const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    try {
+      const callback = await signIn('credentials', {
         ...values,
         redirect: false,
-        callbackUrl: '/'
-      }).then((callback) => {
-        if(callback?.ok) {
-            toast.success('Logged in successfully')
-            router.refresh()
-            loginModal.onClose()
-        }
-        if(callback?.error){
-            toast.error('Unaothorized')
-        }
-      })
-
-   }
+        callbackUrl: '/',
+      });
+  
+      if (callback?.ok) {
+        toast.success('Logged in successfully');
+        router.refresh();
+        loginModal.onClose();
+      }
+  
+      if (callback?.error) {
+        toast.error('Unauthorized');
+      }
+    } catch (error) {
+      console.error('Error during sign-in:', error);
+      // Handle error appropriately, e.g., display an error message
+      toast.error('An error occurred during sign-in');
+    }
+  };
 
  
     const bodyContent = (

@@ -64,13 +64,13 @@ describe('LoginModal component', () => {
     // Wait for asynchronous operations to complete
     await waitFor(() => {
       // Assert that signIn function is called
-      // expect(signIn).toHaveBeenCalledWith('credentials', {
-      //   email: 'simon@gmail.com',
-      //   password: 'simon1234',
-      //   callbackUrl: '/',
-      //   redirect: false,
-      // })
-      expect(toast.success).toHaveBeenCalledWith('Logged in successfully');
+      expect(signIn).toHaveBeenCalledWith('credentials', {
+        email: 'simon@gmail.com',
+        password: 'simon1234',
+        callbackUrl: '/',
+        redirect: false,
+      })
+      expect(useLoginModalMock).toHaveBeenCalledWith();
     })
   });
 
