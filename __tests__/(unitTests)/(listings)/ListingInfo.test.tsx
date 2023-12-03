@@ -21,6 +21,14 @@ jest.mock('next/navigation', () => ({
     refresh: jest.fn(), // Add a mock for the refresh function
   });
 
+  //Formting time 
+const formatTime = (date:Date) => {
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
+  const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+  return `${formattedHours}:${formattedMinutes}`;
+};
 
 
 describe('ListingInfo component', () => {
@@ -61,8 +69,17 @@ describe('ListingInfo component', () => {
         dDates={[new Date()]}
       />
     );
-   // Simulate choosing a day and hour (adjust this based on your component's implementation)
-   const currentDate = new Date();
+
+     // Get the current time and calculate the next full hour time
+     const currentTime = new Date();
+     const nextHourTime = new Date(currentTime.getTime() + 60 * 60 * 1000);
+     nextHourTime.setMinutes(0, 0, 0); // Reset minutes and seconds to get the next full hour
+ 
+     const nextHourTimeString = formatTime(nextHourTime);
+
+ // Simulate choosing a day and hour (adjust this based on your component's implementation)
+     fireEvent.click(screen.getByText(nextHourTimeString));
+
    waitFor(() => {
     const hourButton = screen.getByText('06:00'); // Adjust this based on your component's structure
     fireEvent.click(hourButton);
