@@ -18,6 +18,14 @@ useRouterMock.mockReturnValue({
   refresh: jest.fn(), // Add a mock for the refresh function
 });
 
+//Formting time 
+const formatTime = (date:Date) => {
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
+  const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+  return `${formattedHours}:${formattedMinutes}`;
+};
 
 describe('ListingReservation component', () => {
   const mockOnSubmit = jest.fn();
@@ -35,9 +43,16 @@ describe('ListingReservation component', () => {
 
     // Assert that the component renders
     expect(screen.getByText('Choose day and hour')).toBeInTheDocument();
+    // Get the current time and calculate the next full hour time
+    const currentTime = new Date();
+    const nextHourTime = new Date(currentTime.getTime() + 60 * 60 * 1000);
+    nextHourTime.setMinutes(0, 0, 0); // Reset minutes and seconds to get the next full hour
 
-    // Mock user selecting a date (you may need to adjust this based on your Calendar implementation)
-    fireEvent.click(screen.getByText('06:00')); 
+    const nextHourTimeString = formatTime(nextHourTime);
+
+    fireEvent.click(screen.getByText(nextHourTimeString));
+
+    // fireEvent.click(screen.getByText('06:00')); 
 
     // Find and interact with the "Reserve" button
     const reserveButton = screen.getByTestId('time-button-0');
