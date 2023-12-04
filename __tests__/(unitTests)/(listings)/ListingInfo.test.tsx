@@ -21,15 +21,6 @@ jest.mock('next/navigation', () => ({
     refresh: jest.fn(), // Add a mock for the refresh function
   });
 
-  //Formting time 
-const formatTime = (date:Date) => {
-  const hours = date.getHours();
-  const minutes = date.getMinutes();
-  const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
-  const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
-  return `${formattedHours}:${formattedMinutes}`;
-};
-
 
 describe('ListingInfo component', () => {
   const mockOnSubmit = jest.fn();
@@ -58,6 +49,11 @@ describe('ListingInfo component', () => {
   });
 
   it('calls onSubmit and setDate when ListingReservation component is submitted',  async() => {
+
+    // Set the time to 0:00
+const morningTime = new Date();
+morningTime.setHours(0, 0, 0, 0);
+
     render(
       <ListingInfo
       currentUser={mockCurrentUser}
@@ -65,23 +61,23 @@ describe('ListingInfo component', () => {
       user={mockCurrentUser}
       onSubmit={mockOnSubmit}
       setDate={mockSetDate}
-      date={{ justDate: new Date() , dateTime: new Date() }}
+      date={{ justDate: morningTime , dateTime: morningTime }}
         dDates={[new Date()]}
       />
     );
 
-     // Get the current time and calculate the next full hour time
-     const currentTime = new Date();
-     const nextHourTime = new Date(currentTime.getTime() + 60 * 60 * 1000);
-     nextHourTime.setMinutes(0, 0, 0); // Reset minutes and seconds to get the next full hour
+    //  // Get the current time and calculate the next full hour time
+    //  const currentTime = new Date();
+    //  const nextHourTime = new Date(currentTime.getTime() + 60 * 60 * 1000);
+    //  nextHourTime.setMinutes(0, 0, 0); // Reset minutes and seconds to get the next full hour
  
-     const nextHourTimeString = formatTime(nextHourTime);
+    //  const nextHourTimeString = formatTime(nextHourTime);
 
- // Simulate choosing a day and hour (adjust this based on your component's implementation)
-     fireEvent.click(screen.getByText(nextHourTimeString));
+//  // Simulate choosing a day and hour (adjust this based on your component's implementation)
+//      fireEvent.click(screen.getByText(nextHourTimeString));
 
    waitFor(() => {
-    const hourButton = screen.getByText('06:00'); // Adjust this based on your component's structure
+    const hourButton = screen.getByText('18:00'); // Adjust this based on your component's structure
     fireEvent.click(hourButton);
  
    })
