@@ -39,17 +39,12 @@ export default async function Home({ searchParams }: HomeProps) {
           className="pt-8 pb-5 gap-8 grid grid-cols-1 md:grid-cols-2 
           lg:grid-cols-3 2xl:grid-cols-4"
         >
-          {listings.map((listing: safeListing, index: number) => (
-            //Fallback UI so animation start after cards are loaded
-            <Suspense fallback={<CardSkeleton />} key={listing.id}>
-              <CardSlider index={index} key={listing.id}>
-                <ListingCard
-                  data={listing}
-                  key={listing.id}
-                  currentUser={currentUser}
-                />
-              </CardSlider>
-            </Suspense>
+          {listings.map((listing: safeListing) => (
+            <ListingCard
+              data={listing}
+              key={listing.id}
+              currentUser={currentUser}
+            />
           ))}
         </div>
       </PageWrapper>
