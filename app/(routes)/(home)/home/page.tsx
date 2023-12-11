@@ -7,7 +7,6 @@ import { HomeAdvert } from "@/components/HomeAdvert";
 import CardSlider from "@/components/animations/cardSlidder";
 import { PageWrapper } from "@/components/animations/pageWrapper";
 import ListingCard from "@/components/listings/ListingCard";
-import { Skeleton } from "@/components/ui/skeleton";
 import { ADMIN_ID } from "@/permissions";
 import { safeListing } from "@/types/types";
 import { Suspense } from "react";
@@ -41,6 +40,7 @@ export default async function Home({ searchParams }: HomeProps) {
           lg:grid-cols-3 2xl:grid-cols-4"
         >
           {listings.map((listing: safeListing, index: number) => (
+            //Fallback UI so animation start after cards are loaded
             <Suspense fallback={<CardSkeleton />} key={listing.id}>
               <CardSlider index={index} key={listing.id}>
                 <ListingCard
