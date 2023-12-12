@@ -14,7 +14,6 @@ import { useCallback, useMemo } from "react";
 import { format } from "date-fns";
 import { Card } from "../ui/card";
 import { ArrowRight, Check } from "lucide-react";
-import { Payment } from "@prisma/client";
 
 interface ListingCardProps {
   data: safeListing;
@@ -80,13 +79,13 @@ const ListingCard = ({
       onClick={() => router.push(`/listings/${data.id}`)}
       className="col-span-1 cursor-pointer transition"
     >
-      <Card className="flex flex-col gap-2 w-full rounded-b-lg pb-2">
+      <Card className="flex flex-col gap-2 w-full rounded-b-lg pb-2 group">
         <div className="aspect-video w-full relative overflow-hidden rounded-t-lg">
           <Image
             src={data.imageSrc}
             alt="Image url"
             fill
-            className="object-cover h-full w-full hover:scale-125 transition ease-in duration-300 "
+            className="object-cover h-full w-full hover:scale-125 transition ease-in duration-500"
           />
         </div>
         <div className="px-3">
@@ -94,7 +93,7 @@ const ListingCard = ({
           <div className="text-sm">{data.category}</div>
           <div className="flex items-center justify-between gap-1">
             <div className="font-semibold">$ {data.price}</div>
-            <div className="flex justify-end ">
+            <div className="flex justify-end group-hover:rotate-90 transition duration-300">
               <ArrowRight size={24} />
             </div>
           </div>
