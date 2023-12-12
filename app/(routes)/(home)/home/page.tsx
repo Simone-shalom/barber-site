@@ -1,15 +1,12 @@
 import getCurrentUser from "@/actions/get-current-user";
 import getListings, { getListingsParams } from "@/actions/get-listing";
-import { CardSkeleton } from "@/components/CardSkeleton";
 import Container from "@/components/Container";
 import Empty from "@/components/Empty";
 import { HomeAdvert } from "@/components/HomeAdvert";
-import CardSlider from "@/components/animations/cardSlidder";
 import { PageWrapper } from "@/components/animations/pageWrapper";
 import ListingCard from "@/components/listings/ListingCard";
 import { ADMIN_ID } from "@/permissions";
 import { safeListing } from "@/types/types";
-import { Suspense } from "react";
 
 export const dynamic = "force-dynamic";
 
